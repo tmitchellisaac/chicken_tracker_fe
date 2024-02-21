@@ -30,7 +30,6 @@ And I am taken to the new user's show page
 Story 3
 Sign Up [SAD] -- Non-unique name
 
-As a visitor
 When I visit the new users page
 I fill in the form but with a name that is already in use
 I press submit
@@ -41,7 +40,6 @@ And I have an error
 Story 4
 Sign Up [SAD] -- Non matching password / password confirmation
 
-As a visitor
 When I visit the new users page
 I fill in the form but the password and password confirmation don't match
 I press submit
