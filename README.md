@@ -67,3 +67,15 @@ And I am taken to a sign in page (idk what this would route as)
 I fill in the form with incorrect info and press Submit
 And I am taken to the sign in page with an error
 ```
+```
+Story 7
+Create Shelter
+
+When I visit a User show page
+I see a button to create a new Shelter
+and when I press that button
+I am taken to the new Shelter page
+Where I see a form asking for a name
+When I fill in the name and press submit
+I am taken back to the Shelter's show page
+```
