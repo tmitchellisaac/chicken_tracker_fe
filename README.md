@@ -77,5 +77,19 @@ and when I press that button
 I am taken to the new Shelter page
 Where I see a form asking for a name
 When I fill in the name and press submit
-I am taken back to the Shelter's show page
+I am taken to the Shelter's show page
+where I see the Shelter's name
+```
+```
+Story 8
+Update Shelter
+
+When I visit a Shelter show page
+I see a button to update the Shelter
+and when I press that button
+I am taken to the update Shelter page
+Where I see a form asking for a name
+When I fill in the name and press submit
+I am taken to the Shelter's show page
+where I see the Shelter's updated name
 ```
