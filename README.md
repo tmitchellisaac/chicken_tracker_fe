@@ -7,7 +7,7 @@ This project runs on Rails 7.0.8 and is not compatible with Windows.
 1. Fork and clone [this repository](https://github.com/n0rdie/chicken-tracker-be) to access our back-end. The back end repository connects to a database where our data is stored and connects to an external API.
 
 ## API
-We used the [Animals API](https://api-ninjas.com/api/animals) by api-ninjas.
+This application uses the [Animals API](https://api-ninjas.com/api/animals) by api-ninjas.
 
 ## Why Use Chicken Tracker?
 
