@@ -6,6 +6,7 @@
 4. `rails db:{drop,create,migrate,seed}`
 
 ## User Stories
+## Users
 
 ```
 Story 1
@@ -67,6 +68,8 @@ And I am taken to a sign in page (idk what this would route as)
 I fill in the form with incorrect info and press Submit
 And I am taken to the sign in page with an error
 ```
+
+## Shelters
 ```
 Story 7
 Create Shelter
