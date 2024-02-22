@@ -4,7 +4,7 @@ RSpec.describe "Welcome Page" do
   it "has buttons to login or register" do
     visit "/"
 
-    expect(page).to have_button("Login")
+    expect(page).to have_button("Log In")
     expect(page).to have_button("Register")
   end
 
