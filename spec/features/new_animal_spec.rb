@@ -20,7 +20,7 @@ RSpec.describe "New Animal Form", type: :feature do
     it "has a form to create a new animal" do
 
       visit shelter_path(shelter)
-# save_and_open_page
+      save_and_open_page
       expect(current_path).to eq(shelter_path(shelter))
       expect(page).to have_link("Create New Animal", href: new_shelter_animal_path(shelter))
       

@@ -272,8 +272,23 @@
           null,
           null
         ]
+      },
+      "/Users/s2an/turing/3mod/good/chicken_tracker_fe/app/controllers/shelters_controller.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
+      "/Users/s2an/turing/3mod/good/chicken_tracker_fe/app/controllers/application_controller.rb": {
+        "lines": [
+          1,
+          null
+        ]
       }
     },
-    "timestamp": 1708576518
+    "timestamp": 1708577523
   }
 }
