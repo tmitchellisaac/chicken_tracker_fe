@@ -7,4 +7,10 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+  root "welcome#index"
+  resources :users, only: [:new]
+  get "/login", to: "users#login_form"
+
+  post "/logout", to: "application#logout"
 end
