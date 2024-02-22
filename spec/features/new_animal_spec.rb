@@ -4,7 +4,7 @@ RSpec.describe "New Animal Form", type: :feature do
   
   # As a user,
   # When I visit "shelter/:id"
-  # And I click the "New Animal" button,
+  # And I click the "Create New Animal" button,
   # Then I am directed to "animal/new" where I see a form to fill in the animal"s attributes:
   # I fill in "type",
   # I fill in "name",
@@ -20,11 +20,11 @@ RSpec.describe "New Animal Form", type: :feature do
     it "has a form to create a new animal" do
 
       visit shelter_path(shelter)
-
+# save_and_open_page
       expect(current_path).to eq(shelter_path(shelter))
-      expect(page).to have_button("New Animal")
+      expect(page).to have_link("Create New Animal", href: new_shelter_animal_path(shelter))
       
-      click_button("New Animal")
+      click_link("Create New Animal")
       
       expect(current_path).to eq(new_shelter_animal_path(shelter))
       
