@@ -2,9 +2,11 @@
   <h2>Log In</h2>
   <%= form_with url: "/log_in", method: :post, data: { turbo: false } do |form| %>
     <%= form.label :email, "Email: " %>
-    <%= form.text_field :email %>
+    <%= form.text_field :email %><br>
+
     <%= form.label :password, "Password: " %>
-    <%= form.text_field :password %>
+    <%= form.text_field :password %><br>
+    
     <%= form.submit "Log In" %>
   <% end %>
   <br> 
