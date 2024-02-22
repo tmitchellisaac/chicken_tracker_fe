@@ -248,8 +248,32 @@
           1,
           null
         ]
+      },
+      "/Users/s2an/turing/3mod/good/chicken_tracker_fe/spec/poros/shelter_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
+      "/Users/s2an/turing/3mod/good/chicken_tracker_fe/app/poros/shelter.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          2,
+          null,
+          null
+        ]
       }
     },
-    "timestamp": 1708574185
+    "timestamp": 1708575739
   }
 }
