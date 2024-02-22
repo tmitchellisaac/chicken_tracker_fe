@@ -10,8 +10,7 @@ RSpec.describe "Welcome Page" do
 
   xit "has link to log out if current user is signed in" do
     # set current_user
-    # user = User.create()
-    # session[:user_id] = user.id
+    user = User.create!(email: "test@test.com", password:"password123")
 
     visit "/"
 

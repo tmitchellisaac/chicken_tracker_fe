@@ -12,5 +12,5 @@ Rails.application.routes.draw do
   resources :users, only: [:new]
   get "/login", to: "users#login_form"
 
-  delete "/logout", to: "sessions#destroy"
+  post "/logout", to: "application#logout"
 end
