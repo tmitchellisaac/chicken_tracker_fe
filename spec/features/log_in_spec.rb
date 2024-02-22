@@ -16,7 +16,7 @@ RSpec.describe "Logging In" do
     expect(current_path).to eq("/home")
   end
 
-  xit "cannot log in with bad credentials" do
+  it "cannot log in with bad credentials" do
     visit log_in_path
   
     fill_in :email, with: @user.email
@@ -25,7 +25,6 @@ RSpec.describe "Logging In" do
     click_on "Log In"
 
     expect(current_path).to eq(log_in_path)
-  
     expect(page).to have_content("Unable to log in. Please try again")
   end
 end

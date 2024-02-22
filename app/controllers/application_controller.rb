@@ -7,6 +7,6 @@ class ApplicationController < ActionController::Base
 
   def logout
     session[:user_id] = nil
-    flash[:success] = "Logged out successfully"
+    flash[:alert] = "Logged out successfully"
   end
 end

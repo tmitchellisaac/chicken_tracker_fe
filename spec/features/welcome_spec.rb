@@ -4,9 +4,9 @@ RSpec.describe "Welcome Page" do
   it "has links to login" do
     visit "/"
 
-    expect(page).to have_link("Log In")
+    expect(page).to have_button("Log In")
 
-    click_link("Log In")
+    click_button("Log In")
 
     expect(current_path).to eq(log_in_path)
   end
@@ -14,9 +14,9 @@ RSpec.describe "Welcome Page" do
   it "has links toregister" do
     visit "/"
 
-    expect(page).to have_link("Register")
+    expect(page).to have_button("Register")
 
-    click_link("Register")
+    click_button("Register")
 
     expect(current_path).to eq(new_user_path)
   end

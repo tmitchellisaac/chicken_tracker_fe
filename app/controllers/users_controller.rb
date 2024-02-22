@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   def create
     new_user = User.create(user_params)
     session[:user_id] = new_user.id
-    flash[:success] = "Welcome, #{new_user.username}!"
+    flash[:alert] = "Welcome, #{new_user.username}!"
     redirect_to "/home"
   end
 
@@ -22,8 +22,9 @@ class UsersController < ApplicationController
       redirect_to "/home"
     else
       # Authentication failed
-      flash[:error] = "Unable to log in. Please try again."
+      flash[:alert] = "Unable to log in. Please try again."
       render :login_form
+      # binding.pry
     end
   end
   
