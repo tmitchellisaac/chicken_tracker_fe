@@ -4,6 +4,9 @@ class AnimalsController < ApplicationController
     @allowed_species = allowed_species
   end
 
+  def create 
+  end
+
   private
 
   def allowed_species

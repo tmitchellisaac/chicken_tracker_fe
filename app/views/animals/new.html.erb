@@ -1,7 +1,8 @@
 <h1>New Animal</h1>
 <hr>
 <h2>New Animal Form</h2>
-  <%= form_with url: "/Animals", method: :post, data: {turbo: false} do |form| %>
+<div class="new_animal_form">
+  <%= form_with url: "/shelters/#{@facade.shelter.id}/animals/#{animal.id}", method: :post, data: {turbo: false} do |form| %>
     <%= form.label :name %>
     <%= form.text_field :name %> 
     <br>
@@ -14,5 +15,6 @@
     <%= form.label :color %>
     <%= form.text_field :color %> 
     <br>
-    <%= form.submit "Submit New Animal" %>
+    <%= form.submit "Submit" %>
   <% end %>
+</div>

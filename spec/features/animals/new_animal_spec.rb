@@ -15,7 +15,6 @@ RSpec.describe "New Animal Form", type: :feature do
   # Then I am taken to the animal show page where I see the new animal and all of its attributes.
   # And I see the message "Animal successfully created."
   describe "happy path" do
-    # let(:shelter) { Shelter.new(name: ) }
 
     it "has a form to create a new animal" do
       json_response = File.read('spec/fixtures/shelter_1.json')
@@ -38,29 +37,29 @@ RSpec.describe "New Animal Form", type: :feature do
       
       expect(current_path).to eq("/shelters/1/animals/new")
       
-      within(new_animal_form) do
-        expect(page).to have_field("Type")
-        expect(page).to have_field("Name")
-        expect(page).to have_field("Color")
-        expect(page).to have_field("Birthday")
+      within(".new_animal_form") do
+        expect(page).to have_field("name")
+        expect(page).to have_field("species_id")
+        expect(page).to have_field("birthday")
+        expect(page).to have_field("color")
         expect(page).to have_button("Submit")
       end
 
-      fill_in "Type", with: "chicken"
-      fill_in "Name", with: "Mickey McCluckkiddy"
-      fill_in "Color", with: "black with orange spots"
-      fill_in "Date", with: Date.new(2024,3,3)
+      fill_in "name", with: "Mickey McCluckkiddy"
+      select "Chicken", from: "species_id"
+      fill_in "birthday", with: Date.new(2024,3,3)
+      fill_in "color", with: "black with orange spots"
 
       click_button("Submit")
 
-      expect(current_path).to eq(shelter_animal(animal))
+      expect(current_path).to eq("/shelters/1/animals/1")
       
       # user-defined attributes
       expect(page).to have_content("Animal successfully created.")
-      expect(page).to have_content("chicken")
       expect(page).to have_content("Mickey McCluckkiddy")
+      expect(page).to have_content("Chicken")
+      expect(page).to have_content("03/03/2020")
       expect(page).to have_content("black with orange spots")
-      expect(page).to have_content("10/3/2020")
       # API attributes
       expect(page).to have_content(animal.main_prey)
       expect(page).to have_content(animal.habitat)
