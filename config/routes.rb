@@ -9,12 +9,10 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   root "welcome#index"
-  resources :users, only: [:new]
+  resources :users, only: [:show, :new]
 
   get "/log_in", to: "users#login_form"
   post "/log_in", to: "users#log_in"
-
-  get "/home", to: "home#index"
 
   post "/logout", to: "application#logout"
 end
