@@ -44,9 +44,9 @@ RSpec.describe "New Animal Form", type: :feature do
       fill_in "color", with: "black with orange spots"
 
       click_button("Submit")
-
+# the path need to be fixed/confirmed when a fixture is made for it
       expect(current_path).to eq("/shelters/1/animals/1")
-      
+# the logic for the view needs to be added 
       # user-defined attributes
       expect(page).to have_content("Animal successfully created.")
       expect(page).to have_content("Mickey McCluckkiddy")
