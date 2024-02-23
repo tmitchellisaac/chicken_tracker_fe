@@ -4,8 +4,8 @@ class Animal
   def initialize(attr)
     @id = attr[:id]
     @name = attr[:attributes][:name]
-    @name = attr[:attributes][:species]
-    @name = attr[:attributes][:birthday]
-    @name = attr[:attributes][:color]
+    @species = attr[:attributes][:species]
+    @birthday = attr[:attributes][:birthday]
+    @color = attr[:attributes][:color]
   end
 end
