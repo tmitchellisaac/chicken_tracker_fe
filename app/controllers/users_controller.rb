@@ -6,8 +6,26 @@ class UsersController < ApplicationController
   def create
     new_user = User.create(user_params)
     session[:user_id] = new_user.id
-    flash[:success] = "Welcome, #{new_user.username}!"
-    redirect_to root_path # need to update to home path when that route exists
+    flash[:alert] = "Welcome, #{new_user.username}!"
+    redirect_to "/home"
+  end
+
+  def login_form
+    render :login_form
+  end
+
+  def log_in
+    user = User.find_by(email: params[:email])
+    if user && user.authenticate(params[:password])
+      # Authentication successful
+      session[:user_id] = user.id
+      redirect_to "/home"
+    else
+      # Authentication failed
+      flash[:alert] = "Unable to log in. Please try again."
+      render :login_form
+      # binding.pry
+    end
   end
   
   private

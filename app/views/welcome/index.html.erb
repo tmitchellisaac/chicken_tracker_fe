@@ -4,10 +4,10 @@
   <% if current_user %>
     <%= link_to "Log Out", logout_path, method: :post %>
   <% else %>
-    <%= button_to "Login", login_path %>
+    <%= button_to "Log In", log_in_path, method: :get %> <br>
     <%= button_to "Register", new_user_path %>
   <% end %>
   <br> 
-
+  <br> 
   <%= image_tag("logo.jpeg", style: "width: 400px; height: auto;")%>
 </div>

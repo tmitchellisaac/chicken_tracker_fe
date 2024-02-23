@@ -10,7 +10,11 @@ Rails.application.routes.draw do
 
   root "welcome#index"
   resources :users, only: [:new]
-  get "/login", to: "users#login_form"
+
+  get "/log_in", to: "users#login_form"
+  post "/log_in", to: "users#log_in"
+
+  get "/home", to: "home#index"
 
   post "/logout", to: "application#logout"
 end
