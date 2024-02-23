@@ -12,4 +12,8 @@ class ShelterService
   def get_shelter(shelter_id)
     get_url("api/v1/shelters/#{shelter_id}")
   end
+
+  def get_shelters(user_id)
+    get_url("api/v1/shelters?user_id=#{user_id}")[:data]
+  end
 end
