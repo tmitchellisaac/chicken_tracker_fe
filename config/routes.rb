@@ -8,6 +8,11 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
 
+  resources :shelters, only: [:show] do
+    resources :animals, only: [:create, :new, :show]
+  end
+
+
   root "welcome#index"
   resources :users, only: [:show, :new]
 
@@ -15,4 +20,5 @@ Rails.application.routes.draw do
   post "/log_in", to: "users#log_in"
 
   post "/logout", to: "application#logout"
+
 end

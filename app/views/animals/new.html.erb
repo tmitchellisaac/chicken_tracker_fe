@@ -1,0 +1,21 @@
+<h1>New Animal</h1>
+<hr>
+<h2>New Animal Form</h2>
+<div class="new_animal_form">
+  <%# the form_with url may not be correct %>
+  <%= form_with url: "/shelters/#{@facade.shelter.id}/animals/#{@facade.animal.id}", method: :post, data: {turbo: false} do |form| %>
+    <%= form.label :name %>
+    <%= form.text_field :name %> 
+    <br>
+    <%= form.label :species %>
+    <%= form.collection_select :species_id, @allowed_species, :id, :name, include_blank: true %> 
+    <br>
+    <%= form.label :birthday %>
+    <%= form.date_field :birthday %> 
+    <br>
+    <%= form.label :color %>
+    <%= form.text_field :color %> 
+    <br>
+    <%= form.submit "Submit" %>
+  <% end %>
+</div>

@@ -1,4 +1,8 @@
 class ApplicationController < ActionController::Base
+
+  @allowed_species = ["chicken", "bee"]
+end
+
   helper_method :current_user
 
   def current_user
@@ -10,3 +14,4 @@ class ApplicationController < ActionController::Base
     flash[:alert] = "Logged out successfully"
   end
 end
+
