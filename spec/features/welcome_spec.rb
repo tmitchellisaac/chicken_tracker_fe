@@ -22,8 +22,12 @@ RSpec.describe "Welcome Page" do
   end
 
   it "has link to log out if current user is signed in" do
-    # set current_user
+    # log in to set current_user
     user = User.create!(email: "test@test.com", password:"password123")
+    visit "/log_in"
+    fill_in :email, with: user.email
+    fill_in :password, with: user.password
+    click_button "Log in"
 
     visit "/"
 

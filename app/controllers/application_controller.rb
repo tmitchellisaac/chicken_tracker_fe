@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
     @_current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
-  def logout
+  def log_out
     session[:user_id] = nil
     flash[:alert] = "Logged out successfully"
   end

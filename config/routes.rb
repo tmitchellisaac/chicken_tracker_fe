@@ -16,5 +16,5 @@ Rails.application.routes.draw do
 
   get "/home", to: "home#index"
 
-  get "/logout", to: "application#logout" # is this the right way to solve for this? Or should the logout action be called from the button?
+  get "/log_out", to: "application#log_out" # is this the right way to solve for this? Or should the log_out action be called from the button?
 end
