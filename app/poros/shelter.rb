@@ -1,8 +1,7 @@
 class Shelter
-  attr_reader :name
+  attr_reader :id, :name
 
   def initialize(attr)
-    # require "pry"; binding.pry
     @id = attr[:id]
     @name = attr[:attributes][:name]
   end

@@ -56,7 +56,10 @@ group :development, :test do
   gem "simplecov"
   gem "shoulda-matchers"
   gem "orderly"
-  
+end
+
+group :test do
+  gem "webmock"
 end
 
 group :development do

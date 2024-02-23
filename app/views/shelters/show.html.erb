@@ -1,4 +1,4 @@
 <h1>Shelter Show</h1>
 
-<%# <%= link_to "Create New Animal", new_shelter_animal_path(@shelter), data: { turbo: false } %> %>
+<%= link_to "Create New Animal", "/shelters/#{@facade.shelter.id}/animals/new", data: { turbo: false } %>
 <%= @facade.shelter.name %>

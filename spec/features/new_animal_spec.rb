@@ -15,18 +15,28 @@ RSpec.describe "New Animal Form", type: :feature do
   # Then I am taken to the animal show page where I see the new animal and all of its attributes.
   # And I see the message "Animal successfully created."
   describe "happy path" do
-    let(:shelter) { Shelter.new }
+    # let(:shelter) { Shelter.new(name: ) }
 
     it "has a form to create a new animal" do
-
-      visit shelter_path(shelter)
-save_and_open_page
-      expect(current_path).to eq(shelter_path(shelter))
-      expect(page).to have_link("Create New Animal", href: new_shelter_animal_path(shelter))
+      json_response = File.read('spec/fixtures/shelter_1.json')
+      stub_request(:get, "http://localhost:3000/api/v1/shelters/1").
+      with(
+        headers: {
+       'Accept'=>'*/*',
+       'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+       'User-Agent'=>'Faraday v2.9.0'
+        }).
+      to_return(status: 200, body: json_response, headers: {})
+      
+      visit "/shelters/1"
+      # visit shelter_path(shelter)
+      expect(current_path).to eq("/shelters/1")
+      expect(page).to have_link("Create New Animal", href: "/shelters/1/animals/new")
       
       click_link("Create New Animal")
+      save_and_open_page
       
-      expect(current_path).to eq(new_shelter_animal_path(shelter))
+      expect(current_path).to eq("/shelters/1/animals/new")
       
       within(new_animal_form) do
         expect(page).to have_field("Type")
@@ -39,7 +49,7 @@ save_and_open_page
       fill_in "Type", with: "chicken"
       fill_in "Name", with: "Mickey McCluckkiddy"
       fill_in "Color", with: "black with orange spots"
-      select "10/3/2020", from: "animal_calendar" # <--need to look into this
+      fill_in "Date", with: Date.new(2024,3,3)
 
       click_button("Submit")
 
