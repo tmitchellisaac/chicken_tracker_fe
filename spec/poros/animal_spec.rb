@@ -1,5 +1,5 @@
 require "spec_helper"
-require_relative "../../app/poros/animal"
+require_relative "../../app/poros/animal" # <-- I don't know why this is needed
 
 RSpec.describe Animal do
   it "exists" do
