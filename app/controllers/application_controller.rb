@@ -1,8 +1,5 @@
 class ApplicationController < ActionController::Base
 
-  @allowed_species = ["chicken", "bee"]
-end
-
   helper_method :current_user
 
   def current_user

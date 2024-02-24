@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
-    #
+    @facade.shelter
+    binding.pry
   end
   
   def new
@@ -9,7 +10,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    new_user = User.create(user_params)
+    new_user = User.create!(user_params)
     session[:user_id] = new_user.id
     flash[:alert] = "Welcome!"
     redirect_to "/users/#{new_user.id}"

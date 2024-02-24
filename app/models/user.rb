@@ -3,4 +3,9 @@ class User < ApplicationRecord
   validates_presence_of :password_digest
 
   has_secure_password
+
+  # def count_animals
+  # end
+
+  
 end
