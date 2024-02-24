@@ -29,7 +29,6 @@ class UsersController < ApplicationController
       # Authentication failed
       flash[:alert] = "Unable to log in. Please try again."
       render :login_form
-      # binding.pry
     end
   end
   
