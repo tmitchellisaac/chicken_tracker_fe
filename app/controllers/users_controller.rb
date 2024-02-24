@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   def show
-    @user = User.find(params[:id])
-    #
+    @facade = UserFacade.new(params)
+    # @user = User.find(params[:id])
   end
   
   def new
