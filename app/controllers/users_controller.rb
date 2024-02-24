@@ -20,7 +20,6 @@ class UsersController < ApplicationController
   end
 
   def log_in
-    require 'pry'; binding.pry
     user = User.find_by(email: params[:email])
     if user && user.authenticate(params[:password])
       # Authentication successful
