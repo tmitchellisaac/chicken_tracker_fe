@@ -15,7 +15,9 @@ Rails.application.routes.draw do
 
   delete "/log_out", to: "application#log_out" # is this the right way to solve for this? Or should the log_out action be called from the button?
 
-  resources :users, only: [:show, :new]
+  post "/users/new", to: "users#create"
+
+  resources :users, only: [:show, :new, :create]
 
   resources :shelters, only: [:show] do
     resources :animals, only: [:create, :new, :show]

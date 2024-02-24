@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "Logging In" do
   before(:each) do
-    @user = User.create(email: "test@test.com", password: "test")
+    @user = User.create(email: "test@test.com", password: "test", password_confirmation: "test")
   end
 
   it "can log in with valid credentials" do

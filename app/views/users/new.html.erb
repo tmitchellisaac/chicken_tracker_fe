@@ -1,0 +1,18 @@
+<div style="text-align: center;">
+  <h2>Register</h2>
+  <%= form_with url: new_user_path, method: :post, data: { turbo: false } do |form| %>
+    <%= form.label :email, "Email: " %>
+    <%= form.text_field :email %><br>
+
+    <%= form.label :password, "Password: " %>
+    <%= form.text_field :password %><br>
+
+    <%= form.label :password_confirmation, "Password Confirmation: " %>
+    <%= form.text_field :password_confirmation %><br>
+    
+    <%= form.submit "Register" %>
+  <% end %>
+  <br> 
+
+  <%= image_tag("logo.jpeg", style: "width: 400px; height: auto;")%>
+</div>

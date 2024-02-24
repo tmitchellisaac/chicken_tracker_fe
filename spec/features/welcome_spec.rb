@@ -23,7 +23,7 @@ RSpec.describe "Welcome Page" do
 
   it "has link to log out if current user is signed in" do
     # log in to set current_user
-    user = User.create!(email: "test@test.com", password:"password123")
+    user = User.create!(email: "test@test.com", password: "password123", password_confirmation: "password123")
     visit "/log_in"
     fill_in :email, with: user.email
     fill_in :password, with: user.password
