@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  # require 'pry'; binding.pry
   def show
     @facade = UserFacade.new(params)
     # @user = User.find(params[:id])
@@ -25,6 +26,7 @@ class UsersController < ApplicationController
       # Authentication successful
       session[:user_id] = user.id
       redirect_to "/users/#{user.id}"
+      
     else
       # Authentication failed
       flash[:alert] = "Unable to log in. Please try again."

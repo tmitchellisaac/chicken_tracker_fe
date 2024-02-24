@@ -1,6 +1,6 @@
 class ShelterService
   def conn
-    Faraday.new(url: "http://localhost:3000") do |faraday|
+    Faraday.new(url: "http://localhost:5000") do |faraday|
     end
   end
 
