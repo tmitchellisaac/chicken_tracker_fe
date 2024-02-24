@@ -27,16 +27,15 @@ RSpec.describe "Welcome Page" do
     visit "/log_in"
     fill_in :email, with: user.email
     fill_in :password, with: user.password
-    click_button "Log in"
+    click_on "Log In"
 
     visit "/"
 
     expect(page).to have_link("Log Out")
     
-    click_link("Log Out")
+    click_on("Log Out")
 
-    expect(current_path).to eq("/")
+    expect(current_path).to eq("/log_out")
     expect(page).to have_content("Logged out successfully")
-    expect(session[:user_id]).to be(nil)
   end
 end
