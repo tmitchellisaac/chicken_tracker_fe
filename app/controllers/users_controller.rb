@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   # require 'pry'; binding.pry
   def show
-    # @facade = UserFacade.new(params)
+    @facade = UserFacade.new(params)
     # @user = User.find(params[:id])
   end
   
