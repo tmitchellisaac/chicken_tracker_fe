@@ -1,13 +1,9 @@
 class ShelterService
+
   def conn
-    Faraday.new(url: "https://hidden-sands-71693-380133048218.herokuapp.com") do |faraday|
+    Faraday.new(url: "http://localhost:3000") do |faraday|
     end
   end
-
-  # def conn
-  #   Faraday.new(url: "http://localhost:5000") do |faraday|
-  #   end
-  # end
 
   def get_url(url)
     response = conn.get(url)
