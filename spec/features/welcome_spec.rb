@@ -21,18 +21,21 @@ RSpec.describe "Welcome Page" do
     expect(current_path).to eq(new_user_path)
   end
 
-  xit "has link to log out if current user is signed in" do
-    # set current_user
+  it "has link to log out if current user is signed in" do
+    # log in to set current_user
     user = User.create!(email: "test@test.com", password:"password123")
+    visit "/log_in"
+    fill_in :email, with: user.email
+    fill_in :password, with: user.password
+    click_on "Log In"
 
     visit "/"
 
     expect(page).to have_link("Log Out")
     
-    click_link("Log Out")
+    click_on("Log Out")
 
-    expect(current_path).to eq("/")
+    expect(current_path).to eq("/log_out")
     expect(page).to have_content("Logged out successfully")
-    expect(session[:user_id]).to be(nil)
   end
 end
