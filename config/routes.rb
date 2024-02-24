@@ -8,13 +8,16 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
 
+  resources :shelters, only: [:show] do
+    resources :animals, only: [:create, :new, :show]
+  end
+
+
   root "welcome#index"
-  resources :users, only: [:new]
+  resources :users, only: [:show, :new]
 
   get "/log_in", to: "users#login_form"
   post "/log_in", to: "users#log_in"
-
-  get "/home", to: "home#index"
 
   get "/log_out", to: "application#log_out" # is this the right way to solve for this? Or should the log_out action be called from the button?
 end

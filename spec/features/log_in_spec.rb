@@ -13,7 +13,7 @@ RSpec.describe "Logging In" do
 
     click_on "Log In"
 
-    expect(current_path).to eq("/home")
+    expect(current_path).to eq("/users/#{@user.id}")
   end
 
   it "cannot log in with bad credentials" do

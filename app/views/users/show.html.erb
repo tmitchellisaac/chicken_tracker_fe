@@ -1,0 +1,10 @@
+<h1> User Dashboard </h1>
+<hr>
+
+<h4>User Email: <%= @facade.user.email %></h4>
+<br>
+<h3> My Shelters </h3>
+<hr>
+<% @facade.shelters.each do |shelter| %>
+  <p> Shelter: <%= shelter.name %> </p>
+<% end  %>
