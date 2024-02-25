@@ -9,5 +9,6 @@ RSpec.describe Shelter do
     expect(shelter).to be_a(Shelter)
     expect(shelter.id).to eq(attr[:id])
     expect(shelter.name).to eq(attr[:attributes][:name])
+    expect(shelter.user_id).to eq(attr[:attributes][:user_id])
   end
 end

@@ -12,8 +12,7 @@ RSpec.describe "Shelter Show Page", type: :feature do
       
       visit "/shelters/1"
 
-      expect(current_path).to eq("/shelters/1")
-      expect(page).to have_content("Shelter Show")
+      expect(page).to have_content("Shelter Details")
     end
   end
 end

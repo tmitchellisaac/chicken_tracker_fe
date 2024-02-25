@@ -1,0 +1,15 @@
+<div style="text-align: center;">
+  <h2>New Shelter</h2>
+  <%= form_with url: "/shelters/new", method: :post, data: { turbo: false } do |form| %>
+    <%= form.label :name, "Name: " %>
+    <%= form.text_field :name %><br>
+
+    <%= form.label :user_id, "User ID: " %>
+    <%= form.text_field :user_id %><br>
+    
+    <%= form.submit "Save" %>
+  <% end %>
+  <br> 
+
+  <%= image_tag("logo.jpeg", style: "width: 400px; height: auto;")%>
+</div>
