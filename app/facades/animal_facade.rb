@@ -1,11 +1,20 @@
 class AnimalFacade
   def initialize(params)
-    @animal_id = params[:id]
+    @params = params
+  end
+
+  def shelter_id
+    @params[:shelter_id]
   end
 
   def animal
     service = AnimalService.new
-    # this needs to be made dynamic
-    animal = Animal.new(service.get_animal(1)[:data])
+    Animal.new(service.get_animal(@params[:id])[:data].first)
   end
+
+  def create_animal(animal_data)
+    service = AnimalService.new
+    animal = Animal.new(service.create_animal(animal_data)[:data].first)
+  end
+
 end
