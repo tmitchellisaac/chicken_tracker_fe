@@ -7,7 +7,7 @@ RSpec.describe "New Shelter Page" do
     visit "/shelters/new" # can we change this to /users/:id/shelters/new so we can pre-populate the user_id from the params?
   end
 
-  it "has a form to create a new shelter" do
+  it "has a form to create a new shelter", :vcr do
     # json_response = File.read('spec/fixtures/shelter_1.json')
     # stub_request(:post, "http://localhost:3000/api/v1/shelters/1").
     # to_return(status: 200, body: json_response, headers: {})
@@ -27,7 +27,7 @@ RSpec.describe "New Shelter Page" do
     expect(page).to have_button("Save")
   end
 
-  xit "can create a new shelter" do
+  xit "can create a new shelter", :vcr do
     # json_response = File.read('spec/fixtures/shelter_1.json')
     # stub_request(:post, "http://localhost:3000/api/v1/shelters/1").
     # to_return(status: 200, body: json_response, headers: {})
