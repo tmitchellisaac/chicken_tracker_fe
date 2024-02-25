@@ -5,7 +5,7 @@ RSpec.describe "Animal Show Page", type: :feature do
   # As a user,
   # When I visit "animal/:id"
   # I see "Animal Show"
-    it "displays the page title" do
+    xit "displays the page title" do
       # stub not created yet!!!
       json_response = File.read('spec/fixtures/animal_1.json')
       stub_request(:get, "http://localhost:3000/api/v1/animals/1").

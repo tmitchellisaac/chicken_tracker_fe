@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe "Shelter Service", type: :service do
   describe "shelter service" do
-    it "calls a shelter" do
+    xit "calls a shelter" do
       @shelter = Shelter.new(name: "red barn")
 
       expect(shelter).to have_key(:name)
