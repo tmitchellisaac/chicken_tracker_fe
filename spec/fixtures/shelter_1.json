@@ -3,14 +3,14 @@
     "id": "1",
     "type": "shelter",
     "attributes": {
-      "name": "red barn",
-      "user_id": "1"
+        "name": "red barn",
+    "user_id": "1"
     },
     "relationships": {
-      "animals": {
-        "data": [
-        ]
-      }
+        "animals": {
+          "data": [
+          ]
+        }
     }
   }
 }

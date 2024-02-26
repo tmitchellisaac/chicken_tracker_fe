@@ -21,7 +21,9 @@ RSpec.describe "New User Registration" do
 
       click_on "Register"
 
-      expect(current_path).to eq("/home")
+      user = User.last
+
+      expect(current_path).to eq("/users/#{user.id}")
     end
   end
 
@@ -35,8 +37,8 @@ RSpec.describe "New User Registration" do
 
       click_on "Register"
 
-      expect(current_path).to eq("/register")
-      expect(page).to have_content("User not created. Please register using a different email.")
+      expect(current_path).to eq("/users/new")
+      expect(page).to have_content("Unable to create user. Please try again.")
     end
 
     it "cannot register a new user if password and password confirmation do not match" do
@@ -46,7 +48,7 @@ RSpec.describe "New User Registration" do
 
       click_on "Register"
 
-      expect(current_path).to eq("/register")
+      expect(current_path).to eq("/users/new")
       expect(page).to have_content("User not created. Please ensure password and password confirmation match.")
     end
   end
