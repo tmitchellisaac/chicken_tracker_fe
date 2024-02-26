@@ -1,5 +1,16 @@
-<h1>Show Animal</h1>
+<h3>Animal Show Page</h3>
 <hr>
-
-<!-- need iterate and show the user-inputted attributes (name, species, birthday, color)>
-<!- and iterate to show the API attributes (lifespan, avg_weight, etc)>
+<h1><%= @facade.animal.name %></h1>
+<p>Animal Type: <%= @facade.animal.species %> </p>
+<p>Birthday: <%= @facade.animal.birthday %></p>
+<p>Color: <%= @facade.animal.color %></p>
+<p>Main Food Source: <%= @facade.animal.main_prey %></p>
+<p>Favorite Food: <%= @facade.animal.fav_food%></p>
+<p>Diet Type: <%= @facade.animal.diet%></p>
+<p>Habitat: <%= @facade.animal.habitat %></p>
+<p>Skin Type: <%= @facade.animal.skin_type %></p>
+<p>Top Speed: <%= @facade.animal.top_speed %></p>
+<p>Avg Litter Size: <%= @facade.animal.avg_litter %></p>
+<p>Avg Lifespan: <%= @facade.animal.lifespan %></p>
+<p>Weight: <%= @facade.animal.weight %></p>
+<p>Lifestyle: <%= @facade.animal.lifestyle %></p>
