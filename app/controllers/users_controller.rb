@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
   def create 
     if user_params[:password] != user_params[:password_confirmation]
-      flash[:error] = "Password and password confirmation do not match."
+      flash[:error] = "User not created. Please ensure password and password confirmation match."
       redirect_to new_user_path
     else
       user = User.create(user_params)
@@ -19,7 +19,7 @@ class UsersController < ApplicationController
         flash[:success] = "Welcome!"
         redirect_to "/users/#{user.id}"
       else  
-        flash[:error] = "Unable to create user. Please try again"
+        flash[:error] = "Unable to create user. Please try again."
         render :new
       end 
     end

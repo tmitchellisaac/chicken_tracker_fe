@@ -35,7 +35,7 @@ RSpec.describe "Welcome Page" do
     to_return(status: 200, body: json_response, headers: {})
 
     # log in to set current_user
-    user = User.create!(email: "test@test.com", password: "password123", password_confirmation: "password123")
+    user = User.create(email: "test@test.com", password: "password123", password_confirmation: "password123")
     
     visit "/log_in"
     

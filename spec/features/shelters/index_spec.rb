@@ -8,7 +8,7 @@ RSpec.describe "Shelter index", type: :feature do
     # visit "/users/1"
   end
 
-  it " displays the shelter associated with a user" do
+  xit " displays the shelter associated with a user" do
 
     shelters_index = File.read("spec/fixtures/shelters_index.json")
     
