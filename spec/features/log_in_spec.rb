@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.describe "Logging In" do
   before(:each) do
-    @user = User.create(email: "test@test.com", password: "test", id: 77)
+    @user = User.create(email: "test@test.com", password: "test", password_confirmation: "test", id: 77)
+  end
 
     json_response = File.read("spec/fixtures/shelters_index.json")
     stub_request(:get, "http://localhost:5000/api/v1/shelters?user_id=77").
