@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   def show
-    @facade = UserFacade.new(params)
-    # @user = User.find(params[:id])
+    @user = User.find(params[:id])
   end
   
   def new
@@ -14,7 +13,7 @@ class UsersController < ApplicationController
       flash[:error] = "Password and password confirmation do not match."
       redirect_to new_user_path
     else
-      user = User.create!(user_params)
+      user = User.create(user_params)
       if user.save
         session[:user_id] = user.id
         flash[:success] = "Welcome!"
