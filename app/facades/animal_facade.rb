@@ -1,6 +1,7 @@
 class AnimalFacade
   def initialize(params)
     @params = params
+    @animal_service = AnimalService.new
   end
 
   def shelter_id
@@ -8,13 +9,12 @@ class AnimalFacade
   end
 
   def animal
-    service = AnimalService.new
-    Animal.new(service.get_animal(@params[:id])[:data].first)
+    Animal.new(@animal_service.get_animal(@params[:id])[:data].first)
   end
 
   def create_animal(animal_data)
-    service = AnimalService.new
-    animal = Animal.new(service.create_animal(animal_data)[:data].first)
+    Animal.new(@animal_service.create_animal(animal_data)[:data].first)
   end
-
 end
+
+
