@@ -32,6 +32,6 @@ RSpec.describe "Registering a new user" do
     click_on "Register"
 
     expect(current_path).to eq(new_user_path)
-    expect(page).to have_content("Password and password confirmation do not match.")
+    expect(page).to have_content("User not created. Please ensure password and password confirmation match.")
   end
 end

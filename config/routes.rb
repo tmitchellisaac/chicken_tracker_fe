@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get "/log_in", to: "users#login_form"
   post "/log_in", to: "users#log_in"
 
+  get "/log_out", to: "application#log_out"
   delete "/log_out", to: "application#log_out" # is this the right way to solve for this? Or should the log_out action be called from the button?
 
   post "/users/new", to: "users#create"
