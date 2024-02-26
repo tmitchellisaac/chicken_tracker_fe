@@ -12,7 +12,7 @@ RSpec.describe "Shelter index", type: :feature do
 
     shelters_index = File.read("spec/fixtures/shelters_index.json")
     
-    stub_request(:get, "http://localhost:3000/api/v1/shelters?user_id=1").
+    stub_request(:get, "http://localhost:5000/api/v1/shelters?user_id=1").
       with(
         headers: {
               'Accept'=>'*/*',
