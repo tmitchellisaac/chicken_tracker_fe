@@ -2,8 +2,15 @@ require "rails_helper"
 
 RSpec.describe AnimalFacade do
 
-  it "should call the facade and retrieve search results" do
-    # the fixture file has not been made yet
+  it "exists" do
+    animal_facade = AnimalFacade.new(id: 1)
+
+    expect(animal_facade).to be_a(AnimalFacade)
+    # expect(animal_facade.params).to eq(?) # idk how to test this exactly
+    expect(animal_facade.animal_service).to be_a(AnimalService)
+  end
+
+  it "should " do
     json_response = File.read('spec/fixtures/animals_show.json')
     stub_request(:get, "http://localhost:5000/api/v1/animals/1").
     to_return(status: 200, body: json_response, headers: {})
@@ -25,5 +32,23 @@ RSpec.describe AnimalFacade do
     expect(animal.weight).to eq("1kg - 3kg (2.2lbs - 6.6lbs)")
     expect(animal.lifestyle).to eq("Flock")
     expect(animal.shelter_id).to eq("1")
+  end
+
+  describe "#shelter_id" do
+    it "should return the shelter ID from params" do
+      facade = AnimalFacade.new(id: "1", shelter_id: "42")
+      expect(facade.shelter_id).to eq("42")
+    end
+  end
+
+  xdescribe "#animal" do
+    it "creates a new animal poros by calling the service?" do
+
+    end 
+  end
+
+  xdescribe "#create_animal" do
+    it "?" do
+    end 
   end
 end

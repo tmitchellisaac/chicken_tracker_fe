@@ -1,4 +1,6 @@
 class AnimalFacade
+  attr_reader :params, :animal_service 
+  
   def initialize(params)
     @params = params
     @animal_service = AnimalService.new
