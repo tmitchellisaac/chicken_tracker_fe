@@ -2,28 +2,53 @@ require "rails_helper"
 
 RSpec.describe AnimalFacade do
 
-  it "should call the facade and retrieve search results" do
-    # the fixture file has not been made yet
-    json_response = File.read('spec/fixtures/animal_1.json')
-    stub_request(:get, "http://localhost:3000/api/v1/animals/1").
+  it "exists" do
+    animal_facade = AnimalFacade.new(id: 1)
+
+    expect(animal_facade).to be_a(AnimalFacade)
+    # expect(animal_facade.params).to eq(?) # idk how to test this exactly
+    expect(animal_facade.animal_service).to be_a(AnimalService)
+  end
+
+  it "should " do
+    json_response = File.read('spec/fixtures/animals_show.json')
+    stub_request(:get, "http://localhost:5000/api/v1/animals/1").
     to_return(status: 200, body: json_response, headers: {})
     
     facade = AnimalFacade.new(id: 1)
     animal = facade.animal
-    
     expect(animal).to be_a(Animal)
-    expect(animal.id).to eq(animal[:data][:id])
-    expect(animal.name).to eq(animal[:attributes][:name])
-    expect(animal.species).to eq(animal[:attributes][:species])
-    expect(animal.birthday).to eq(animal[:attributes][:birthday])
-    expect(animal.color).to eq(animal[:attributes][:color])
-    expect(animal.main_prey).to eq(animal[:attributes][:main_prey])
-    expect(animal.habitat).to eq(animal[:attributes][:habitat])
-    expect(animal.diet).to eq(animal[:attributes][:diet])
-    expect(animal.top_speed).to eq(animal[:attributes][:top_speed])
-    expect(animal.average_clutch_size).to eq(animal[:attributes][:average_clutch_size])
-    expect(animal.lifespan).to eq(animal[:attributes][:lifespan])
-    expect(animal.avg_weight).to eq(animal[:attributes][:avg_weight])
-    expect(animal.lifestyle).to eq(animal[:attributes][:lifestyle])
+    expect(animal.id).to eq("1")
+    expect(animal.name).to eq("Tom")
+    expect(animal.species).to eq("chicken")
+    expect(animal.birthday).to eq("2023-03-03")
+    expect(animal.color).to eq("orange")
+    expect(animal.main_prey).to eq("Seeds, Fruit, Insects, Berries")
+    expect(animal.habitat).to eq("Open woodland and sheltered grassland")
+    expect(animal.diet).to eq("Omnivore")
+    expect(animal.top_speed).to eq("6 mph")
+    expect(animal.avg_litter).to eq("2")
+    expect(animal.lifespan).to eq("2 - 4 years")
+    expect(animal.weight).to eq("1kg - 3kg (2.2lbs - 6.6lbs)")
+    expect(animal.lifestyle).to eq("Flock")
+    expect(animal.shelter_id).to eq("1")
+  end
+
+  describe "#shelter_id" do
+    it "should return the shelter ID from params" do
+      facade = AnimalFacade.new(id: "1", shelter_id: "42")
+      expect(facade.shelter_id).to eq("42")
+    end
+  end
+
+  xdescribe "#animal" do
+    it "creates a new animal poros by calling the service?" do
+
+    end 
+  end
+
+  xdescribe "#create_animal" do
+    it "?" do
+    end 
   end
 end

@@ -35,6 +35,7 @@ class UsersController < ApplicationController
       # Authentication successful
       session[:user_id] = user.id
       redirect_to "/users/#{user.id}"
+      
     else
       # Authentication failed
       flash[:alert] = "Unable to log in. Please try again."

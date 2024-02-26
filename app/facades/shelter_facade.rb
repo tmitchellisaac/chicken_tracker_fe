@@ -6,6 +6,6 @@ class ShelterFacade
   def shelter
     service = ShelterService.new
     # this needs to be made dynamic
-    shelter = Shelter.new(service.get_shelter(1)[:data])
+    shelter = Shelter.new(service.get_shelter(@shelter_id)[:data])
   end
 end
