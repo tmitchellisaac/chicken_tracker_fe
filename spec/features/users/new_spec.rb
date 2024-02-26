@@ -16,10 +16,7 @@ RSpec.describe "Registering a new user" do
     fill_in :email, with: "test@test.com"
     fill_in :password, with: "test"
     fill_in :password_confirmation, with: "test"
-    click_on "Register" # clicking Register seems to make a request, but its not stubbed, so its erroring here. I can't tell which request its trying to call so not sure what to stub exactly.
-
-    # binding.pry
-    # why isn't the user being created? (run User.last in pry)
+    click_on "Register"
 
     expect(current_path).to eq("/users/#{User.last.id}")
   end

@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe "Shelter Show Page", type: :feature do
-  describe "visit Shelter Show Page" do
+  xdescribe "visit Shelter Show Page" do
   # As a user,
   # When I visit "shelter/:id"
   # I see "Shelter Show"

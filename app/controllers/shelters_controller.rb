@@ -4,14 +4,24 @@ class SheltersController < ApplicationController
   end
 
   def new
-    @shelter = Shelter.new(params)
-    # send a post request to BE to create the shelter in the DB
-    if response.status == 200
-      redirect_to user_path(User.find(@shelter.user_id)) 
-      # I think this will work if they click the Bew Shelter button from the user_path, but it might not work if they just navigate to "/shelters/new"
-      flash[:success] = "Shelter created"
+    @facade = ShelterFacade.new(params)
+  end
+  
+  def create
+    new_shelter_data = ({
+      "name": params[:name],
+      "user_id": params[:user_id]
+    })
+
+    facade = ShelterFacade.new(params)
+    new_shelter = facade.create_shelter(new_shelter_data)
+
+    if new_shelter != nil 
+      flash[:success] = "Shelter successfully created"
+      redirect_to "/shelters/#{new_shelter.id}"
     else
-      flash[:error] = "Shelter not created."
+      flash[:error] = "Shelter not created, try again."
+      render :new
     end
   end
 end
