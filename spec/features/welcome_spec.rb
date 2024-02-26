@@ -11,7 +11,7 @@ RSpec.describe "Welcome Page" do
     expect(current_path).to eq(log_in_path)
   end
 
-  it "has links toregister" do
+  it "has links to register" do
     visit "/"
 
     expect(page).to have_button("Register")
