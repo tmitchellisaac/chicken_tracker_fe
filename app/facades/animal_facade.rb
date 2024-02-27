@@ -33,11 +33,6 @@ class AnimalFacade
 
   def update_animal(data)
     animal = Animal.new(@animal_service.update_animal_service(data, id)[:data])
-    # if animal.attributes_match?(data)
-    #   true
-    # else
-    #   false
-    # end
   end
 end
 
