@@ -11,8 +11,8 @@ class AnimalService
     JSON.parse(response.body, symbolize_names: true)
   end
 
-  def get_animal(animal_id)
-    get_url("api/v1/animals/#{animal_id}")
+  def get_animal(animal_id, shelter_id)
+    get_url("api/v1/shelters/#{shelter_id}/animals/#{animal_id}")
   end
 
   def post_url(url)
@@ -20,11 +20,28 @@ class AnimalService
     JSON.parse(response.body, symbolize_names: true)
   end
 
+  # def create_animal(new_animal_data)
+  #   response = conn.post("/api/v1/shelters/#{new_animal_data[:shelter_id]}/animals") do |req|
+  #     req.headers['CONTENT_TYPE" => "application/json']
+  #     req.body = JSON.generate(animal: new_animal_data)
+  #   end
+  #   require 'pry'; binding.pry
+  #  JSON.parse(response.body, symbolize_names: true)
+  # end
+
+  def conn_2
+    Faraday.new(url: "http://localhost:5000") do |faraday|
+      faraday.adapter Faraday.default_adapter # Ensure you have this line to set the adapter
+    end
+  end
+  
   def create_animal(new_animal_data)
-    response = conn.post("/api/v1/shelters/#{new_animal_data[:shelter_id]}/animals") do |req|
-      req.headers['CONTENT_TYPE" => "application/json']
+    response = conn_2.post("/api/v1/shelters/#{new_animal_data[:shelter_id]}/animals") do |req|
+      req.headers['Content-Type'] = 'application/json' # Corrected the typo here
       req.body = JSON.generate(animal: new_animal_data)
     end
-   JSON.parse(response.body, symbolize_names: true)
+    # Assuming the use of `pry` for debugging purposes, which is fine
+    # require 'pry'; binding.pry
+    JSON.parse(response.body, symbolize_names: true)
   end
 end
