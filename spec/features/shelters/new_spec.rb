@@ -18,8 +18,8 @@ RSpec.describe "New Shelter Page" do
       fill_in :name, with: "red barn"
       fill_in :user_id, with: @user.id
 
-      click_on "Save" # error happens here
       # binding.pry
+      click_on "Save" # error happens here
 
       expect(page).to have_content("Shelter successfully created")
       expect(current_path).to eq("/shelters/1")

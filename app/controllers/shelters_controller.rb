@@ -8,10 +8,13 @@ class SheltersController < ApplicationController
   end
   
   def create
-    new_shelter_data = ({
-      "name": params[:name],
-      "user_id": params[:user_id]
-    })
+    new_shelter_data = {
+      "shelter": {
+        "name": params[:name],
+        "user_id": params[:user_id]
+      }
+    }
+    # binding.pry
 
     facade = ShelterFacade.new(params)
     new_shelter = facade.create_shelter(new_shelter_data)
