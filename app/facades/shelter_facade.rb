@@ -1,7 +1,8 @@
 class ShelterFacade
-  attr_reader :user_id, :shelter_service
+  attr_reader :name, :user_id, :shelter_service
   
   def initialize(params)
+    @name = params[:name]
     @user_id = params[:user_id]
     @shelter_service = ShelterService.new
   end
