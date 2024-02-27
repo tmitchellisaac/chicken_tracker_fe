@@ -4,7 +4,7 @@ RSpec.describe "Animal Service", type: :service do
   describe "Animal service" do
     it "calls a animal" do
       json_response = File.read("spec/fixtures/animals_show.json")
-      stub_request(:get, "http://localhost:5000/api/v1/animals/1").
+      stub_request(:get, "http://localhost:5000/api/v1/shelters/1/animals/1").
         with(
           headers: {
                 'Accept'=>'*/*',
@@ -14,7 +14,7 @@ RSpec.describe "Animal Service", type: :service do
         to_return(status: 200, body: json_response, headers: {})
 
       service = AnimalService.new
-      poro_data = service.get_animal(1)[:data].first
+      poro_data = service.get_animal(1,1)[:data].first
 
       expect(poro_data[:id]).to eq("1") 
       expect(poro_data[:type]).to eq("animal") 
