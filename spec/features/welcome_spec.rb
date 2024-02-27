@@ -54,8 +54,14 @@ RSpec.describe "Welcome Page" do
   end
 
   it "has a link to the user dashboard (user show page)" do
-    user = User.create!(email: "test@test.com", password:"password123", id: 1)
-# this isn't working
+    user = User.create(email: "test@test.com", password: "password123", password_confirmation: "password123")
+    
+    visit "/log_in"
+    
+    fill_in :email, with: user.email
+    fill_in :password, with: user.password
+    click_on "Log In"
+
     visit "/"
 
     expect(page).to have_link("User Dashboard")
