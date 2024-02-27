@@ -7,12 +7,16 @@ RSpec.describe "Edit a Shelter" do
     @user_2 = User.create(email: "test@test.com", password: "test", password_confirmation: "test")
   end
 
-  xit "has a form to edit shelter attributes", :vcr do
+  it "has a form to edit shelter attributes" do
+    json_response = File.read('spec/fixtures/shelter_1.json')
+    stub_request(:get, "http://localhost:5000/api/v1/shelters/1").
+    to_return(status: 200, body: json_response, headers: {})
+    
     visit "/shelters/1/edit"
 
     expect(page).to have_content("Edit Shelter")
     expect(page).to have_content("Name:")
-    expect(page).to have_content("User_ID:")
+    expect(page).to have_content("User ID:")
     expect(page).to have_button("Save")
   end
 

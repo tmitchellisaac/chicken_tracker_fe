@@ -1,6 +1,6 @@
 <div style="text-align: center;">
   <h2>Edit Shelter</h2>
-  <%= form_with model: @shelter, url: "/shelters/#{@shelter.id}/edit", method: :patch, data: { turbo: false } do |form| %>
+  <%= form_with url: "/shelters/#{@shelter.id}/edit", method: :patch, data: { turbo: false } do |form| %>
     <%= form.label :name, "Name: " %>
     <%= form.text_field :name, value: @shelter.name %><br>
 
