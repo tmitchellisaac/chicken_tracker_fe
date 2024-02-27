@@ -16,3 +16,5 @@
 <p>Lifestyle: <%= @facade.animal.lifestyle %></p>
 
 <%= button_to "Edit this animal", "/shelters/#{@facade.shelter_id}/animals/#{@facade.id}/edit", method: :get %>
+
+<%= button_to "Delete this Animal", "/shelters/#{@facade.shelter_id}/animals/#{@facade.id}", method: :delete %>
