@@ -8,11 +8,11 @@ class AnimalFacade
   end
 
   def animal
-    Animal.new(@animal_service.get_animal(@params[:id])[:data].first)
+    Animal.new(@animal_service.get_animal(@params[:id], @params[:shelter_id])[:data])
   end
 
   def create_animal(animal_data)
-    Animal.new(@animal_service.create_animal(animal_data)[:data].first)
+    Animal.new(@animal_service.create_animal(animal_data)[:data])
   end
 end
 

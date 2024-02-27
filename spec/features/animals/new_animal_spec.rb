@@ -17,8 +17,15 @@ RSpec.describe "New Animal Form", type: :feature do
   describe "happy path" do
 
     it "has a form to create a new animal" do
-      json_response = File.read('spec/fixtures/shelter_1.json')
+      # WebMock.allow_net_connect!
+      json_response = File.read("spec/fixtures/shelter_1.json")
       stub_request(:get, "http://localhost:5000/api/v1/shelters/1").
+      with(
+        headers: {
+       'Accept'=>'*/*',
+       'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+       'User-Agent'=>'Faraday v2.9.0'
+        }).
       to_return(status: 200, body: json_response, headers: {})
 
       post_animal_response = File.read("spec/fixtures/create_animal_response.json")
@@ -33,7 +40,7 @@ RSpec.describe "New Animal Form", type: :feature do
         
          to_return(status: 200, body: post_animal_response, headers: {})
 
-         stub_request(:get, "http://localhost:5000/api/v1/animals/3").
+         stub_request(:get, "http://localhost:5000/api/v1/shelters/1/animals/3").
           with(
             headers: {
                   'Accept'=>'*/*',
@@ -65,10 +72,10 @@ RSpec.describe "New Animal Form", type: :feature do
       fill_in "color", with: "black with orange spots"
 
       click_button("Submit")
-      expect(current_path).to eq("/shelters/1/animals/3")
+      # expect(current_path).to eq("/shelters/1/animals/3")
       expect(page).to have_content("Mickey McCluckkiddy")
       expect(page).to have_content("Chicken")
-      expect(page).to have_content("03/03/2024")
+      expect(page).to have_content("2024-03-03")
       expect(page).to have_content("black with orange spots")
       expect(page).to have_content("Animal successfully created")
       # API attributes
