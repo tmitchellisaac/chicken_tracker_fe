@@ -52,4 +52,16 @@ RSpec.describe "Welcome Page" do
     expect(current_path).to eq("/log_out")
     expect(page).to have_content("Logged out successfully")
   end
+
+  it "has a link to the user dashboard (user show page)" do
+    user = User.create!(email: "test@test.com", password:"password123", id: 87)
+# this isn't working
+    visit "/"
+
+    expect(page).to have_link("User Dashboard")
+
+    click_on("User Dashboard")
+
+    expect(current_path).to eq("/users/#{user.id}")
+  end
 end

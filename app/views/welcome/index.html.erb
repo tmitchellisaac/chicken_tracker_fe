@@ -2,6 +2,9 @@
   <h2>Welcome!</h2>
 
   <% if current_user %>
+  <%# don't know why this isn't working, fails on user %>
+    <%# <%= link_to "User Dashboard", "/users/#{user.id}", method: :get %> %>
+    <br>
     <%= link_to "Log Out", log_out_path, method: :get %>
   <% else %>
     <%= button_to "Log In", log_in_path, method: :get %> <br>
