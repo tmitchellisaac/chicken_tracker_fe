@@ -54,7 +54,7 @@ RSpec.describe "Welcome Page" do
   end
 
   it "has a link to the user dashboard (user show page)" do
-    user = User.create!(email: "test@test.com", password:"password123", id: 87)
+    user = User.create!(email: "test@test.com", password:"password123", id: 1)
 # this isn't working
     visit "/"
 

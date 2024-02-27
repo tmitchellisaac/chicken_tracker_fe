@@ -261,86 +261,6 @@
           null
         ]
       },
-      "/Users/s2an/turing/3mod/good/chicken_tracker_fe/app/controllers/welcome_controller.rb": {
-        "lines": [
-          1,
-          1,
-          null,
-          null
-        ]
-      },
-      "/Users/s2an/turing/3mod/good/chicken_tracker_fe/app/controllers/application_controller.rb": {
-        "lines": [
-          1,
-          1,
-          null,
-          1,
-          4,
-          null,
-          null,
-          1,
-          0,
-          0,
-          null,
-          null,
-          null
-        ]
-      },
-      "/Users/s2an/turing/3mod/good/chicken_tracker_fe/app/controllers/users_controller.rb": {
-        "lines": [
-          1,
-          1,
-          1,
-          null,
-          null,
-          1,
-          1,
-          null,
-          null,
-          null,
-          1,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          null,
-          null,
-          null,
-          null,
-          1,
-          2,
-          null,
-          null,
-          1,
-          1,
-          1,
-          null,
-          1,
-          1,
-          null,
-          null,
-          null,
-          0,
-          0,
-          null,
-          null,
-          null,
-          1,
-          1,
-          null,
-          0,
-          null,
-          null
-        ]
-      },
       "/Users/s2an/turing/3mod/good/chicken_tracker_fe/app/models/user.rb": {
         "lines": [
           1,
@@ -357,8 +277,80 @@
           1,
           null
         ]
+      },
+      "/Users/s2an/turing/3mod/good/chicken_tracker_fe/app/controllers/users_controller.rb": {
+        "lines": [
+          1,
+          1,
+          2,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          null,
+          1,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          null,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          1,
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          null,
+          null,
+          0,
+          0,
+          null,
+          null,
+          null,
+          1,
+          1,
+          null,
+          0,
+          null,
+          null
+        ]
+      },
+      "/Users/s2an/turing/3mod/good/chicken_tracker_fe/app/controllers/application_controller.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          0,
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null
+        ]
       }
     },
-    "timestamp": 1709068333
+    "timestamp": 1709069748
   }
 }
