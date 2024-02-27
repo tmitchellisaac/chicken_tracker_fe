@@ -1,11 +1,11 @@
-{"data": [
+{"data": 
   {"id":"3",
    "type":"animal",
    "attributes":
     {"shelter_id":"3",
      "name":"Mickey McCluckkiddy",
      "species":"Chicken",
-     "birthday":"03/03/2024",
+     "birthday":"2024-03-03",
      "color":"black with orange spots",
      "main_prey":"Seeds, Fruit, Insects, Berries",
      "habitat":"Open woodland and sheltered grassland",
@@ -17,4 +17,4 @@
      "weight":"1kg - 3kg (2.2lbs - 6.6lbs)",
      "lifestyle":"Flock",
      "fav_food":"Seeds"},
-   "relationships":{"shelter":{"data":{"id":"1", "type":"shelter"}}}}]}
+   "relationships":{"shelter":{"data":{"id":"1", "type":"shelter"}}}}}

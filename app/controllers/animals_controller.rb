@@ -25,6 +25,7 @@ class AnimalsController < ApplicationController
   end
 
   def show
+    
     @facade = AnimalFacade.new(params)
   end
 
