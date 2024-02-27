@@ -1,9 +1,7 @@
 <h1> Animal Edit Page </h1>
 
-
 form to edit an animal
-
-<div class="new_animal_form">
+<div class="edit_animal_form">
   <%# the form_with url may not be correct %>
   <%= form_with url: "/shelters/#{@facade.shelter_id}/animals/#{@facade.id}", method: :patch, data: {turbo: false} do |form| %>
     <%= form.label :name %>
