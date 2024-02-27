@@ -35,4 +35,13 @@ class Animal
     @fav_food = attr[:attributes][:fav_food]
     @shelter_id = attr[:relationships][:shelter][:data][:id]
   end
+
+
+  def attributes_match?(params_hash)
+    self.shelter_id.to_i == params_hash[:shelter_id] &&
+    self.name == params_hash[:name] &&
+    self.species == params_hash[:species].downcase &&
+    self.color == params_hash[:color] &&
+    self.birthday == params_hash[:birthday]
+  end
 end
