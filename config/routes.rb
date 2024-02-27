@@ -20,6 +20,6 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :new, :create]
 
   resources :shelters, only: [:show] do
-    resources :animals, only: [:create, :new, :show, :edit, :update]
+    resources :animals, only: [:create, :new, :show, :edit, :update, :destroy]
   end
 end
