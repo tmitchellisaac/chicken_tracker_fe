@@ -34,6 +34,12 @@ class AnimalFacade
   def update_animal(data)
     animal = Animal.new(@animal_service.update_animal_service(data, id)[:data])
   end
+  
+  def delete_animal
+    @animal_service.delete_animal(@params[:id], @params[:shelter_id])
+  end
+
+
 end
 
 
