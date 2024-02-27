@@ -2,12 +2,12 @@ require "rails_helper"
 
 RSpec.describe ShelterFacade do
 
-  it "should call the facade and retrieve search results" do
+  it "can make the service call an api and create a poros" do
     json_response = File.read('spec/fixtures/shelter_1.json')
     stub_request(:get, "http://localhost:5000/api/v1/shelters/1").
     to_return(status: 200, body: json_response, headers: {})
-    
-    facade = ShelterFacade.new(id: 1)
+
+    facade = ShelterFacade.new(id: 1, name: "red barn")
     shelter = facade.shelter
     
     expect(shelter).to be_a(Shelter)

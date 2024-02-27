@@ -2,11 +2,17 @@ class ShelterService
 
   def conn
     Faraday.new(url: "http://localhost:5000") do |faraday|
+      faraday.adapter Faraday.default_adapter
     end
   end
 
   def get_url(url)
     response = conn.get(url)
+    JSON.parse(response.body, symbolize_names: true)
+  end
+
+  def post_url(url)
+    response = conn.post(url)
     JSON.parse(response.body, symbolize_names: true)
   end
 
@@ -16,5 +22,13 @@ class ShelterService
 
   def get_shelters(user_id)
     get_url("api/v1/shelters?user_id=#{user_id}")[:data]
+  end
+
+  def create_shelter(new_shelter_data)
+    response = conn.post("/api/v1/shelters") do |request|
+      request.headers['CONTENT_TYPE'] = 'application/json'
+      request.body = JSON.generate(shelter: new_shelter_data)
+    end
+    JSON.parse(response.body, symbolize_names: true)
   end
 end
