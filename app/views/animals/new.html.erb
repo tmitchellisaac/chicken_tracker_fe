@@ -8,7 +8,7 @@
     <%= form.text_field :name %> 
     <br>
     <%= form.label :species %>
-    <%= form.collection_select :species, @allowed_species, :name, :name, include_blank: true %> 
+    <%= form.collection_select :species, @facade.allowed_species, :name, :name, include_blank: true %> 
     <br>
     <%= form.label :birthday %>
     <%= form.date_field :birthday %> 

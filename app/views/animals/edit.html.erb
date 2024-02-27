@@ -1,0 +1,21 @@
+<h1> Animal Edit Page </h1>
+
+form to edit an animal
+<div class="edit_animal_form">
+  <%# the form_with url may not be correct %>
+  <%= form_with url: "/shelters/#{@facade.shelter_id}/animals/#{@facade.id}", method: :patch, data: {turbo: false} do |form| %>
+    <%= form.label :name %>
+    <%= form.text_field :name, value: @facade.animal.name %> 
+    <br>
+    <%= form.label :species %>
+    <%= form.collection_select :species, @facade.allowed_species, :name, :name, select: @facade.animal.species %> 
+    <br>
+    <%= form.label :birthday %>
+    <%= form.date_field :birthday, value: @facade.animal.birthday %> 
+    <br>
+    <%= form.label :color %>
+    <%= form.text_field :color, value: @facade.animal.color %> 
+    <br>
+    <%= form.submit "Confirm Edit" %>
+  <% end %>
+</div>
