@@ -14,3 +14,5 @@
 <p>Avg Lifespan: <%= @facade.animal.lifespan %></p>
 <p>Weight: <%= @facade.animal.weight %></p>
 <p>Lifestyle: <%= @facade.animal.lifestyle %></p>
+
+<%= button_to "Edit this animal", "/shelters/#{@facade.shelter_id}/animals/#{@facade.id}/edit", method: :get %>
