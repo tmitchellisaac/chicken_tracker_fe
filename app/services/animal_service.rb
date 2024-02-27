@@ -51,8 +51,14 @@ class AnimalService
       req.body = JSON.generate(animal: updated_animal_data)
     end
     # Assuming the use of `pry` for debugging purposes, which is fine
-    # require 'pry'; binding.pry
     JSON.parse(response.body, symbolize_names: true)
+  end
+
+  def delete_animal(animal_id, shelter_id)
+    response = conn_2.delete("/api/v1/shelters/#{shelter_id}/animals/#{animal_id}") do |req|
+      req.headers['Content-Type'] = 'application/json'
+    end
+   response.status
   end
 
 end
