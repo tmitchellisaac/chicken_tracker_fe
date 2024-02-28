@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show, :new, :create]
   resources :shelters, only: [:show, :new, :create] do
-    resources :animals, only: [:create, :new, :show]
+    resources :animals, only: [:create, :new, :show, :edit, :update, :destroy]
   end
 
   post "/shelters/new", to: "shelters#create"

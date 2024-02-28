@@ -31,4 +31,12 @@ RSpec.describe "Registering a new user" do
     expect(current_path).to eq(new_user_path)
     expect(page).to have_content("User not created. Please ensure password and password confirmation match.")
   end
+
+  it "has a link to Log In" do
+    expect(page).to have_button("Log In")
+
+    click_button("Log In")
+
+    expect(current_path).to eq(log_in_path)
+  end
 end
