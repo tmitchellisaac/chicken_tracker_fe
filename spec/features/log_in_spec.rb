@@ -41,4 +41,12 @@ RSpec.describe "Logging In" do
     expect(current_path).to eq(log_in_path)
     expect(page).to have_content("Unable to log in. Please try again")
   end
+
+  it "has a button to register" do
+    expect(page).to have_button("Register")
+
+    click_on "Register"
+  
+    expect(current_path).to eq(new_user_path)
+  end
 end

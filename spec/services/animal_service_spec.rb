@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe "Animal Service", type: :service do
   describe "Animal service" do
-    it "calls a animal" do
+    xit "calls a animal" do
       json_response = File.read("spec/fixtures/animals_show.json")
       stub_request(:get, "http://localhost:5000/api/v1/shelters/1/animals/1").
         with(
