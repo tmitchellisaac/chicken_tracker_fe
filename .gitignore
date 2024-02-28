@@ -37,3 +37,4 @@
 # Ignore SimpleCov
 /coverage
 
+/config/application.yml
