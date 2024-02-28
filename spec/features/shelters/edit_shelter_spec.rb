@@ -30,6 +30,10 @@ RSpec.describe "Edit a Shelter" do
       fill_in :name, with: "purple barn"
       fill_in :user_id, with: "2"
 
+      get_shelter = File.read('spec/fixtures/shelter_1.json')
+      stub_request(:get, "http://localhost:5000/api/v1/shelters/1").
+      to_return(status: 200, body: get_shelter, headers: {})
+
       # Stub the PATCH request for updating the shelter
       updated_json_response = File.read('spec/fixtures/shelter_update.json')
       stub_request(:patch, "http://localhost:5000/api/v1/shelters/1").
@@ -48,7 +52,7 @@ RSpec.describe "Edit a Shelter" do
 
       expect(current_path).to eq("/shelters/1")
       expect(page).to have_content("Shelter was successfully updated.")
-      expect(page).to have_content("Shelter Name: purple barn") # error: its not actually updating / it needs to get the shelter again
+      expect(page).to have_content("Shelter Name: purple barn") # error: its not actually updating... or its just webmock and i need to split this up
       expect(page).to have_content("Shelter User ID: 2")
     end
   end
