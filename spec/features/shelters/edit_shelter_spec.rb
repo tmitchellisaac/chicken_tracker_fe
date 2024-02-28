@@ -31,7 +31,7 @@ RSpec.describe "Edit a Shelter" do
       fill_in :user_id, with: "2"
 
       # Stub the PATCH request for updating the shelter
-      updated_json_response = File.read('spec/fixtures/updated_shelter.json')
+      updated_json_response = File.read('spec/fixtures/shelter_update.json')
       stub_request(:patch, "http://localhost:5000/api/v1/shelters/1").
         with(
           body: "{\"shelter\":{\"name\":\"purple barn\",\"user_id\":\"2\"}}",
