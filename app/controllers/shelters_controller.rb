@@ -39,7 +39,6 @@ class SheltersController < ApplicationController
         "user_id": params[:user_id]
       }
     }
-    # binding.pry
 
     facade = ShelterFacade.new(params)
     new_shelter = facade.create_shelter(new_shelter_data)

@@ -24,4 +24,8 @@ class ShelterFacade
 
     #### this is where the error is
   end
+
+  def create_shelter(new_shelter_data)
+    shelter = Shelter.new(@shelter_service.create_shelter(new_shelter_data))
+  end
 end
