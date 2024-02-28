@@ -10,10 +10,10 @@
     <%= form.label :password_confirmation, "Password Confirmation: " %>
     <%= form.text_field :password_confirmation %><br>
     
-    <%= form.submit "Register" %>
+    <%= form.submit "Register", class: "btn btn-success" %>
   <% end %>
   <br> 
-  <%= button_to "Log In", log_in_path, method: :get %> <br>
+  <%= button_to "Log In", log_in_path, method: :get, class: "btn btn-success" %> <br>
 
   <%= image_tag("logo.jpeg", style: "width: 400px; height: auto;")%>
 </div>

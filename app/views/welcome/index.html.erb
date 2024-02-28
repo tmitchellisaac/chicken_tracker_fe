@@ -2,12 +2,12 @@
   <h2>Welcome!</h2>
 
   <% if current_user %>
-    <%= link_to "User Dashboard", "/users/#{current_user.id}", method: :get %>
+    <%= link_to "User Dashboard", "/users/#{current_user.id}", method: :get, class: "btn btn-success" %>
     <br>
-    <%= link_to "Log Out", log_out_path, method: :get %>
+    <%= link_to "Log Out", log_out_path, method: :get, class: "btn btn-success" %>
   <% else %>
-    <%= button_to "Log In", log_in_path, method: :get %> <br>
-    <%= button_to "Register", new_user_path, method: :get %>
+    <%= button_to "Log In", log_in_path, method: :get, class: "btn btn-success"  %> <br>
+    <%= button_to "Register", new_user_path, method: :get, class: "btn btn-success" %>
   <% end %>
   <br> 
   <br> 
@@ -19,5 +19,5 @@
 <div style="text-align: center;">
 Already a user?
 <br>
-  <%= link_to 'Login with Google', "/auth/google_oauth2", class: 'btn btn-primary' %>
+  <%= link_to 'Login with Google', "/auth/google_oauth2", class: "btn btn-success" %>
 </div>

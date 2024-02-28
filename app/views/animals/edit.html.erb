@@ -18,6 +18,6 @@ form to edit an animal
     <%= form.label :color %>
     <%= form.text_field :color, value: @facade.animal.color %> 
     <br>
-    <%= form.submit "Confirm Edit" %>
+    <%= form.submit "Confirm Edit", class: "btn btn-success"  %>
   <% end %>
 </div>

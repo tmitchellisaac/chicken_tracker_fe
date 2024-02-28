@@ -7,12 +7,12 @@
     <%= form.label :password, "Password: " %>
     <%= form.text_field :password %><br>
     
-    <%= form.submit "Log In" %>
+    <%= form.submit "Log In", class: "btn btn-success" %>
   <% end %>
   <br> 
 
 <p>New User?</p>
-<%= button_to "Register", new_user_path, method: :get %>
+<%= button_to "Register", new_user_path, method: :get, class: "btn btn-success"  %>
 <br>
 <%= image_tag("logo.jpeg", style: "width: 400px; height: auto;")%>
 </div>
