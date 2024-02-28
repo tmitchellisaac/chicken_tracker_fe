@@ -20,7 +20,7 @@ class SheltersController < ApplicationController
     @facade.update_shelter(updated_shelter_data)
     if status == 200
       flash[:success] = "Shelter was successfully updated."
-      redirect_to shelter_path(@shelter)
+      redirect_to shelter_path(@shelter.id)
     else
       flash[:error] = "Error. Shelter not updated."
       render :edit

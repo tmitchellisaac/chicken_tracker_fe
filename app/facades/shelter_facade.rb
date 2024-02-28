@@ -8,20 +8,35 @@ class ShelterFacade
     @user_id = params[:user_id]
     @shelter_service = ShelterService.new
   end
+  
+  def animal
+    Animal.new(@animal_service.get_animal(@params[:id], @params[:shelter_id])[:data])
+  end
 
   def shelter
-    shelter = @shelter_service.get_shelter(@id)[:data]
-    Shelter.new(shelter)
+    get_shelter_service = @shelter_service.get_shelter(@id)[:data] # i need to pass in ID here instead of the whole hash
+    
+    shelter_poros = Shelter.new(get_shelter_service)
+
+    # binding.pry
+    # get_shelter_service
+    # => {:id=>"1", :type=>"shelter", :attributes=>{:name=>"red barn", :user_id=>"1"}, :relationships=>{:animals=>{:data=>[]}}}
+
+    # shelter_poros
+    # => #<Shelter:0x000000010b99bc70 @id="1", @name="red barn", @user_id="1">
+
+    # @shelter_service.get_shelter(@id)[:data]
+    # => {:id=>"1", :type=>"shelter", :attributes=>{:name=>"red barn", :user_id=>"1"}, :relationships=>{:animals=>{:data=>[]}}}
+    
+    # @shelter_service.get_shelter(@id)[:data][:id]
+    # => "1"
+
+    # @shelter_service.get_shelter(@id)[:data][:id].to_i
+    # => 1
+    # ^this is what should get passed to @shelter_service.get_shelter()
   end
 
-  def update_shelter(updated_data)
-    # shelter = @shelter_service.update_shelter(updated_data)
-    # Shelter.new(shelter)
-
-    shelter = Shelter.new(@shelter_service.update_shelter(updated_data, id)[:data])
+  def update_shelter(updated_shelter_data)
+    shelter = Shelter.new(@shelter_service.update_shelter(updated_shelter_data, params[:id].to_i)[:data]) # is this the best place to convert .to_i ?
   end
-
-  # def update_animal(data)
-  #   animal = Animal.new(@animal_service.update_animal_service(data, id)[:data])
-  # end
 end
