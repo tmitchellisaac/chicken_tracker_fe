@@ -22,4 +22,7 @@ Rails.application.routes.draw do
   resources :shelters, only: [:show, :edit, :update] do
     resources :animals, only: [:create, :new, :show, :edit, :update, :destroy]
   end
+  get '/auth/google_oauth2/callback', to: 'sessions#create'
+
+  # get "/auth/google_oauth2", as: :twitter_login
 end
