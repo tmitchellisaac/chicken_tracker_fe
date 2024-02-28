@@ -31,4 +31,12 @@ class ShelterService
     end
     JSON.parse(response.body, symbolize_names: true)
   end
+
+  def update_shelter(updated_shelter_data, shelter_id)
+    response = conn.patch("/api/v1/shelters/#{shelter_id}") do |request|
+      request.headers['Content-Type'] = 'application/json'
+      request.body = JSON.generate(shelter: updated_shelter_data)
+    end
+    JSON.parse(response.body, symbolize_names: true)
+  end
 end

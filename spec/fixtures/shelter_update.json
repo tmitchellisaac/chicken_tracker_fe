@@ -1,0 +1,10 @@
+{
+  "data": {
+    "id": "1",
+    "type": "shelter",
+    "attributes": {
+      "name": "red coop",
+      "user_id": "1"
+    }
+  }
+}
