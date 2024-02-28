@@ -1,9 +1,11 @@
 class AnimalFacade
   attr_reader :params, :animal_service 
+  attr_accessor :animal
   
   def initialize(params)
     @params = params
     @animal_service = AnimalService.new
+    @animal = @animal_service.get_animal(params[:id], params[:shelter_id])
   end
 
   def id
