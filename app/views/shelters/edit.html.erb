@@ -1,10 +1,10 @@
 <div style="text-align: center;">
   <h2>Edit Shelter</h2>
-  <%= form_with url: "/shelters/#{@shelter.id}/edit", method: :patch, data: { turbo: false } do |form| %>
-    <%= form.label :name, "Name: " %>
+  <%= form_with url: shelter_path(@shelter.id), method: :patch, data: { turbo: false } do |form| %>
+    <%= form.label :name, "Name:" %>
     <%= form.text_field :name, value: @shelter.name %><br>
 
-    <%= form.label :user_id, "User ID: " %>
+    <%= form.label :user_id, "User ID:" %>
     <%= form.text_field :user_id, value: @shelter.user_id %><br>
     
     <%= form.submit "Save" %>

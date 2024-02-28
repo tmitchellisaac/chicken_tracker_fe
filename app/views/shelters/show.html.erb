@@ -1,6 +1,7 @@
 <h1>Shelter Show</h1>
 <hr>
-<h2><%= @facade.shelter.name %></h2>
+<h2>Shelter Name: <%= @shelter.name %></h2>
+<h2>Shelter User ID: <%= @shelter.user_id %></h2>
 
 <%= link_to "Create New Animal", "/shelters/#{@facade.shelter.id}/animals/new", data: { turbo: false } %>
 
