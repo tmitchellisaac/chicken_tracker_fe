@@ -1,0 +1,52 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost:5000/api/v1/shelters
+    body:
+      encoding: UTF-8
+      string: '{"shelter":{"name":"red barn","user_id":""}}'
+    headers:
+      User-Agent:
+      - Faraday v2.9.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 422
+      message: Unprocessable Content
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Content-Type:
+      - application/json; charset=utf-8
+      Vary:
+      - Accept
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - a69b6392-74a8-4abb-a05a-6db6a124833a
+      X-Runtime:
+      - '0.008765'
+      Server-Timing:
+      - start_processing.action_controller;dur=0.00, process_action.action_controller;dur=3.45
+      Content-Length:
+      - '100'
+    body:
+      encoding: UTF-8
+      string: '{"errors":[{"status":"422","title":"Validation failed: User can''t
+        be blank, User is not a number"}]}'
+  recorded_at: Wed, 28 Feb 2024 18:09:55 GMT
+recorded_with: VCR 6.2.0

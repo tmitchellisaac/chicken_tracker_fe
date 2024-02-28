@@ -14,6 +14,7 @@ class AnimalsController < ApplicationController
   })
     facade = AnimalFacade.new(params)
     new_animal = facade.create_animal(new_animal_data)
+    
     if new_animal != nil 
       flash[:alert] = "Animal successfully created"
       redirect_to "/shelters/#{new_animal.shelter_id}/animals/#{new_animal.id}"

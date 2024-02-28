@@ -1,12 +1,12 @@
 class SheltersController < ApplicationController
   def show
     @facade = ShelterFacade.new(params)
-    @shelter = @facade.shelter
+    @shelter = @facade.get_shelter
   end
 
   def edit
     @facade = ShelterFacade.new(params)
-    @shelter = @facade.shelter
+    @shelter = @facade.get_shelter
   end
 
   def update
@@ -16,7 +16,7 @@ class SheltersController < ApplicationController
     })
     
     @facade = ShelterFacade.new(params)
-    @shelter = @facade.shelter
+    @shelter = @facade.get_shelter
     @facade.update_shelter(updated_shelter_data)
     
     if status == 200
@@ -34,20 +34,25 @@ class SheltersController < ApplicationController
   
   def create
     new_shelter_data = {
-      "shelter": {
-        "name": params[:name],
-        "user_id": params[:user_id]
-      }
+      "name": params[:name],
+      "user_id": params[:user_id]
     }
-
+    # new_shelter_data = {
+    #   "shelter": {
+    #     "name": params[:name],
+    #     "user_id": params[:user_id]
+    #   }
+    # }
+    
     facade = ShelterFacade.new(params)
     new_shelter = facade.create_shelter(new_shelter_data)
+    # binding.pry
 
-    if new_shelter != nil 
+    if new_shelter[:data] != nil && new_shelter[:data][:attributes][:name] == params[:name]
       flash[:success] = "Shelter successfully created"
-      redirect_to "/shelters/#{new_shelter.id}"
+      redirect_to "/shelters/#{new_shelter[:data][:id].to_i}"
     else
-      flash[:error] = "Shelter not created, try again."
+      flash[:error] = "Shelter not created, please try again."
       render :new
     end
   end

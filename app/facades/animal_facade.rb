@@ -1,18 +1,11 @@
 class AnimalFacade
-  attr_reader :params, :shelter_id, :animal_service 
+  attr_reader :params, :id, :shelter_id, :animal_service 
   
   def initialize(params)
     @params = params
+    @id = params[:id]
     @shelter_id = params[:shelter_id]
     @animal_service = AnimalService.new
-  end
-
-  def id
-    @params[:id]
-  end
-
-  def shelter_id
-    @params[:shelter_id]
   end
 
   def allowed_species

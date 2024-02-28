@@ -3,10 +3,12 @@ require "rails_helper"
 RSpec.describe AnimalFacade do
 
   it "exists" do
-    animal_facade = AnimalFacade.new(id: 1)
+    animal_facade = AnimalFacade.new(id: 1, shelter_id: 2)
 
     expect(animal_facade).to be_a(AnimalFacade)
     # expect(animal_facade.params).to eq(?) # idk how to test this exactly
+    expect(animal_facade.id).to eq(1)
+    expect(animal_facade.shelter_id).to eq(2)
     expect(animal_facade.animal_service).to be_a(AnimalService)
   end
 

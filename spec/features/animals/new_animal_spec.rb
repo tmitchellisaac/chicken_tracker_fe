@@ -63,7 +63,7 @@ RSpec.describe "New Animal Form", type: :feature do
         expect(page).to have_field("species")
         expect(page).to have_field("birthday")
         expect(page).to have_field("color")
-        expect(page).to have_button("Submit")
+        expect(page).to have_button("Save")
       end
 
       fill_in "name", with: "Mickey McCluckkiddy"
@@ -71,7 +71,7 @@ RSpec.describe "New Animal Form", type: :feature do
       fill_in "birthday", with: Date.new(2024,3,3)
       fill_in "color", with: "black with orange spots"
 
-      click_button("Submit")
+      click_button("Save")
       # expect(current_path).to eq("/shelters/1/animals/3")
       expect(page).to have_content("Mickey McCluckkiddy")
       expect(page).to have_content("Chicken")

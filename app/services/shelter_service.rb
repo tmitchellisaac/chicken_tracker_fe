@@ -25,6 +25,7 @@ class ShelterService
   end
 
   def create_shelter(new_shelter_data)
+    binding.pry
     response = conn.post("/api/v1/shelters") do |request|
       request.headers['Content-Type'] = 'application/json'
       request.body = JSON.generate(shelter: new_shelter_data)
