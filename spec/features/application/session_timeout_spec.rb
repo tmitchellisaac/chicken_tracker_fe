@@ -7,7 +7,7 @@ RSpec.describe 'Session Timeout', type: :feature do
     visit log_in_path
     fill_in 'Email', with: 'test@test.com'
     fill_in 'Password', with: 'test'
-    click_button 'Log In'
+    click_button 'Submit'
   end
 
   it 'logs out user after inactivity' do

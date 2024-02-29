@@ -9,8 +9,8 @@ RSpec.describe "Log_out Page" do
 
     expect(current_path).to eq(log_out_path)
 
-    expect(page).to have_button("Back to Home")
-    click_button("Back to Home")
+    expect(page).to have_link("Back to Home")
+    click_link("Back to Home")
 
     expect(current_path).to eq("/")
   end
