@@ -8,10 +8,6 @@ class ShelterFacade
     @user_id = params[:user_id]
     @shelter_service = ShelterService.new
   end
-  
-  def animal
-    Animal.new(@animal_service.get_animal(@params[:id], @params[:shelter_id])[:data])
-  end
 
   def shelter
     get_shelter_service = @shelter_service.get_shelter(@id)[:data]
@@ -20,7 +16,7 @@ class ShelterFacade
   end
 
   def update_shelter(updated_shelter_data)
-    shelter = Shelter.new(@shelter_service.update_shelter(updated_shelter_data, params[:id].to_i)[:data]) # is this the best place to convert .to_i ?
+    response = @shelter_service.update_shelter(updated_shelter_data, params[:id].to_i) # is this the best place to convert .to_i ?
 
     #### this is where the error is
   end

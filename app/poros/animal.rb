@@ -18,7 +18,6 @@ class Animal
               :species
 
   def initialize(attr)
-    # require 'pry'; binding.pry
     @id = attr[:id]
     @name = attr[:attributes][:name]
     @species = attr[:attributes][:species]
