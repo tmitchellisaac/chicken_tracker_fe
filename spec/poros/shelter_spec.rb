@@ -1,7 +1,7 @@
-require "spec_helper"
+require "rails_helper"
 # require_relative "../../app/poros/shelter"# <-- I don't know why this is needed
 
-RSpec.describe Shelter do
+RSpec.describe "Shelter" do
   it "exists" do
     attr = {
       id: "1",
