@@ -7,6 +7,6 @@
 
 <!-- <%= link_to "Edit Shelter", "/shelters/#{@facade.shelter.id}/edit", data: { turbo: false } %> -->
 
-<%= link_to "Delete Shelter", "/shelters/#{@facade.shelter.id}", method: :delete, data: { turbo: false } %>
+<%= button_to "Delete Shelter", "/shelters/#{@facade.shelter.id}", method: :delete %>
 
 <%= link_to "Edit Shelter", "/shelters/#{@facade.shelter.id}/edit", class: "btn btn-success", data: { turbo: false } %>
