@@ -1,16 +1,32 @@
 {
   "data": {
-    "id": "1",
-    "type": "shelter",
-    "attributes": {
-      "name": "red barn",
-      "user_id": "1"
-    },
-    "relationships": {
-      "animals": {
-        "data": [
-        ]
+      "id": "1",
+      "type": "shelter",
+      "attributes": {
+          "name": "red barn",
+          "user_id": 1
+      },
+      "relationships": {
+          "animals": {
+              "data": [
+                  {
+                      "id": "1",
+                      "type": "animal"
+                  },
+                  {
+                      "id": "5",
+                      "type": "animal"
+                  },
+                  {
+                      "id": "6",
+                      "type": "animal"
+                  },
+                  {
+                      "id": "7",
+                      "type": "animal"
+                  }
+              ]
+          }
       }
-    }
   }
 }

@@ -6,15 +6,15 @@ RSpec.describe "Edit a Shelter" do
     @user_1 = User.create(email: "test@test.com", password: "test", password_confirmation: "test")
     @user_2 = User.create(email: "test2@test.com", password: "test", password_confirmation: "test")
 
-    json_response = File.read('spec/fixtures/shelter_1.json')
+    shelter_show_json_response = File.read('spec/fixtures/shelter_1.json')
     stub_request(:get, "http://localhost:5000/api/v1/shelters/1").
-      to_return(status: 200, body: json_response, headers: {})
-    
-    visit "/shelters/1/edit"
+      to_return(status: 200, body: shelter_show_json_response, headers: {})
   end
 
   describe "[happy path]" do
     it "has a form to edit shelter attributes" do
+      visit "/shelters/1/edit"
+
       expect(page).to have_content("Edit Shelter")
       expect(page).to have_field("Name:")
       expect(page).to have_field("User ID:")
@@ -22,11 +22,15 @@ RSpec.describe "Edit a Shelter" do
     end
 
     it "pre-populates form with shelter attributes" do
+      visit "/shelters/1/edit"
+
       expect(page).to have_field("Name:", with: "red barn")
       expect(page).to have_field("User ID:", with: "1")
     end
 
     xit "can update a shelter when the form is saved" do
+      visit "/shelters/1/edit"
+      
       fill_in :name, with: "purple barn"
       fill_in :user_id, with: "2"
 
@@ -59,9 +63,9 @@ RSpec.describe "Edit a Shelter" do
 
   xdescribe "[sad path]" do
     it "displays an error message if the shelter was not updated" do
-      json_response = File.read('spec/fixtures/shelter_1.json')
+      shelter_show_json_response = File.read('spec/fixtures/shelter_1.json')
       stub_request(:patch, "http://localhost:5000/api/v1/shelters/1").
-      to_return(status: 200, body: json_response, headers: {})
+      to_return(status: 200, body: shelter_show_json_response, headers: {})
       
       visit "/shelters/1/edit"
   

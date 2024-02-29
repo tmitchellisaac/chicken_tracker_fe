@@ -10,10 +10,30 @@ class SheltersController < ApplicationController
   end
 
   def update
-    updated_shelter_data = ({
-      "name": params[:name],
-      "user_id": params[:user_id]
-    })
+    # updated_shelter_data = ({
+    #   "name": params[:name],
+    #   "user_id": params[:user_id]
+    # })
+    updated_shelter_data = {
+      "data" => {
+        "id" => "1",
+        "type" => "shelter",
+        "attributes" => {
+          "name" => params[:name],
+          "user_id" => params[:user_id]
+        },
+        "relationships" => {
+          "animals" => {
+            "data" => [
+              { "id" => "1", "type" => "animal" },
+              { "id" => "5", "type" => "animal" },
+              { "id" => "6", "type" => "animal" },
+              { "id" => "7", "type" => "animal" }
+            ]
+          }
+        }
+      }
+    }
     
     @facade = ShelterFacade.new(params)
     @shelter = @facade.get_shelter

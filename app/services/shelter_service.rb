@@ -25,12 +25,13 @@ class ShelterService
   end
 
   def create_shelter(new_shelter_data)
-    binding.pry
     response = conn.post("/api/v1/shelters") do |request|
       request.headers['Content-Type'] = 'application/json'
       request.body = JSON.generate(shelter: new_shelter_data)
     end
     JSON.parse(response.body, symbolize_names: true)
+    # binding.pry
+    # new_shelter_data is {:name=>"red barn", :user_id=>"1"} - do we need to pass more into the create_shelter method?
   end
 
   def update_shelter(updated_shelter_data, shelter_id)
