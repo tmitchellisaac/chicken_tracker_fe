@@ -26,7 +26,7 @@ RSpec.describe "Edit a Shelter" do
       expect(page).to have_field("User ID:", with: "1")
     end
 
-    xit "can update a shelter when the form is saved" do
+    it "can update a shelter when the form is saved" do
       fill_in :name, with: "purple barn"
       fill_in :user_id, with: "2"
 

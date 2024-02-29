@@ -63,7 +63,6 @@ group :development, :test do
   gem "simplecov"
   gem "shoulda-matchers"
   gem "orderly"
-  gem "draper" # this gem allows us to add decorators
 end
 
 group :test do
