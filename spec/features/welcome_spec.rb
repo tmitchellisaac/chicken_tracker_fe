@@ -4,9 +4,9 @@ RSpec.describe "Welcome Page" do
   it "has links to login" do
     visit "/"
 
-    expect(page).to have_button("Log In")
-
-    click_button("Log In")
+    # save_and_open_page
+    expect(page).to have_button("Log In with Email")
+    click_button("Log In with Email")
 
     expect(current_path).to eq(log_in_path)
   end
@@ -41,7 +41,7 @@ RSpec.describe "Welcome Page" do
     
     fill_in :email, with: user.email
     fill_in :password, with: user.password
-    click_on "Log In"
+    click_on "Submit"
 
     visit "/"
 
@@ -60,7 +60,7 @@ RSpec.describe "Welcome Page" do
     
     fill_in :email, with: user.email
     fill_in :password, with: user.password
-    click_on "Log In"
+    click_on "Submit"
 
     visit "/"
 
