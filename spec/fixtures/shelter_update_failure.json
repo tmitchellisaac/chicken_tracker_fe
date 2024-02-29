@@ -1,8 +1,0 @@
-{
-  "errors": [
-      {
-          "status": "422",
-          "title": "Validation failed: User can't be blank, User is not a number"
-      }
-  ]
-}
