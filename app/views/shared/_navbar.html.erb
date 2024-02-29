@@ -1,0 +1,31 @@
+<nav class="navbar navbar-expand-lg bg-light">
+  <div class="container-fluid">
+    <%= link_to image_tag("logo.jpeg", style: "width: 50px; height: auto;"), "/", class: "navbar-brand" %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item dropdown">
+          <%= link_to "#", class: "nav-link dropdown-toggle", role: "button", "data-bs-toggle": "dropdown", "aria-expanded": false do %>
+            Menu
+          <% end %>
+          <ul class="dropdown-menu">
+            <li><hr class="dropdown-divider"></li>
+            <li><%= link_to "My Dashboard", user_path(current_user), class: "dropdown-item" %></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><%= link_to "My Animals", "#", class: "dropdown-item" %></li>
+          </ul>
+        </li>
+
+      <%= form_with url: "#", class: "d-flex", role: "search", local: true do %>
+        <%= text_field_tag :search, nil, placeholder: "Search", aria: { label: "Search" }, class: "form-control me-2" %>
+        <%= button_tag type: "submit", class: "btn btn-outline-success" do %>
+          Search
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</nav>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

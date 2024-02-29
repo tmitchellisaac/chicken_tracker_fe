@@ -1,8 +1,10 @@
-<%= link_to "Log Out", log_out_path, method: :get %>
+<%= render partial: "/shared/navbar" %>
+
+<%= link_to "Log Out", log_out_path, method: :get, class: "btn btn-success"  %>
 <br>
-<h1> User Dashboard </h1>
+<h2>User Dashboard</h2>
 <hr>
 <h4>User Email: <%= @user.email %></h4>
 <br>
-<h3> My Shelters </h3>
+<h3>My Shelters</h3>
 <hr>

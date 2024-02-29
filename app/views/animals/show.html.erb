@@ -1,3 +1,5 @@
+<%= render partial: "/shared/navbar" %>
+
 <h3>Animal Show Page</h3>
 <hr>
 <h1><%= @facade.animal.name %></h1>
@@ -15,6 +17,6 @@
 <p>Weight: <%= @facade.animal.weight %></p>
 <p>Lifestyle: <%= @facade.animal.lifestyle %></p>
 
-<%= button_to "Edit this animal", "/shelters/#{@facade.shelter_id}/animals/#{@facade.id}/edit", method: :get %>
+<%= link_to "Edit this animal", "/shelters/#{@facade.shelter_id}/animals/#{@facade.id}/edit", method: :get, class: "btn btn-success"  %>
 
-<%= button_to "Delete this Animal", "/shelters/#{@facade.shelter_id}/animals/#{@facade.id}", method: :delete %>
+<%= button_to "Delete this Animal", "/shelters/#{@facade.shelter_id}/animals/#{@facade.id}", method: :delete, class: "btn btn-success"  %>
