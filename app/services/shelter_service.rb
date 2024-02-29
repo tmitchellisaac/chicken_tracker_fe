@@ -39,4 +39,12 @@ class ShelterService
     end
     JSON.parse(response.body, symbolize_names: true)
   end
+
+  def delete_shelter(shelter_id)
+    response = conn.delete("/api/v1/shelters/#{shelter_id}") do |req|
+      req.headers['Content-Type'] = 'application/json'
+    end
+    #binding.pry
+    #JSON.parse(response.body, symbolize_names: true)
+  end
 end
