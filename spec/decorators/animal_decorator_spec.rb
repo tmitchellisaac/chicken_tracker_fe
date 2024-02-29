@@ -28,38 +28,37 @@ RSpec.describe AnimalDecorator do
     end
   end
 
-  describe "#chicken_image" do
-    # it "displays a chicken if species is chicken" do
+  describe "#animal_image" do
+    describe "[happy path]" do
+      it "returns an image tag for a chicken" do
+        animal = instance_double("Animal", species: "Chicken")
+        decorated_animal = AnimalDecorator.new(animal)
 
-    # end
-    it "returns an image tag for a chicken" do
-      animal = instance_double("Animal", species: "Chicken")
-      decorated_animal = AnimalDecorator.new(animal)
+        expect(decorated_animal.animal_image).to eq(ActionController::Base.helpers.image_tag("chicken.jpeg", alt: "Chicken", size: "50x50"))
+      end
 
-      expect(decorated_animal.chicken_image).to eq(ActionController::Base.helpers.image_tag("chicken.jpeg", alt: "Chicken", size: "50x50"))
+      it "returns an image tag for a bee" do
+        animal = instance_double("Animal", species: "Bee")
+        decorated_animal = AnimalDecorator.new(animal)
+
+        expect(decorated_animal.animal_image).to eq(ActionController::Base.helpers.image_tag("bee.jpeg", alt: "Bee", size: "50x50"))
+      end
     end
 
-    it "returns nil if species is not chicken" do
-      animal = instance_double("Animal", species: "Not Chicken")
-      decorated_animal = AnimalDecorator.new(animal)
+    describe "[sad path]" do
+      it "returns nil if species is not chicken" do
+        animal = instance_double("Animal", species: "Not Chicken")
+        decorated_animal = AnimalDecorator.new(animal)
 
-      expect(decorated_animal.chicken_image).to be_nil
-    end
-  end
+        expect(decorated_animal.animal_image).to be_nil
+      end
 
-  describe "#bee_image" do
-    it "returns an image tag for a bee" do
-      animal = instance_double("Animal", species: "Bee")
-      decorated_animal = AnimalDecorator.new(animal)
+      it "returns nil if species is not bee" do
+        animal = instance_double("Animal", species: "Not Bee")
+        decorated_animal = AnimalDecorator.new(animal)
 
-      expect(decorated_animal.bee_image).to eq(ActionController::Base.helpers.image_tag("bee.jpeg", alt: "Bee", size: "50x50"))
-    end
-
-    it "returns nil if species is not bee" do
-      animal = instance_double("Animal", species: "Not Bee")
-      decorated_animal = AnimalDecorator.new(animal)
-
-      expect(decorated_animal.bee_image).to be_nil
+        expect(decorated_animal.animal_image).to be_nil
+      end
     end
   end
 end
