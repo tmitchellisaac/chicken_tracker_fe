@@ -6,17 +6,13 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <%= link_to "User Dashboard", user_path(current_user), class: "nav-link active", "aria-current": "page" %>
-        </li>
-
         <li class="nav-item dropdown">
           <%= link_to "#", class: "nav-link dropdown-toggle", role: "button", "data-bs-toggle": "dropdown", "aria-expanded": false do %>
             Menu
           <% end %>
           <ul class="dropdown-menu">
             <li><hr class="dropdown-divider"></li>
-            <li><%= link_to "My Shelters", "#", class: "dropdown-item" %></li>
+            <li><%= link_to "My Dashboard", user_path(current_user), class: "dropdown-item" %></li>
             <li><hr class="dropdown-divider"></li>
             <li><%= link_to "My Animals", "#", class: "dropdown-item" %></li>
           </ul>
