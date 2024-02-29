@@ -2,13 +2,13 @@
   <h2>Welcome!</h2>
 
   <% if current_user %>
-    <%= button_to "User Dashboard", "/users/#{current_user.id}", method: :get, class: "btn btn-success btn-sm shadow-lg" %><br>
+    <%= link_to "User Dashboard", "/users/#{current_user.id}", method: :get, class: "btn btn-success btn-sm shadow-lg" %><br>
     <br>
     <%= button_to "Log Out", log_out_path, method: :get, class: "btn btn-success btn-sm shadow-lg" %>
   <% else %>
     <%= button_to "Register", new_user_path, method: :get, class: "btn btn-success btn-sm shadow-lg" %><br>
-    <%= button_to "Log In with Email", log_in_path, method: :get, class: "btn btn-success btn-sm shadow-lg" %><br>
-    <%= button_to "Login with Google (OAuth)", "/auth/google_oauth2", class: "btn btn-success btn-sm shadow-lg" %><br>
+    <%= link_to "Log In with Email", log_in_path, method: :get, class: "btn btn-success btn-sm shadow-lg m-1" %><br>
+    <%= link_to "Login with Google (OAuth)", "/auth/google_oauth2", class: "btn btn-success btn-sm shadow-lg m-1" %><br>
   <% end %>
   <br> 
   <%= image_tag("logo.jpeg", style: "width: 400px; height: auto;") %>

@@ -17,6 +17,6 @@
 <p>Weight: <%= @facade.animal.weight %></p>
 <p>Lifestyle: <%= @facade.animal.lifestyle %></p>
 
-<%= button_to "Edit this animal", "/shelters/#{@facade.shelter_id}/animals/#{@facade.id}/edit", method: :get, class: "btn btn-success"  %>
+<%= link_to "Edit this animal", "/shelters/#{@facade.shelter_id}/animals/#{@facade.id}/edit", method: :get, class: "btn btn-success"  %>
 
 <%= button_to "Delete this Animal", "/shelters/#{@facade.shelter_id}/animals/#{@facade.id}", method: :delete, class: "btn btn-success"  %>

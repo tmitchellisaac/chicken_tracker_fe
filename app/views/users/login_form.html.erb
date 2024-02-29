@@ -1,6 +1,6 @@
 <div style="text-align: center;">
   <h2>Log In with Email</h2>
-  <%= form_with url: lon_in_path, method: :post, data: { turbo: false } do |form| %>
+  <%= form_with url: log_in_path, method: :post, data: { turbo: false } do |form| %>
     <%= form.label :email, "Email: " %>
     <%= form.text_field :email %><br>
 
@@ -12,7 +12,7 @@
   <br> 
 
   <h3>New User?</h3>
-  <%= button_to "Register", new_user_path, method: :get, class: "btn btn-success btn-sm shadow-lg" %><br>
+  <%= link_to "Register", new_user_path, method: :get, class: "btn btn-success btn-sm shadow-lg" %><br>
   <%= image_tag("logo.jpeg", class: "img-fluid")%>
   <hr>
 </div>
