@@ -11,7 +11,7 @@ class UserFacade
 
   def shelters
     service = ShelterService.new
-    service.get_shelters(user.id).map do |shelter_data|
+    service.get_shelters(@params[:id]).map do |shelter_data|
       Shelter.new(shelter_data)
     end
   end
