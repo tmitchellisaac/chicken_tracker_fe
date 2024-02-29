@@ -46,6 +46,7 @@ class SheltersController < ApplicationController
   end
 
   def new
+    require 'pry'; binding.pry
     @facade = ShelterFacade.new(params)
   end
 
