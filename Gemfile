@@ -45,6 +45,7 @@ gem "bootsnap", require: false
 # gem "image_processing", "~> 1.2"
 
 gem "faraday"
+gem "figaro"
 gem "dartsass-sprockets"
 gem 'bootstrap', '~> 5.3.2'
 gem 'jquery-rails'
