@@ -49,8 +49,8 @@ RSpec.describe "Welcome Page" do
     
     click_on("Log Out")
 
-    expect(current_path).to eq("/log_out")
     expect(page).to have_content("Logged out successfully")
+    expect(current_path).to eq("/log_out")
   end
 
   it "has a link to the user dashboard (user show page)" do
