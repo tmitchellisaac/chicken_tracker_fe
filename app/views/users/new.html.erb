@@ -1,19 +1,27 @@
 <div style="text-align: center;">
   <h2>Register</h2>
-  <%= form_with url: new_user_path, method: :post, data: { turbo: false } do |form| %>
-    <%= form.label :email, "Email: " %>
-    <%= form.text_field :email %><br>
+  <div class="col-md-6">
+    <%= form_with url: new_user_path, method: :post, data: { turbo: false } do |form| %>
+     <div class="col-sm-9">
+      <%= form.label :email, "Email: " %>
+      <%= form.text_field :email %><br>
 
-    <%= form.label :password, "Password: " %>
-    <%= form.text_field :password %><br>
+      <%= form.label :password, "Password: " %>
+      <%= form.text_field :password %><br>
 
-    <%= form.label :password_confirmation, "Password Confirmation: " %>
-    <%= form.text_field :password_confirmation %><br>
-    
-    <%= form.submit "Register", class: "btn btn-success" %>
-  <% end %>
-  <br> 
-  <%= button_to "Log In", log_in_path, method: :get, class: "btn btn-success" %> <br>
+      <%= form.label :password_confirmation, "Password Confirmation: " %>
+      <%= form.text_field :password_confirmation %><br>
+      
+      <%= form.submit "Submit", class: "btn btn-success btn-sm shadow-lg" %>
+    <% end %>
+    </div>
+  </div>
+  <br>
 
-  <%= image_tag("logo.jpeg", style: "width: 400px; height: auto;")%>
+  <p>Already Registered?</p>
+  <%= button_to "Log In with Email", log_in_path, method: :get, class: "btn btn-success btn-sm shadow-lg" %><br>
+  <%= button_to "Login with Google (OAuth)", "/auth/google_oauth2", class: "btn btn-success btn-sm shadow-lg" %><br>
+
+  <%= image_tag("logo.jpeg", class: "img-fluid") %>
+  <hr>
 </div>

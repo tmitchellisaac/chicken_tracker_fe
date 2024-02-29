@@ -14,3 +14,10 @@
  *= require_self
  */
  @import "bootstrap";
+// This restricts the maximum size of an image (supposed to, but was no longer responsive)
+// .custom-img-max {
+//   max-height: 800px;
+//   max-width: 400px;
+//   height: auto;
+//   width: auto;
+// }

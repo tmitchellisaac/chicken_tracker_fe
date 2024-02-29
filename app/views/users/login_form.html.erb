@@ -1,19 +1,19 @@
 <div style="text-align: center;">
-  <h2>Log In</h2>
-  <%= form_with url: "/log_in", method: :post, data: { turbo: false } do |form| %>
+  <h2>Log In with Email</h2>
+  <%= form_with url: lon_in_path, method: :post, data: { turbo: false } do |form| %>
     <%= form.label :email, "Email: " %>
     <%= form.text_field :email %><br>
 
-    <%= form.label :password, "Password: " %>
+    <%= form.label :password, "Password: " %><br>
     <%= form.text_field :password %><br>
     
-    <%= form.submit "Log In", class: "btn btn-success" %>
+    <%= form.submit "Submit", class: "btn btn-success btn-sm shadow-lg" %>
   <% end %>
   <br> 
 
-<p>New User?</p>
-<%= button_to "Register", new_user_path, method: :get, class: "btn btn-success"  %>
-<br>
-<%= image_tag("logo.jpeg", style: "width: 400px; height: auto;")%>
+  <h3>New User?</h3>
+  <%= button_to "Register", new_user_path, method: :get, class: "btn btn-success btn-sm shadow-lg" %><br>
+  <%= image_tag("logo.jpeg", class: "img-fluid")%>
+  <hr>
 </div>
 
