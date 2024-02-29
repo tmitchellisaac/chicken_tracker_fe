@@ -4,7 +4,6 @@ RSpec.describe "Welcome Page" do
   it "has links to login" do
     visit "/"
 
-    # save_and_open_page
     expect(page).to have_button("Log In with Email")
     click_button("Log In with Email")
 

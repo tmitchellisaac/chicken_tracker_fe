@@ -10,7 +10,7 @@ RSpec.describe "New User Registration" do
     expect(page).to have_field(:email)
     expect(page).to have_field(:password)
     expect(page).to have_field(:password_confirmation)
-    expect(page).to have_button("Register")
+    expect(page).to have_button("Submit")
   end
 
   describe "[happy path]" do
@@ -19,7 +19,7 @@ RSpec.describe "New User Registration" do
       fill_in :password, with: "test"
       fill_in :password_confirmation, with: "test"
 
-      click_on "Register"
+      click_on "Submit"
 
       user = User.last
 
@@ -35,7 +35,7 @@ RSpec.describe "New User Registration" do
       fill_in :password, with: "test"
       fill_in :password_confirmation, with: "test"
 
-      click_on "Register"
+      click_on "Submit"
 
       expect(current_path).to eq("/users/new")
       expect(page).to have_content("Unable to create user. Please try again.")
@@ -46,7 +46,7 @@ RSpec.describe "New User Registration" do
       fill_in :password, with: "test"
       fill_in :password_confirmation, with: "something else"
 
-      click_on "Register"
+      click_on "Submit"
 
       expect(current_path).to eq("/users/new")
       expect(page).to have_content("User not created. Please ensure password and password confirmation match.")
