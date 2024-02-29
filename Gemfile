@@ -46,6 +46,13 @@ gem "bootsnap", require: false
 
 gem "faraday"
 
+gem "figaro"
+gem "dartsass-sprockets"
+gem 'bootstrap', '~> 5.3.2'
+gem 'jquery-rails'
+gem 'omniauth-google-oauth2'
+
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ]
@@ -56,6 +63,7 @@ group :development, :test do
   gem "simplecov"
   gem "shoulda-matchers"
   gem "orderly"
+  gem "draper" # this gem allows us to add decorators
 end
 
 group :test do

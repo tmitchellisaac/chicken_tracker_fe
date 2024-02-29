@@ -8,7 +8,7 @@ RSpec.describe "Animal Show Page", type: :feature do
     it "displays the page title" do
       # stub not created yet!!!
       # WebMock.allow_net_connect!
-      json_response = File.read('spec/fixtures/animals_show.json')
+      json_response = File.read('spec/fixtures/animal_show.json')
       # stub_request(:get, "http://localhost:3000/api/v1/animals/1").
       # to_return(status: 200, body: json_response, headers: {})
       animal = Animal.new(JSON.parse(json_response, symbolize_names: true)[:data])

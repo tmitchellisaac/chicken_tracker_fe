@@ -1,5 +1,6 @@
 class AnimalFacade
-  attr_reader :params, :id, :shelter_id, :animal_service 
+  attr_reader :params, :id, :shelter_id, :animal_service
+  attr_accessor :animal # not sure if this needs to be an attr_accessor
   
   def initialize(params)
     @params = params

@@ -25,4 +25,7 @@ Rails.application.routes.draw do
 
   post "/shelters/new", to: "shelters#create"
 
+  get '/auth/google_oauth2/callback', to: 'sessions#create'
+
+  # get "/auth/google_oauth2", as: :twitter_login
 end

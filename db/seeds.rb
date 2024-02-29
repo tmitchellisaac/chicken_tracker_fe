@@ -11,3 +11,4 @@
 
 
 @user = User.create!(email: "test@test.com", password: "test", password_confirmation: "test")
+@isaac = User.create!(email: "tmitchellisaac@gmail.com", password: "password", password_confirmation: "password")
