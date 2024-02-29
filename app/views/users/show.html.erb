@@ -16,7 +16,7 @@ h1,h2,h4,p {
 <br>
 <h2>My Shelters</h2>
 <hr>
-<%= link_to "Create A Shelter!", new_shelter_path, class: "btn btn-success shadow-lg m-2" %>
+<%= link_to "Create A Shelter!", new_shelter_path(user_id: @user.id), class: "btn btn-success shadow-lg m-2" %>
 <%# need to add new page %>
 <br>
 <% @facade.shelters.each do |shelter| %>

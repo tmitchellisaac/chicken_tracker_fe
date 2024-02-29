@@ -20,14 +20,14 @@ RSpec.describe "Logging In" do
   it "has a log in form" do
     expect(page).to have_field(:email)
     expect(page).to have_field(:password)
-    expect(page).to have_button("Log In")
+    expect(page).to have_button("Submit")
   end
 
   it "can log in with valid credentials" do
     fill_in :email, with: @user.email
     fill_in :password, with: @user.password
 
-    click_on "Log In"
+    click_on "Submit"
 
     expect(current_path).to eq("/users/#{@user.id}")
   end
@@ -36,7 +36,7 @@ RSpec.describe "Logging In" do
     fill_in :email, with: @user.email
     fill_in :password, with: "incorrect password"
   
-    click_on "Log In"
+    click_on "Submit"
 
     expect(current_path).to eq(log_in_path)
     expect(page).to have_content("Unable to log in. Please try again")

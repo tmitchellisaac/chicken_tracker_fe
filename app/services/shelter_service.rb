@@ -1,7 +1,7 @@
 class ShelterService
 
   def conn
-    Faraday.new(url: "http://localhost:5000") do |faraday|
+    Faraday.new(url: "https://hidden-sands-71693-380133048218.herokuapp.com") do |faraday|
       faraday.adapter Faraday.default_adapter
     end
   end
@@ -42,5 +42,13 @@ class ShelterService
       request.body = JSON.generate(shelter: updated_shelter_data)
     end
     JSON.parse(response.body, symbolize_names: true)
+  end
+
+  def delete_shelter(shelter_id)
+    response = conn.delete("/api/v1/shelters/#{shelter_id}") do |req|
+      req.headers['Content-Type'] = 'application/json'
+    end
+    #binding.pry
+    #JSON.parse(response.body, symbolize_names: true)
   end
 end

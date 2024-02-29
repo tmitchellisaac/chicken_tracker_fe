@@ -57,3 +57,9 @@ h1,h2 {
 
 </div>
 </div>
+
+
+<%= button_to "Delete Shelter", "/shelters/#{@facade.shelter.id}", method: :delete, class: "btn btn-success" %>
+
+<%= link_to "Edit Shelter", "/shelters/#{@facade.shelter.id}/edit", class: "btn btn-success", data: { turbo: false } %>
+

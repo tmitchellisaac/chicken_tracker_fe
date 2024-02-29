@@ -1,0 +1,15 @@
+{
+    "data": {
+        "id": "1",
+        "type": "shelter",
+        "attributes": {
+            "name": "Red Barn",
+            "user_id": 630
+        },
+        "relationships": {
+            "animals": {
+                "data": []
+            }
+        }
+    }
+}

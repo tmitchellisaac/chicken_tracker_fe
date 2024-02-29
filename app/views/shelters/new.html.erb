@@ -1,0 +1,20 @@
+
+<% if @facade.user_id%>
+
+  <h1>New Shelter</h1>
+  <hr>
+  <h2>New Shelter Form</h2>
+  <div class="new_shelter_form">
+    <%# the form_with url may not be correct %>
+    <%= form_with url: "/shelters?#{@facade.user_id}", method: :post, data: {turbo: false} do |form| %>
+      <%= form.label :name %>
+      <%= form.text_field :name %> 
+      <br>
+    
+      <%= form.submit "Save" %>
+    <% end %>
+  </div>
+
+<% else %>
+  <h1> No, no no....Go to User Dashboard ;)</h1>
+<% end %>

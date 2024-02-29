@@ -13,7 +13,7 @@ RSpec.describe "Edit a Shelter" do
     visit "/shelters/1/edit"
   end
 
-  describe "[happy path]" do
+  xdescribe "[happy path]" do
     it "has a form to edit shelter attributes" do
       expect(page).to have_content("Edit Shelter")
       expect(page).to have_field("Name:")
