@@ -55,6 +55,10 @@ GEM
       globalid (>= 0.3.6)
     activemodel (7.1.3.2)
       activesupport (= 7.1.3.2)
+    activemodel-serializers-xml (1.0.2)
+      activemodel (> 5.x)
+      activesupport (> 5.x)
+      builder (~> 3.1)
     activerecord (7.1.3.2)
       activemodel (= 7.1.3.2)
       activesupport (= 7.1.3.2)
@@ -117,6 +121,13 @@ GEM
       reline (>= 0.3.8)
     diff-lcs (1.5.1)
     docile (1.4.0)
+    draper (4.0.2)
+      actionpack (>= 5.0)
+      activemodel (>= 5.0)
+      activemodel-serializers-xml (>= 1.0)
+      activesupport (>= 5.0)
+      request_store (>= 1.0)
+      ruby2_keywords
     drb (2.2.0)
       ruby2_keywords
     erubi (1.12.0)
@@ -125,8 +136,6 @@ GEM
       faraday-net_http (>= 2.0, < 3.2)
     faraday-net_http (3.1.0)
       net-http
-    figaro (1.2.0)
-      thor (>= 0.14.0, < 2)
     globalid (1.2.1)
       activesupport (>= 6.1)
     google-protobuf (3.25.3-aarch64-linux)
@@ -268,6 +277,8 @@ GEM
     regexp_parser (2.9.0)
     reline (0.4.2)
       io-console (~> 0.5)
+    request_store (1.6.0)
+      rack (>= 1.4)
     rexml (3.2.6)
     rspec (3.13.0)
       rspec-core (~> 3.13.0)
@@ -361,8 +372,8 @@ DEPENDENCIES
   capybara
   dartsass-sprockets
   debug
+  draper
   faraday
-  figaro
   importmap-rails
   jbuilder
   jquery-rails
