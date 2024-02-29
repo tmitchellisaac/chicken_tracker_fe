@@ -3,6 +3,7 @@ class AnimalService
 
   def conn
     Faraday.new(url: "https://hidden-sands-71693-380133048218.herokuapp.com") do |faraday|
+      # faraday.adapter Faraday.default_adapter
     end
   end
 
@@ -12,7 +13,7 @@ class AnimalService
   end
 
   def get_animal(animal_id, shelter_id)
-    get_url("api/v1/shelters/#{shelter_id}/animals/#{animal_id}")
+    get_url("api/v1/shelters/#{shelter_id.to_i}/animals/#{animal_id.to_i}")
   end
 
   def post_url(url)
@@ -25,12 +26,11 @@ class AnimalService
   #     req.headers['CONTENT_TYPE" => "application/json']
   #     req.body = JSON.generate(animal: new_animal_data)
   #   end
-  #   require 'pry'; binding.pry
   #  JSON.parse(response.body, symbolize_names: true)
   # end
 
   def conn_2
-    Faraday.new(url: "http://localhost:5000") do |faraday|
+    Faraday.new(url: "https://hidden-sands-71693-380133048218.herokuapp.com") do |faraday|
       faraday.adapter Faraday.default_adapter # Ensure you have this line to set the adapter
     end
   end
@@ -46,7 +46,7 @@ class AnimalService
   end
 
   def update_animal_service(updated_animal_data, animal_id)
-    response = conn_2.patch("/api/v1/shelters/#{updated_animal_data[:shelter_id]}/animals/#{animal_id}") do |req|
+    response = conn_2.patch("/api/v1/shelters/#{updated_animal_data[:shelter_id]}/animals/#{animal_id.to_i}") do |req|
       req.headers['Content-Type'] = 'application/json' # Corrected the typo here
       req.body = JSON.generate(animal: updated_animal_data)
     end
