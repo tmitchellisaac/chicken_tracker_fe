@@ -6,5 +6,12 @@
 <hr>
 <h4>User Email: <%= @user.email %></h4>
 <br>
-<h3> My Shelters </h3>
+<h3>My Shelters</h3>
 <hr>
+  <ul>
+  <% @shelters.each do |shelter| %>
+    <div>
+      <li>Name: <%= shelter.name %></li>
+    </div>
+    <% end %>
+  </ul>

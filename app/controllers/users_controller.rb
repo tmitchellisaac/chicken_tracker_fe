@@ -7,7 +7,6 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-
   def create 
     if user_params[:password] != user_params[:password_confirmation]
       flash[:error] = "User not created. Please ensure password and password confirmation match."
