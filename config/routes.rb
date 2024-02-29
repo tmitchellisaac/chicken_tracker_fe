@@ -24,5 +24,5 @@ Rails.application.routes.draw do
   end
   get '/auth/google_oauth2/callback', to: 'sessions#create'
 
-  # get "/auth/google_oauth2", as: :twitter_login
+  # get "/auth/google_oauth2", to: "users/new"
 end

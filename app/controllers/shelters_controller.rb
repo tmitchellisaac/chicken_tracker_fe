@@ -1,4 +1,9 @@
 class SheltersController < ApplicationController
+  # def index
+  #   @facade = ShelterFacade.new(params)
+  #   @shelters = @facade.user_shelters
+  # end
+
   def show
     @facade = ShelterFacade.new(params)
     @shelter = @facade.shelter

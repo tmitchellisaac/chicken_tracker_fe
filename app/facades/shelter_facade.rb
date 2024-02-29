@@ -13,6 +13,11 @@ class ShelterFacade
     Animal.new(@animal_service.get_animal(@params[:id], @params[:shelter_id])[:data])
   end
 
+  def user_shelters
+    shelters_data = @shelter_service.get_shelters(@user_id)
+    shelters_data.map { |shelter| Shelter.new(shelter) }
+  end
+
   def shelter
     get_shelter_service = @shelter_service.get_shelter(@id)[:data]
     

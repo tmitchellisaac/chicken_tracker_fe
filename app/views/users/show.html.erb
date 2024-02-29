@@ -1,8 +1,19 @@
-<%= link_to "Log Out", log_out_path, method: :get %>
+<%= render partial: "/shared/navbar" %>
+
 <br>
-<h1> User Dashboard </h1>
+<h2>User Dashboard</h2>
 <hr>
 <h4>User Email: <%= @user.email %></h4>
 <br>
-<h3> My Shelters </h3>
+<h3>My Shelters</h3>
 <hr>
+<%= link_to "Create A Shelter!", new_shelter_path, class: "btn btn-success shadow-lg m-2" %>
+<%# need to add new page %>
+<br>
+<% @facade.shelters.each do |shelter| %>
+  <%= link_to shelter.name, shelter_path(shelter.id), class: "btn btn-success shadow-lg m-2" %>
+<% end %>
+<br>
+<br>
+<hr>
+<%= link_to "Log Out", log_out_path, method: :get, class: "btn btn-success shadow-lg m-2"  %>

@@ -45,6 +45,7 @@ gem "bootsnap", require: false
 # gem "image_processing", "~> 1.2"
 
 gem "faraday"
+# gem "devise"
 
 gem "figaro"
 gem "dartsass-sprockets"
@@ -67,6 +68,7 @@ end
 
 group :test do
   gem "webmock"
+  gem "timecop"
 end
 
 group :development do

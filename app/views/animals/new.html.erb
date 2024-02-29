@@ -1,3 +1,5 @@
+<%= render partial: "/shared/navbar" %>
+
 <h1>New Animal</h1>
 <hr>
 <h2>New Animal Form</h2>
@@ -16,6 +18,6 @@
     <%= form.label :color %>
     <%= form.text_field :color %> 
     <br>
-    <%= form.submit "Submit" %>
+    <%= form.submit "Submit", class: "btn btn-success"  %>
   <% end %>
 </div>

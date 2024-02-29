@@ -7,9 +7,9 @@
     <%= form.label :user_id, "User ID:" %>
     <%= form.text_field :user_id, value: @shelter.user_id %><br>
     
-    <%= form.submit "Save" %>
+    <%= form.submit "Save", class: "btn btn-success" %>
   <% end %>
   <br> 
 
-  <%= image_tag("logo.jpeg", style: "width: 400px; height: auto;")%>
+  <%= image_tag("logo.jpeg", class: "img-fluid custom-img-max")%>
 </div>

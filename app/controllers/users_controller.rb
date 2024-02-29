@@ -1,12 +1,12 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
+    @facade = UserFacade.new(params)
   end
   
   def new
     @user = User.new
   end
-
 
   def create 
     if user_params[:password] != user_params[:password_confirmation]
