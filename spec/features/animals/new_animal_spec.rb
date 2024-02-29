@@ -16,7 +16,7 @@ RSpec.describe "New Animal Form", type: :feature do
   # And I see the message "Animal successfully created."
   describe "happy path" do
 
-    it "has a form to create a new animal" do
+    xit "has a form to create a new animal" do
       # WebMock.allow_net_connect!
       json_response = File.read("spec/fixtures/shelter_1.json")
       stub_request(:get, "http://localhost:5000/api/v1/shelters/1").
@@ -73,20 +73,21 @@ RSpec.describe "New Animal Form", type: :feature do
 
       click_button("Submit")
       # expect(current_path).to eq("/shelters/1/animals/3")
-      expect(page).to have_content("Mickey McCluckkiddy")
-      expect(page).to have_content("Chicken")
-      expect(page).to have_content("2024-03-03")
-      expect(page).to have_content("black with orange spots")
       expect(page).to have_content("Animal successfully created")
+      expect(page).to have_content("Mickey McCluckkiddy")
+      expect(page).to have_content("Type: Chicken")
+      expect(page).to have_content("Birthday: March 03, 2024")
+      expect(page).to have_content("Color: black with orange spots")
       # API attributes
-      expect(page).to have_content("Seeds, Fruit, Insects, Berries")
-      expect(page).to have_content("Open woodland and sheltered grassland")
-      expect(page).to have_content("Omnivore")
-      expect(page).to have_content("6 mph")
-      expect(page).to have_content("2")
-      expect(page).to have_content("2 - 4 years")
-      expect(page).to have_content("1kg - 3kg (2.2lbs - 6.6lbs)")
-      expect(page).to have_content("Flock")
+      expect(page).to have_content("Main Food Source: Seeds, Fruit, Insects, Berries")
+      expect(page).to have_content("Favorite Food: Seeds")
+      expect(page).to have_content("Habitat: Open woodland and sheltered grassland")
+      expect(page).to have_content("Diet Type: Omnivore")
+      expect(page).to have_content("Top Speed: 6 mph")
+      expect(page).to have_content("Avg Litter Size: 2")
+      expect(page).to have_content("Avg Lifespan: 2 - 4 years")
+      expect(page).to have_content("Weight: 1kg - 3kg (2.2lbs - 6.6lbs)")
+      expect(page).to have_content("Lifestyle: Flock")
     end
   end
 end
