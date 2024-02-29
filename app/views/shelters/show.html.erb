@@ -1,8 +1,59 @@
-<h1>Shelter Show</h1>
-<hr>
-<h2>Shelter Name: <%= @shelter.name %></h2>
+
+<div class="container" >
+
+<div style="background-image: url(<%= asset_path 'beautiful-shot-chickens-grass-farm-sunny-day.jpg' %>); height: 200vh; background-size: cover;">
+  <!-- Your content here -->
+
+<style>
+  /* Adjusted to target .animals for the div and .animal for each item */
+  
+h1,h2 {
+  color: white;
+  text-align: center;
+  text-shadow: 2px 2px 0px black;
+}
+
+
+  .animals { 
+    color: white;
+    text-align: center;
+    text-decoration: underline;
+  }
+  .title {
+    color: purple;
+    text-align: center;
+    font-size: 100px;
+  }
+
+  .sub_title {
+    color: black;
+    text-align: center;
+
+  }
+
+  .display-1 {
+    color: #228B22;
+    text-align: center;
+    font-weight: bold;
+    text-decoration: underline;
+    text-shadow: 0px 0px 12px #1C6EA4;
+}
+  
+
+</style>
+<h2> <%= @shelter.name %></h2>
 <h2>Shelter User ID: <%= @shelter.user_id %></h2>
 
-<%= link_to "Create New Animal", "/shelters/#{@facade.shelter.id}/animals/new", class: "btn btn-success", data: { turbo: false } %>
+<div class="animals">
+  <p> Animals currently living in <%= @shelter.name %>: </p>
+  <% @facade.animals.each do |animal| %>
+  <p class="animal">  <%= link_to animal.name, shelter_animal_path(@shelter.id, animal.id), class: "btn btn-success btn-sm shadow-lg" %>  </p>
+    
+  <% end %>
+</div>
 
-<%= link_to "Edit Shelter", "/shelters/#{@facade.shelter.id}/edit", class: "btn btn-success", data: { turbo: false } %>
+<p>  <%= link_to "Create New Animal", "/shelters/#{@facade.shelter.id}/animals/new", data: { turbo: false }, class: "btn btn-success btn-sm shadow-lg"  %> </p> 
+<%= link_to "Edit Shelter", "/shelters/#{@facade.shelter.id}/edit", data: { turbo: false }, class: "btn btn-success btn-sm shadow-lg" %>
+
+</div>
+</div>

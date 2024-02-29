@@ -24,6 +24,10 @@ class ShelterService
     get_url("api/v1/shelters?user_id=#{user_id}")[:data]
   end
 
+  def get_animals(shelter_id)
+    get_url("api/v1/shelters/#{shelter_id}/animals")[:data]
+  end
+  
   def create_shelter(new_shelter_data)
     response = conn.post("/api/v1/shelters") do |request|
       request.headers['Content-Type'] = 'application/json'

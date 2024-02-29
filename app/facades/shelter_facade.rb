@@ -29,4 +29,12 @@ class ShelterFacade
 
     #### this is where the error is
   end
+
+  def animals
+    animals = []
+    @shelter_service.get_animals(@id).map do |animal|
+      animals << Animal.new(animal)
+    end
+    animals
+  end
 end
