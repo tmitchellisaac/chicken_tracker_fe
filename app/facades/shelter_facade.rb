@@ -20,16 +20,22 @@ class ShelterFacade
 
   def shelter
     get_shelter_service = @shelter_service.get_shelter(@id)[:data]
-    
     shelter_poros = Shelter.new(get_shelter_service)
   end
 
   def update_shelter(updated_shelter_data)
     shelter = Shelter.new(@shelter_service.update_shelter(updated_shelter_data, params[:id].to_i)[:data]) # is this the best place to convert .to_i ?
-
     #### this is where the error is
   end
 
+  def animals
+    animals = []
+    @shelter_service.get_animals(@id).map do |animal|
+      animals << Animal.new(animal)
+    end
+    animals
+  end
+  
   def delete_shelter
     @shelter_service.delete_shelter(@params[:id])
   end

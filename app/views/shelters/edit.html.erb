@@ -1,10 +1,18 @@
+<style>
+h1,h2,p {
+  color: white;
+  text-align: center;
+  text-shadow: 2px 2px 0px black;
+}
+</style>
+
 <div style="text-align: center;">
   <h2>Edit Shelter</h2>
   <%= form_with url: shelter_path(@shelter.id), method: :patch, data: { turbo: false } do |form| %>
-    <%= form.label :name, "Name:" %>
+    <%= form.label :name, "Name:", style: "color: white;" %>
     <%= form.text_field :name, value: @shelter.name %><br>
 
-    <%= form.label :user_id, "User ID:" %>
+    <%= form.label :user_id, "User ID:", style: "color: white;" %>
     <%= form.text_field :user_id, value: @shelter.user_id %><br>
     
     <%= form.submit "Save", class: "btn btn-success" %>

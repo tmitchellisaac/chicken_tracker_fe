@@ -1,23 +1,38 @@
+<style>
+h1,h2,p {
+  color: white;
+  text-align: center;
+  text-shadow: 2px 2px 0px black;
+}
+</style>
+
+
 <%= render partial: "/shared/navbar" %>
+
 
 <h1> Animal Edit Page </h1>
 
-form to edit an animal
+<div class="d-flex justify-content-center">
 <div class="edit_animal_form">
   <%# the form_with url may not be correct %>
   <%= form_with url: "/shelters/#{@facade.shelter_id}/animals/#{@facade.id}", method: :patch, data: {turbo: false} do |form| %>
-    <%= form.label :name %>
+    <%= form.label :name, style: "color: white;" %>
     <%= form.text_field :name, value: @facade.animal.name %> 
     <br>
-    <%= form.label :species %>
+    <br>
+    <%= form.label :species, style: "color: white shadow-lg;" %>
     <%= form.collection_select :species, @facade.allowed_species, :name, :name, select: @facade.animal.species %> 
     <br>
-    <%= form.label :birthday %>
+    <br>
+    <%= form.label :birthday, style: "color: white;" %>
     <%= form.date_field :birthday, value: @facade.animal.birthday %> 
     <br>
-    <%= form.label :color %>
+    <br>
+    <%= form.label :color, style: "color: white;" %>
     <%= form.text_field :color, value: @facade.animal.color %> 
+    <br>
     <br>
     <%= form.submit "Confirm Edit", class: "btn btn-success"  %>
   <% end %>
+</div>
 </div>

@@ -1,4 +1,6 @@
+
 <!DOCTYPE html>
+
 <html>
   <head>
     <title>ChickenTrackerFe</title>
@@ -11,7 +13,10 @@
   </head>
 
   <body>
+<div style="background-image: url(<%= asset_path 'beautiful-shot-chickens-grass-farm-sunny-day.jpg' %>); height: 200vh; background-size: cover;">
+
     <div class="container">
+
   <% flash.each do |type, msg| %>
     <div>
     <%= msg %>
@@ -21,3 +26,4 @@
   </body>
 </html>
 
+</div>

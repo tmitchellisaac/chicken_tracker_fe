@@ -1,3 +1,12 @@
+<style>
+h1,h2,h4,p {
+  color: white;
+  text-align: center;
+  text-shadow: 2px 2px 0px black;
+}
+</style>
+
+
 <%= render partial: "/shared/navbar" %>
 
 <br>
@@ -5,13 +14,13 @@
 <hr>
 <h4>User Email: <%= @user.email %></h4>
 <br>
-<h3>My Shelters</h3>
+<h2>My Shelters</h2>
 <hr>
 <%= link_to "Create A Shelter!", new_shelter_path(user_id: @user.id), class: "btn btn-success shadow-lg m-2" %>
 <%# need to add new page %>
 <br>
 <% @facade.shelters.each do |shelter| %>
-  <%= link_to shelter.name, shelter_path(shelter.id), class: "btn btn-success shadow-lg m-2" %>
+  <%= link_to shelter.name, shelter_path(shelter.id), class: "btn btn-success shadow-lg m-2", style: "color: white;" %>
 <% end %>
 <br>
 <br>

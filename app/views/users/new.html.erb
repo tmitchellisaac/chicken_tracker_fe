@@ -1,24 +1,32 @@
+<style>
+h1,h2,p {
+  color: white;
+  text-align: center;
+  text-shadow: 2px 2px 0px black;
+}
+</style>
+
 <div class="text-center">
   <h2>Register New User</h2>
 
   <%= form_with url: new_user_path, method: :post, data: { turbo: false }, class: "d-inline-block" do |form| %>
 
     <div class="mb-2">
-      <%= form.label :email, "Email: ", class: "form-label" %>
+      <%= form.label :email, "Email: ", class: "form-label", style: "color: white;" %>
       <%= form.text_field :email, class: "form-control" %>
     </div>
 
     <div class="mb-2">
-      <%= form.label :password, "Password: ", class: "form-label" %>
+      <%= form.label :password, "Password: ", class: "form-label", style: "color: white;" %>
       <%= form.password_field :password, class: "form-control" %>
     </div>
 
     <div class="mb-2">
-      <%= form.label :password_confirmation, "Password Confirmation: ", class: "form-label" %>
+      <%= form.label :password_confirmation, "Password Confirmation: ", class: "form-label", style: "color: white;" %>
       <%= form.password_field :password_confirmation, class: "form-control" %>
     </div>
     
-    <%= form.submit "Submit", class: "btn btn-success btn-sm shadow-lg" %>
+    <%= form.submit "Submit", class: "btn btn-success btn-sm shadow-lg", style: "color: white;" %>
   <% end %>
   <br>
   <br>
