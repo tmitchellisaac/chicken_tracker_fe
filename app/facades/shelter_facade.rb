@@ -19,7 +19,7 @@ class ShelterFacade
   end
 
   def shelter
-    get_shelter_service = @shelter_service.get_shelter(@id)[:data]
+    get_shelter_service = @shelter_service.get_shelter(@id)
     
     shelter_poros = Shelter.new(get_shelter_service)
   end

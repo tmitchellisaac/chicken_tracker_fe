@@ -5,10 +5,6 @@ RSpec.describe "Edit a Shelter" do
   before(:each) do
     @user_1 = User.create(email: "test@test.com", password: "test", password_confirmation: "test")
     @user_2 = User.create(email: "test2@test.com", password: "test", password_confirmation: "test")
-
-    json_response = File.read('spec/fixtures/shelter_1.json')
-    stub_request(:get, "http://localhost:5000/api/v1/shelters/1").
-      to_return(status: 200, body: json_response, headers: {})
     
     visit "/shelters/1/edit"
   end
@@ -30,23 +26,6 @@ RSpec.describe "Edit a Shelter" do
       fill_in :name, with: "purple barn"
       fill_in :user_id, with: "2"
 
-      get_shelter = File.read('spec/fixtures/shelter_1.json')
-      stub_request(:get, "http://localhost:5000/api/v1/shelters/1").
-      to_return(status: 200, body: get_shelter, headers: {})
-
-      # Stub the PATCH request for updating the shelter
-      updated_json_response = File.read('spec/fixtures/shelter_update.json')
-      stub_request(:patch, "http://localhost:5000/api/v1/shelters/1").
-        with(
-          body: "{\"shelter\":{\"name\":\"purple barn\",\"user_id\":\"2\"}}",
-          headers: {
-            'Accept'=>'*/*',
-            'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-            'Content-Type'=>'application/json',
-            'User-Agent'=>'Faraday v2.9.0'
-          }
-        ).
-        to_return(status: 200, body: updated_json_response, headers: {})
       
       click_on "Save"
 
@@ -59,9 +38,6 @@ RSpec.describe "Edit a Shelter" do
 
   xdescribe "[sad path]" do
     it "displays an error message if the shelter was not updated" do
-      json_response = File.read('spec/fixtures/shelter_1.json')
-      stub_request(:patch, "http://localhost:5000/api/v1/shelters/1").
-      to_return(status: 200, body: json_response, headers: {})
       
       visit "/shelters/1/edit"
   

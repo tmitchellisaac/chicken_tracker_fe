@@ -11,9 +11,6 @@ RSpec.describe AnimalFacade do
   end
 
   it "should " do
-    json_response = File.read('spec/fixtures/animals_show.json')
-    stub_request(:get, "http://localhost:5000/api/v1/shelters/1/animals/1").
-    to_return(status: 200, body: json_response, headers: {})
     
     facade = AnimalFacade.new(id: 1, shelter_id: 1)
     animal = facade.animal

@@ -30,7 +30,7 @@ class AnimalService
   # end
 
   def conn_2
-    Faraday.new(url: "http://localhost:5000") do |faraday|
+    Faraday.new(url: "https://hidden-sands-71693-380133048218.herokuapp.com") do |faraday|
       faraday.adapter Faraday.default_adapter # Ensure you have this line to set the adapter
     end
   end

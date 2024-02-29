@@ -22,16 +22,6 @@ RSpec.describe "Welcome Page" do
 
   it "has link to log out if current user is signed in" do
     user = User.create!(email: "test@test.com", password:"password123", id: 87)
-    
-    json_response = File.read("spec/fixtures/shelters_index.json")
-    stub_request(:get, "http://localhost:5000/api/v1/shelters?user_id=87").
-    with(
-      headers: {
-     'Accept'=>'*/*',
-     'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-     'User-Agent'=>'Faraday v2.9.0'
-      }).
-    to_return(status: 200, body: json_response, headers: {})
 
     # log in to set current_user
     user = User.create(email: "test@test.com", password: "password123", password_confirmation: "password123")

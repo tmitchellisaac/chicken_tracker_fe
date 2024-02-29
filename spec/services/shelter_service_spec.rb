@@ -4,18 +4,8 @@ RSpec.describe "Shelter Service", type: :service do
   describe "shelter service" do
     it "calls a shelter (shelter show)" do
 
-      json_response = File.read("spec/fixtures/shelter_1.json")
-      stub_request(:get, "http://localhost:5000/api/v1/shelters/1").
-      with(
-        headers: {
-       'Accept'=>'*/*',
-       'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-       'User-Agent'=>'Faraday v2.9.0'
-        }).
-      to_return(status: 200, body: json_response, headers: {})
-
       raw_data = ShelterService.new.get_shelter(1)
-      poro_ready_data =raw_data[:data]
+      poro_ready_data = raw_data[:data]
 
       expect(raw_data).to have_key(:data)
       expect(poro_ready_data).to have_key(:id)
@@ -27,16 +17,6 @@ RSpec.describe "Shelter Service", type: :service do
 
     it "calls all of user's shelters (shelter index)" do
       @user = User.create!(email: "test@test.com", password: "test", id: 1)
-
-      json_response = File.read("spec/fixtures/shelters_index.json")
-      stub_request(:get, "http://localhost:5000/api/v1/shelters?user_id=1").
-      with(
-        headers: {
-       'Accept'=>'*/*',
-       'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-       'User-Agent'=>'Faraday v2.9.0'
-        }).
-      to_return(status: 200, body: json_response, headers: {})
 
       poro_ready_data = ShelterService.new.get_shelters(1)
 
@@ -57,7 +37,6 @@ RSpec.describe "Shelter Service", type: :service do
       expect(poro_ready_data.second[:attributes][:user_id]).to eq(1)
       expect(poro_ready_data.second[:relationships]).to be_a(Hash)
       expect(poro_ready_data.second[:relationships][:animals]).to be_a(Hash)
-
     end
   end
 end

@@ -6,35 +6,6 @@ RSpec.describe "Delete a Shelter" do
     end
 
     it "Shelter Delete" do
-        shelters_delete1 = File.read("spec/fixtures/shelters_delete1.json")
-        stub_request(:get, "http://localhost:5000/api/v1/shelters/1").
-        with(
-            headers: {
-                'Accept'=>'*/*',
-                'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-                'User-Agent'=>'Faraday v2.9.0'
-        }).
-        to_return(status: 200, body: shelters_delete1, headers: {})
-
-        stub_request(:delete, "http://localhost:5000/api/v1/shelters/1").
-        with(
-            headers: {
-                'Accept'=>'*/*',
-                'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-                'Content-Type'=>'application/json',
-                'User-Agent'=>'Faraday v2.9.0'
-        }).
-        to_return(status: 204, headers: {})
-
-        shelters_delete2 = File.read("spec/fixtures/shelters_delete2.json")
-        stub_request(:get, "http://localhost:5000/api/v1/shelters?user_id=1").
-        with(
-            headers: {
-                'Accept'=>'*/*',
-                'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-                'User-Agent'=>'Faraday v2.9.0'
-        }).
-        to_return(status: 200, body: shelters_delete2, headers: {})
 
         # When I visit a shelter’s show page 'users/shelters/:id'
         visit "/shelters/1"
