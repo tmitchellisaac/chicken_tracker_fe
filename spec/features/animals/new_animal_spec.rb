@@ -16,8 +16,8 @@ RSpec.describe "New Animal Form", type: :feature do
   # And I see the message "Animal successfully created."
   describe "happy path" do
 
-    it "has a form to create a new animal" do
-      WebMock.allow_net_connect!
+    it "has a form to create a new animal", :vcr do
+      # WebMock.allow_net_connect!
       # get_shelter_json_response = File.read("spec/fixtures/shelter_1.json")
       # stub_request(:get, "http://localhost:5000/api/v1/shelters/1").
       # with(
