@@ -24,4 +24,12 @@ class ShelterFacade
 
     #### this is where the error is
   end
+
+  def delete_shelter
+    @shelter_service.delete_shelter(@params[:id])
+  end
+
+  def create_shelter(shelter_data)
+    Shelter.new(@shelter_service.create_shelter(shelter_data)[:data])
+  end
 end

@@ -1,0 +1,15 @@
+<h1>New Shelter</h1>
+<hr>
+<h2>New Shelter Form</h2>
+<div class="new_shelter_form">
+  <%# the form_with url may not be correct %>
+  <%= form_with url: "/shelters", method: :post, data: {turbo: false} do |form| %>
+    <%= form.label :name %>
+    <%= form.text_field :name %> 
+    <br>
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id %> 
+    <br>
+    <%= form.submit "Save" %>
+  <% end %>
+</div>

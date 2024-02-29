@@ -6,3 +6,5 @@
 <%= link_to "Create New Animal", "/shelters/#{@facade.shelter.id}/animals/new", data: { turbo: false } %>
 
 <%= link_to "Edit Shelter", "/shelters/#{@facade.shelter.id}/edit", data: { turbo: false } %>
+
+<%= link_to "Delete Shelter", "/shelters/#{@facade.shelter.id}", method: :delete, data: { turbo: false } %>
