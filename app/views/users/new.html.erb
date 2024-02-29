@@ -1,27 +1,30 @@
-<div style="text-align: center;">
-  <h2>Register</h2>
-  <div class="col-md-6">
-    <%= form_with url: new_user_path, method: :post, data: { turbo: false } do |form| %>
-     <div class="col-sm-9">
-      <%= form.label :email, "Email: " %>
-      <%= form.text_field :email %><br>
+<div class="text-center">
+  <h2>Register New User</h2>
 
-      <%= form.label :password, "Password: " %>
-      <%= form.text_field :password %><br>
+  <%= form_with url: new_user_path, method: :post, data: { turbo: false }, class: "d-inline-block" do |form| %>
 
-      <%= form.label :password_confirmation, "Password Confirmation: " %>
-      <%= form.text_field :password_confirmation %><br>
-      
-      <%= form.submit "Submit", class: "btn btn-success btn-sm shadow-lg" %>
-    <% end %>
+    <div class="mb-2">
+      <%= form.label :email, "Email: ", class: "form-label" %>
+      <%= form.text_field :email, class: "form-control" %>
     </div>
-  </div>
+
+    <div class="mb-2">
+      <%= form.label :password, "Password: ", class: "form-label" %>
+      <%= form.password_field :password, class: "form-control" %>
+    </div>
+
+    <div class="mb-2">
+      <%= form.label :password_confirmation, "Password Confirmation: ", class: "form-label" %>
+      <%= form.password_field :password_confirmation, class: "form-control" %>
+    </div>
+    
+    <%= form.submit "Submit", class: "btn btn-success btn-sm shadow-lg" %>
+  <% end %>
   <br>
-
+  <br>
   <p>Already Registered?</p>
-  <%= button_to "Log In with Email", log_in_path, method: :get, class: "btn btn-success btn-sm shadow-lg" %><br>
-  <%= button_to "Login with Google (OAuth)", "/auth/google_oauth2", class: "btn btn-success btn-sm shadow-lg" %><br>
-
-  <%= image_tag("logo.jpeg", class: "img-fluid") %>
+  <%= button_to "Log In with Email", log_in_path, method: :get, class: "btn btn-success btn-sm shadow-lg m-1" %>
+  <%= link_to "Login with Google (OAuth)", "/auth/google_oauth2", class: "btn btn-success btn-sm shadow-lg m-1" %>
   <hr>
+  <%= image_tag("logo.jpeg", class: "img-fluid custom-img-max") %>
 </div>
