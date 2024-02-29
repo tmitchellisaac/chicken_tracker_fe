@@ -40,7 +40,7 @@ RSpec.describe "New Animal Form", type: :feature do
         
       #    to_return(status: 200, body: create_animal_json_response, headers: {})
 
-      #    get_animal_json_response = File.read("spec/fixtures/animal_show.json")
+      #    get_animal_json_response = File.read("spec/fixtures/animals_show.json")
       #    stub_request(:get, "http://localhost:5000/api/v1/shelters/1/animals/3").
       #     with(
       #       headers: {

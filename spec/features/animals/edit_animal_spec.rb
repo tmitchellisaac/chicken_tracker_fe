@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe "Edit an Animal", type: :feature do
   it "has a link to an edit an animal form" do
-    json_response = File.read("spec/fixtures/animal_show.json")
+    json_response = File.read("spec/fixtures/animals_show.json")
 
     stub_request(:get, "http://localhost:5000/api/v1/shelters/1/animals/1").
     with(
@@ -25,7 +25,7 @@ RSpec.describe "Edit an Animal", type: :feature do
 
   it "can edit an animals info" do
   # WebMock.allow_net_connect!
-    # json_response = File.read("spec/fixtures/animal_show.json")
+    # json_response = File.read("spec/fixtures/animals_show.json")
     updated_response = File.read("spec/fixtures/animal_update.json")
     
 
