@@ -26,6 +26,7 @@ class AnimalsController < ApplicationController
   def show
     @facade = AnimalFacade.new(params)
     @decorated_animal = AnimalDecorator.decorate(@facade.animal)
+    # binding.pry # birthday is not decorated in pry
   end
 
   def edit

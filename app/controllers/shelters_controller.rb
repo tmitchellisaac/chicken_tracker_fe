@@ -17,9 +17,9 @@ class SheltersController < ApplicationController
     
     @facade = ShelterFacade.new(params)
     @shelter = @facade.shelter
-    shelter_poro = @facade.update_shelter(updated_shelter_data)
+    @facade.update_shelter(updated_shelter_data)
     
-    if response.status == 200
+    if status == 200
       flash[:success] = "Shelter was successfully updated."
       redirect_to shelter_path(@shelter.id)
     else
