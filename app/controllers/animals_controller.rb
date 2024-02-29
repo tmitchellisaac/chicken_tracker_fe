@@ -25,7 +25,6 @@ class AnimalsController < ApplicationController
 
   def show
     @facade = AnimalFacade.new(params)
-    @decorated_animal = AnimalDecorator.decorate(@facade.animal)
   end
 
   def edit
