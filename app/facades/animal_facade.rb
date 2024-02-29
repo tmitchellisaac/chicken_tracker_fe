@@ -1,9 +1,12 @@
 class AnimalFacade
-  attr_reader :params, :animal_service 
+  attr_reader :params, :animal_service
+  attr_accessor :animal # trying this in case it resolves bugs, but it might just need to be an attr_reader
   
   def initialize(params)
     @params = params
     @animal_service = AnimalService.new
+    # @animal = @animal_service.get_animal(params[:id], params[:shelter_id][:data])
+    @animal = @animal_service.get_animal(params[:id], params[:shelter_id])
   end
 
   def id
@@ -16,7 +19,6 @@ class AnimalFacade
 
   def allowed_species
   # this heavyweight method allows for a collection dropdown in the view
-
       [
         { id: 1, name: "Chicken" },
         { id: 2, name: "Bee" },

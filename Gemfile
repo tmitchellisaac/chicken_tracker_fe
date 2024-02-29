@@ -46,7 +46,6 @@ gem "bootsnap", require: false
 
 gem "faraday"
 # gem "devise"
-
 gem "figaro"
 gem "dartsass-sprockets"
 gem 'bootstrap', '~> 5.3.2'
@@ -64,6 +63,7 @@ group :development, :test do
   gem "simplecov"
   gem "shoulda-matchers"
   gem "orderly"
+  gem "draper" # this gem allows us to use decorators
 end
 
 group :test do
