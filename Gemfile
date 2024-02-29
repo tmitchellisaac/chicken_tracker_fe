@@ -45,6 +45,8 @@ gem "bootsnap", require: false
 # gem "image_processing", "~> 1.2"
 
 gem "faraday"
+
+gem "figaro"
 gem "dartsass-sprockets"
 gem 'bootstrap', '~> 5.3.2'
 gem 'jquery-rails'
@@ -61,7 +63,6 @@ group :development, :test do
   gem "simplecov"
   gem "shoulda-matchers"
   gem "orderly"
-  gem "draper"
 end
 
 group :test do
