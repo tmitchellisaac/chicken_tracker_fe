@@ -5,9 +5,8 @@
   <!-- Your content here -->
 
 <style>
-  /* Adjusted to target .animals for the div and .animal for each item */
   
-h1,h2 {
+h1,h2,h4 {
   color: white;
   text-align: center;
   text-shadow: 2px 2px 0px black;
@@ -41,25 +40,24 @@ h1,h2 {
   
 
 </style>
-<h2> <%= @shelter.name %></h2>
-<h2>Shelter User ID: <%= @shelter.user_id %></h2>
+<h1> <%= @shelter.name %></h1>
+<h4>Shelter's User ID: <%= @shelter.user_id %></h4>
 
 <div class="animals">
-  <p> Animals currently living in <%= @shelter.name %>: </p>
+  <p> Animals currently living in "<%= @shelter.name %>": </p>
   <% @facade.animals.each do |animal| %>
   <p class="animal">  <%= link_to animal.name, shelter_animal_path(@shelter.id, animal.id), class: "btn btn-success btn-sm shadow-lg" %>  </p>
-    
+    <hr>
   <% end %>
+  </div>
+    <p>  <%= link_to "Create New Animal", "/shelters/#{@facade.shelter.id}/animals/new", data: { turbo: false }, class: "btn btn-success shadow-lg"  %> </p> 
+    <p> <%= link_to "Edit Shelter", "/shelters/#{@facade.shelter.id}/edit", data: { turbo: false }, class: "btn btn-success shadow-lg" %></p>
+
+    <p> <%= button_to "Delete Shelter", "/shelters/#{@facade.shelter.id}", method: :delete, class: "btn btn-success" %></p>
+
+    <p> <%= link_to "User Dashboard", "/users/#{@facade.shelter.user_id}", class: "btn btn-success" %></p>
+  
+  </div>
 </div>
 
-<p>  <%= link_to "Create New Animal", "/shelters/#{@facade.shelter.id}/animals/new", data: { turbo: false }, class: "btn btn-success btn-sm shadow-lg"  %> </p> 
-<%= link_to "Edit Shelter", "/shelters/#{@facade.shelter.id}/edit", data: { turbo: false }, class: "btn btn-success btn-sm shadow-lg" %>
-
-</div>
-</div>
-
-
-<%= button_to "Delete Shelter", "/shelters/#{@facade.shelter.id}", method: :delete, class: "btn btn-success" %>
-
-<%= link_to "Edit Shelter", "/shelters/#{@facade.shelter.id}/edit", class: "btn btn-success", data: { turbo: false } %>
 
