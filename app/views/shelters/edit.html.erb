@@ -6,18 +6,21 @@ h1,h2,p {
 }
 </style>
 
-<div style="text-align: center;">
-  <h2>Edit Shelter</h2>
-  <%= form_with url: shelter_path(@shelter.id), method: :patch, data: { turbo: false } do |form| %>
-    <%= form.label :name, "Name:", style: "color: white;" %>
-    <%= form.text_field :name, value: @shelter.name %><br>
 
-    <%= form.label :user_id, "User ID:", style: "color: white;" %>
-    <%= form.text_field :user_id, value: @shelter.user_id %><br>
-    
-    <%= form.submit "Save", class: "btn btn-success" %>
-  <% end %>
-  <br> 
+<% if @facade.shelter.user_id%>
+  <div style="text-align: center;">
+    <h2>Edit Shelter</h2>
+    <%= form_with url: "/shelters/#{@facade.shelter.id}?user_id=#{@facade.shelter.user_id}", method: :patch, data: { turbo: false } do |form| %>
+      <%= form.label :name, "Name:", style: "color: white;" %>
+      <%= form.text_field :name, value: @shelter.name %><br>
+      
+      <%= form.submit "Save", class: "btn btn-success" %>
+    <% end %>
+    <br> 
 
-  <%= image_tag("logo.jpeg", class: "img-fluid custom-img-max")%>
-</div>
+    <%= image_tag("logo.jpeg", class: "img-fluid custom-img-max")%>
+  </div>
+
+<% else %>
+  <h1> No, no no....Go to User Dashboard ;)</h1>
+<% end %>
