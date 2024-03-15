@@ -1,6 +1,6 @@
 class ShelterFacade
   attr_reader :params, :id, :name, :user_id, :shelter_service
-  
+
   def initialize(params)
     @params = params
     @id = params[:id]
@@ -8,7 +8,7 @@ class ShelterFacade
     @user_id = params[:user_id]
     @shelter_service = ShelterService.new
   end
-  
+
   def animal
     Animal.new(@animal_service.get_animal(@params[:id], @params[:shelter_id])[:data])
   end
@@ -35,7 +35,7 @@ class ShelterFacade
     end
     animals
   end
-  
+
   def delete_shelter
     @shelter_service.delete_shelter(@params[:id])
   end

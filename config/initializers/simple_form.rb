@@ -13,8 +13,11 @@ SimpleForm.setup do |config|
   # wrapper, change the order or even add your own to the
   # stack. The options given below are used to wrap the
   # whole input.
-  config.wrappers :default, class: :input,
-    hint_class: :field_with_hint, error_class: :field_with_errors, valid_class: :field_without_errors do |b|
+
+  # config.wrappers :default, class: :input,
+    # hint_class: :field_with_hint, error_class: :field_with_errors, valid_class: :field_without_errors do |b|
+
+  config.wrappers :default, class: "form__group" do |b|
     ## Extensions enabled by default
     # Any of these extensions can be disabled for a
     # given input by passing: `f.input EXTENSION_NAME => false`.
@@ -28,6 +31,10 @@ SimpleForm.setup do |config|
     # Calculates placeholders automatically from I18n
     # You can also pass a string as f.input placeholder: "Placeholder"
     b.use :placeholder
+
+    ## Hotrails Tutorial Directions
+    b.use :label, class: "visually-hidden"
+    b.use :label, class: "form__input", error_class: "form__input--invalid"
 
     ## Optional extensions
     # They are disabled unless you pass `f.input EXTENSION_NAME => true`
@@ -53,9 +60,9 @@ SimpleForm.setup do |config|
 
     ## Inputs
     # b.use :input, class: 'input', error_class: 'is-invalid', valid_class: 'is-valid'
-    b.use :label_input
-    b.use :hint,  wrap_with: { tag: :span, class: :hint }
-    b.use :error, wrap_with: { tag: :span, class: :error }
+    # b.use :label_input
+    # b.use :hint,  wrap_with: { tag: :span, class: :hint }
+    # b.use :error, wrap_with: { tag: :span, class: :error }
 
     ## full_messages_for
     # If you want to display the full error message for the attribute, you can
@@ -63,6 +70,9 @@ SimpleForm.setup do |config|
     #
     # b.use :full_error, wrap_with: { tag: :span, class: :error }
   end
+
+  # Hotrails Tutorial Directions
+  config.generate_additional_classes_for = []
 
   # The default wrapper to be used by the FormBuilder.
   config.default_wrapper = :default
@@ -107,7 +117,7 @@ SimpleForm.setup do |config|
   # config.item_wrapper_class = nil
 
   # How the label text should be generated altogether with the required text.
-  # config.label_text = lambda { |label, required, explicit_label| "#{required} #{label}" }
+  config.label_text = lambda { |label, required, explicit_label| "#{required} #{label}" }
 
   # You can define the class to use on all labels. Default is nil.
   # config.label_class = nil

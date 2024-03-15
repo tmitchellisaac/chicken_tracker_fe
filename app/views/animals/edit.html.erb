@@ -9,7 +9,7 @@ h1,h2,p {
 
 <%= render partial: "/shared/navbar" %>
 
-
+<!-- 
 <h1> Animal Edit Page </h1>
 
 <div class="d-flex justify-content-center">
@@ -35,4 +35,14 @@ h1,h2,p {
     <%= form.submit "Confirm Edit", class: "btn btn-success"  %>
   <% end %>
 </div>
-</div>
+</div> -->
+
+<main class="container">
+  <%= link_to sanitize("&larr; Back to animal"), shelter_animal_path %>
+
+  <div class="header">
+    <h1>Edit Animal</h1>
+  </div>
+
+  <%= render "form", animal: @facade %>
+</main>

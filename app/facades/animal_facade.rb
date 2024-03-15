@@ -1,6 +1,6 @@
 class AnimalFacade
-  attr_reader :params, :animal_service 
-  
+  attr_reader :params, :animal_service
+
   def initialize(params)
     @params = params
     @animal_service = AnimalService.new
@@ -16,7 +16,6 @@ class AnimalFacade
 
   def allowed_species
   # this heavyweight method allows for a collection dropdown in the view
-
       [
         { id: 1, name: "Chicken" },
         { id: 2, name: "Bee" },
@@ -34,12 +33,10 @@ class AnimalFacade
   def update_animal(data)
     animal = Animal.new(@animal_service.update_animal_service(data, id)[:data])
   end
-  
+
   def delete_animal
     @animal_service.delete_animal(@params[:id], @params[:shelter_id])
   end
 
 
 end
-
-

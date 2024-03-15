@@ -30,14 +30,16 @@ class AnimalService
   # end
 
   def conn_2
-    Faraday.new(url: "https://hidden-sands-71693-380133048218.herokuapp.com") do |faraday|
+    Faraday.new(url: "http://localhost:5000/") do |faraday|
       faraday.adapter Faraday.default_adapter # Ensure you have this line to set the adapter
     end
   end
 
   def create_animal(new_animal_data)
     response = conn_2.post("/api/v1/shelters/#{new_animal_data[:shelter_id]}/animals") do |req|
-      req.headers['Content-Type'] = 'application/json' # Corrected the typo here
+      req.headers = { 'Content-Type' => 'application/json',
+                      'Accept'=>'*/*',
+                      'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3' }# Corrected the typo here
       req.body = JSON.generate(animal: new_animal_data)
     end
     # Assuming the use of `pry` for debugging purposes, which is fine
