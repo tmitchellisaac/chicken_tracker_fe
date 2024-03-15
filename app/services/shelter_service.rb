@@ -1,7 +1,7 @@
 class ShelterService
 
   def conn
-    Faraday.new(url: "http://localhost:5000/") do |faraday|
+    Faraday.new(url: "https://hidden-sands-71693-380133048218.herokuapp.com") do |faraday|
       faraday.adapter Faraday.default_adapter
     end
   end

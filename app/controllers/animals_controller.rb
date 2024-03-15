@@ -3,10 +3,10 @@ class AnimalsController < ApplicationController
   def index;end
   def new
     @facade = AnimalFacade.new(params)
-    @animal = Animal.new(params)
   end
 
   def create
+    require 'pry'; binding.pry
     new_animal_data = ({
       "shelter_id": params[:shelter_id].to_i,
       "name": params[:animal][:name],
@@ -19,7 +19,7 @@ class AnimalsController < ApplicationController
     if new_animal != nil
       flash[:alert] = "Animal successfully created"
 
-      redirect_to "/shelters/#{params[:shelter_id]}/animals/#{new_animal.id}"
+      redirect_to "/shelters/#{new_animal.shelter_id}/animals/#{new_animal.id}"
     else
       flash[:alert] = "Animal not created, try again"
       render :new
@@ -65,7 +65,7 @@ class AnimalsController < ApplicationController
   end
 
   private
- 
+
   def animal_params
     {
       "shelter_id": params[:shelter_id].to_i,

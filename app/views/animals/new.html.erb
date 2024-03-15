@@ -46,8 +46,9 @@ text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #49ff18, 0 0 3
   <div class="header">
     <h1>New Animal</h1>
   </div>
-
-  <%= render "form", animal: @facade,
-                      path: "/shelters/#{params[:shelter_id]}/animals",
-                      method: :post %>
+    <div class="new_animal_form">
+    <%= render "form", animal: @facade,
+                        path: "/shelters/#{params[:shelter_id]}/animals",
+                        method: :post %>
+  </div>
 </main>

@@ -69,8 +69,8 @@ RSpec.describe "New Animal Form", type: :feature do
         to_return(status: 200, body: animals_index, headers: {})
 
 
-      animals_response = File.read("spec/fixtures/animals_index.json")
-      stub_request(:post, "http://localhost:5000/api/v1/shelters/1/animals").
+      post_animal_response = File.read("spec/fixtures/create_animal_response.json")
+      stub_request(:post, "http://localhost:5000/api/v1/shelters/1/animals/").
          with(
            body: "{\"animal\":{\"shelter_id\":1,\"name\":\"Mickey McCluckkiddy\",\"species\":\"Chicken\",\"color\":\"black with orange spots\",\"birthday\":\"2024-03-03\"}}",
            headers: {
