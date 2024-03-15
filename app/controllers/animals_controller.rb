@@ -6,7 +6,6 @@ class AnimalsController < ApplicationController
   end
 
   def create
-    require 'pry'; binding.pry
     new_animal_data = ({
       "shelter_id": params[:shelter_id].to_i,
       "name": params[:animal][:name],
