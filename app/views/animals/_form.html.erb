@@ -3,7 +3,7 @@
     <div class="error-message">
       <%= flash[:alert] %>
     </div>
-    <% end %>
+  <% end %>
 
   <%= f.input :name, input_html: { autofocus: true } %>
   <%= f.input :species, collection: animal.allowed_species, label_method: :name, value_method: :name, selected: animal.allowed_species.first, prompt: "Select species" %>
