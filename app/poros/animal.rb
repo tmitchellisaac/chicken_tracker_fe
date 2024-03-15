@@ -47,12 +47,4 @@ class Animal
     self.color == params_hash[:color] &&
     self.birthday == params_hash[:birthday]
   end
-
-  def allowed_species
-    # this heavyweight method allows for a collection dropdown in the view
-        [
-          { id: 1, name: "Chicken" },
-          { id: 2, name: "Bee" },
-        ].map { |species| OpenStruct.new(species) }
-  end
 end

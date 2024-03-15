@@ -32,7 +32,7 @@ class AnimalsController < ApplicationController
 
   def edit
     @facade = AnimalFacade.new(params)
-    @animal = @facade.get_animal(params[:id], params[:shelter_id])
+    @animal = @facade.animal
   end
 
   def update

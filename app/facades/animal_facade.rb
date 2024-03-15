@@ -34,24 +34,7 @@ class AnimalFacade
     animal = Animal.new(@animal_service.update_animal_service(data, id)[:data])
   end
 
-  def get_animal(animal_id, shelter_id)
-    animal = Animal.new(@animal_service.get_animal_service(animal_id, shelter_id))
-  end
-
   def delete_animal
     @animal_service.delete_animal(@params[:id], @params[:shelter_id])
   end
-
-  def animal_data
-    {
-      "shelter_id": params[:shelter_id].to_i,
-      "name": params[:animal][:name],
-      "species": params[:animal][:species],
-      "color": params[:animal][:color],
-      "birthday": params[:animal][:birthday]
-  }
-
-  facade = AnimalFacade.new(params)
-  end
-
 end

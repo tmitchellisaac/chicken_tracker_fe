@@ -16,7 +16,7 @@ h1,h2,p {
     <h1>Edit Animal</h1>
   </div>
 
-  <%= render "form", animal: @animal,
-                      path: "/shelters/#{params[:shelter_id]}/animals/#{params[:id]}",
+  <%= render "form", animal: @facade.animal,
+                      path: "/shelters/#{@facade.shelter_id}/animals/#{@facade.id}",
                       method: :patch %>
 </main>
