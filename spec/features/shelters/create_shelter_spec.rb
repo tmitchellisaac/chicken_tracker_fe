@@ -30,17 +30,55 @@ RSpec.describe "Create a Shelter" do
            }).
          to_return(status: 200, body: shelter_1, headers: {})
 
+         user_shelters = File.read("spec/fixtures/user_shelters.json")
+         stub_request(:get, "https://hidden-sands-71693-380133048218.herokuapp.com/api/v1/shelters?user_id=689").
+         with(
+           headers: {
+          'Accept'=>'*/*',
+          'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+          'User-Agent'=>'Faraday v2.9.0'
+           }).
+         to_return(status: 200, body: user_shelters, headers: {})
 
+         create_shelter = File.read("spec/fixtures/create_shelter_response.json")
+         stub_request(:post, "https://hidden-sands-71693-380133048218.herokuapp.com/api/v1/shelters").
+         with(
+           body: "{\"shelter\":{\"user_id\":689,\"name\":\"red barn\"}}",
+           headers: {
+          'Accept'=>'*/*',
+          'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+          'Content-Type'=>'application/json',
+          'User-Agent'=>'Faraday v2.9.0'
+           }).
+         to_return(status: 200, body: create_shelter, headers: {})
+
+         stub_request(:get, "https://hidden-sands-71693-380133048218.herokuapp.com/api/v1/shelters/1").
+         with(
+           headers: {
+          'Accept'=>'*/*',
+          'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+          'User-Agent'=>'Faraday v2.9.0'
+           }).
+         to_return(status: 200, body: create_shelter, headers: {})
+      animals_index = File.read("spec/fixtures/animals_index.json")
+         stub_request(:get, "https://hidden-sands-71693-380133048218.herokuapp.com/api/v1/shelters/1/animals").
+         with(
+           headers: {
+          'Accept'=>'*/*',
+          'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+          'User-Agent'=>'Faraday v2.9.0'
+           }).
+         to_return(status: 200, body: animals_index, headers: {})
         # When I visit 'shelter/new' (or click the New Shelter button on the home page)
-        visit '/shelters/new'
+       
+        visit "/users/689"
+        click_link "Create A Shelter!"
         # Then I see a form
         # And I fill in the form with 'name' and 'user_id'
         fill_in :name, with: "red barn"
-        fill_in :user_id, with: "#{@user.id}"
         # And I click the 'save' button
         click_button "Save"
         # And I am taken to the home page where I see the new shelter’s name under “My Shelters”
-        expect(current_path).to eq("/shelters/1")
         expect(page).to have_content("red barn")
     end
 end

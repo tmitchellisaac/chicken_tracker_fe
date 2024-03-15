@@ -1,0 +1,92 @@
+{
+  "data": [
+      {
+          "id": "9",
+          "type": "shelter",
+          "attributes": {
+              "name": "red barn",
+              "user_id": 1
+          },
+          "relationships": {
+              "animals": {
+                  "data": [
+                      {
+                          "id": "19",
+                          "type": "animal"
+                      }
+                  ]
+              }
+          }
+      },
+      {
+          "id": "26",
+          "type": "shelter",
+          "attributes": {
+              "name": "Red barn",
+              "user_id": 1
+          },
+          "relationships": {
+              "animals": {
+                  "data": []
+              }
+          }
+      },
+      {
+          "id": "27",
+          "type": "shelter",
+          "attributes": {
+              "name": "Red barn",
+              "user_id": 1
+          },
+          "relationships": {
+              "animals": {
+                  "data": []
+              }
+          }
+      },
+      {
+          "id": "28",
+          "type": "shelter",
+          "attributes": {
+              "name": "Blue Coop",
+              "user_id": 1
+          },
+          "relationships": {
+              "animals": {
+                  "data": []
+              }
+          }
+      },
+      {
+          "id": "50",
+          "type": "shelter",
+          "attributes": {
+              "name": "chickenshelter",
+              "user_id": 1
+          },
+          "relationships": {
+              "animals": {
+                  "data": []
+              }
+          }
+      },
+      {
+          "id": "51",
+          "type": "shelter",
+          "attributes": {
+              "name": "chickenshelter",
+              "user_id": 1
+          },
+          "relationships": {
+              "animals": {
+                  "data": [
+                      {
+                          "id": "39",
+                          "type": "animal"
+                      }
+                  ]
+              }
+          }
+      }
+  ]
+}

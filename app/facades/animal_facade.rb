@@ -15,8 +15,6 @@ class AnimalFacade
   end
 
   def allowed_species
-  # this heavyweight method allows for a collection dropdown in the view
-
       [
         { id: 1, name: "Chicken" },
         { id: 2, name: "Bee" },
