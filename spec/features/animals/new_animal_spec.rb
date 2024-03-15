@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe "New Animal Form", type: :feature do
-  
+
   # As a user,
   # When I visit "shelter/:id"
   # And I click the "Create New Animal" button,
@@ -23,9 +23,9 @@ RSpec.describe "New Animal Form", type: :feature do
       stub_request(:get, "http://localhost:5000/api/v1/shelters/1").
       with(
         headers: {
-       'Accept'=>'*/*',
-       'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-       'User-Agent'=>'Faraday v2.9.0'
+        'Accept'=>'*/*',
+        'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+        'User-Agent'=>'Faraday v2.9.0'
         }).
       to_return(status: 200, body: json_response, headers: {})
 
@@ -49,55 +49,56 @@ RSpec.describe "New Animal Form", type: :feature do
         to_return(status: 200, body: animals_index, headers: {})
 
 
-      post_animal_response = File.read("spec/fixtures/create_animal_response.json")
-      stub_request(:post, "http://localhost:5000/api/v1/shelters/1/animals").
+      stub_request(:get, "https://hidden-sands-71693-380133048218.herokuapp.com/api/v1/shelters/1").
         with(
-          body: "{\"animal\":{\"shelter_id\":1,\"name\":\"Mickey McCluckkiddy\",\"species\":\"Chicken\",\"color\":\"black with orange spots\",\"birthday\":\"2024-03-03\"}}",
           headers: {
         'Accept'=>'*/*',
         'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
         'User-Agent'=>'Faraday v2.9.0'
           }).
+        to_return(status: 200, body: json_response, headers: {})
+
+      animals_index = File.read("spec/fixtures/animals_index.json")
+      stub_request(:get, "https://hidden-sands-71693-380133048218.herokuapp.com/api/v1/shelters/1/animals").
+        with(
+          headers: {
+        'Accept'=>'*/*',
+        'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+        'User-Agent'=>'Faraday v2.9.0'
+          }).
+        to_return(status: 200, body: animals_index, headers: {})
+
+
+      post_animal_response = File.read("spec/fixtures/create_animal_response.json")
+      stub_request(:post, "http://localhost:5000/api/v1/shelters/1/animals/").
+         with(
+           body: "{\"animal\":{\"shelter_id\":1,\"name\":\"Mickey McCluckkiddy\",\"species\":\"Chicken\",\"color\":\"black with orange spots\",\"birthday\":\"2024-03-03\"}}",
+           headers: {
+          'Accept'=>'*/*',
+          'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+          'User-Agent'=>'Faraday v2.9.0'
+           }).
+
          to_return(status: 200, body: post_animal_response, headers: {})
 
-      stub_request(:post, "https://hidden-sands-71693-380133048218.herokuapp.com/api/v1/shelters/1/animals").
-        with(
-          body: "{\"animal\":{\"shelter_id\":1,\"name\":\"Mickey McCluckkiddy\",\"species\":\"Chicken\",\"color\":\"black with orange spots\",\"birthday\":\"2024-03-03\"}}",
-          headers: {
-        'Accept'=>'*/*',
-        'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-        'Content-Type'=>'application/json',
-        'User-Agent'=>'Faraday v2.9.0'
-          }).
-        to_return(status: 200, body: post_animal_response, headers: {})
+         stub_request(:get, "http://localhost:5000/api/v1/shelters/1/animals/3").
+          with(
+            headers: {
+                  'Accept'=>'*/*',
+                  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+                  'User-Agent'=>'Faraday v2.9.0'
+            }).
+          to_return(status: 200, body: post_animal_response, headers: {})
 
-      stub_request(:get, "http://localhost:5000/api/v1/shelters/1/animals/3").
-        with(
-          headers: {
-                'Accept'=>'*/*',
-                'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-                'User-Agent'=>'Faraday v2.9.0'
-          }).
-        to_return(status: 200, body: post_animal_response, headers: {})
-        
-      stub_request(:get, "https://hidden-sands-71693-380133048218.herokuapp.com/api/v1/shelters/1/animals/3").
-        with(
-          headers: {
-        'Accept'=>'*/*',
-        'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-        'User-Agent'=>'Faraday v2.9.0'
-          }).
-        to_return(status: 200, body: post_animal_response, headers: {})
-         
       visit "/shelters/1"
 
       expect(current_path).to eq("/shelters/1")
       expect(page).to have_link("Create New Animal", href: "/shelters/1/animals/new")
 
       click_link("Create New Animal")
-      
+
       expect(current_path).to eq("/shelters/1/animals/new")
-      
+
       within(".new_animal_form") do
         expect(page).to have_field("name")
         expect(page).to have_field("species")

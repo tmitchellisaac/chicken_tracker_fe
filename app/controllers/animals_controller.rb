@@ -1,21 +1,23 @@
 class AnimalsController < ApplicationController
-  
+
+  def index;end
   def new
     @facade = AnimalFacade.new(params)
   end
 
-  def create 
+  def create
     new_animal_data = ({
       "shelter_id": params[:shelter_id].to_i,
-      "name": params[:name],
-      "species": params[:species],
-      "color": params[:color],
-      "birthday": params[:birthday]
+      "name": params[:animal][:name],
+      "species": params[:animal][:species],
+      "color": params[:animal][:color],
+      "birthday": params[:animal][:birthday]
   })
     facade = AnimalFacade.new(params)
     new_animal = facade.create_animal(new_animal_data)
-    if new_animal != nil 
+    if new_animal != nil
       flash[:alert] = "Animal successfully created"
+
       redirect_to "/shelters/#{new_animal.shelter_id}/animals/#{new_animal.id}"
     else
       flash[:alert] = "Animal not created, try again"
@@ -29,15 +31,16 @@ class AnimalsController < ApplicationController
 
   def edit
     @facade = AnimalFacade.new(params)
+    @animal = @facade.animal
   end
 
   def update
     updated_animal_data = ({
       "shelter_id": params[:shelter_id].to_i,
-      "name": params[:name],
-      "species": params[:species],
-      "color": params[:color],
-      "birthday": params[:birthday]
+      "name": params[:animal][:name],
+      "species": params[:animal][:species],
+      "color": params[:animal][:color],
+      "birthday": params[:animal][:birthday]
   })
     facade = AnimalFacade.new(params)
     if facade.update_animal(updated_animal_data).attributes_match?(updated_animal_data)
@@ -61,5 +64,15 @@ class AnimalsController < ApplicationController
   end
 
   private
-  
+
+  def animal_params
+    {
+      "shelter_id": params[:shelter_id].to_i,
+      "name": params[:animal][:name],
+      "species": params[:animal][:species],
+      "color": params[:animal][:color],
+      "birthday": params[:animal][:birthday]
+  }
+  facade = AnimalFacade.new(params)
+  end
 end
