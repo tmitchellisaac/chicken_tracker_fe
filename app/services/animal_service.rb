@@ -1,6 +1,5 @@
 class AnimalService
 
-
   def conn
     Faraday.new(url: "http://localhost:5000/") do |faraday|
       # faraday.adapter Faraday.default_adapter
@@ -20,14 +19,6 @@ class AnimalService
     response = conn.post(url)
     JSON.parse(response.body, symbolize_names: true)
   end
-
-  # def create_animal(new_animal_data)
-  #   response = conn.post("/api/v1/shelters/#{new_animal_data[:shelter_id]}/animals") do |req|
-  #     req.headers['CONTENT_TYPE" => "application/json']
-  #     req.body = JSON.generate(animal: new_animal_data)
-  #   end
-  #  JSON.parse(response.body, symbolize_names: true)
-  # end
 
   def conn_2
     Faraday.new(url: "http://localhost:5000/") do |faraday|

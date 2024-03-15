@@ -16,6 +16,15 @@ RSpec.describe "Delete a Shelter" do
         }).
         to_return(status: 200, body: shelters_delete1, headers: {})
 
+        stub_request(:get, "https://hidden-sands-71693-380133048218.herokuapp.com/api/v1/shelters/1").
+         with(
+           headers: {
+          'Accept'=>'*/*',
+          'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+          'User-Agent'=>'Faraday v2.9.0'
+           }).
+         to_return(status: 200, body: shelters_delete1, headers: {})
+
         stub_request(:delete, "http://localhost:5000/api/v1/shelters/1").
         with(
             headers: {
@@ -25,6 +34,17 @@ RSpec.describe "Delete a Shelter" do
                 'User-Agent'=>'Faraday v2.9.0'
         }).
         to_return(status: 204, headers: {})
+
+        stub_request(:delete, "https://hidden-sands-71693-380133048218.herokuapp.com/api/v1/shelters/1").
+         with(
+           headers: {
+          'Accept'=>'*/*',
+          'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+          'Content-Type'=>'application/json',
+          'User-Agent'=>'Faraday v2.9.0'
+           }).
+         to_return(status: 204, body: "", headers: {})
+        
 
         shelters_delete2 = File.read("spec/fixtures/shelters_delete2.json")
         stub_request(:get, "http://localhost:5000/api/v1/shelters?user_id=1").
@@ -36,6 +56,24 @@ RSpec.describe "Delete a Shelter" do
         }).
         to_return(status: 200, body: shelters_delete2, headers: {})
 
+        stub_request(:get, "https://hidden-sands-71693-380133048218.herokuapp.com/api/v1/shelters?user_id=630").
+         with(
+           headers: {
+          'Accept'=>'*/*',
+          'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+          'User-Agent'=>'Faraday v2.9.0'
+           }).
+         to_return(status: 200, body: shelters_delete2, headers: {})
+
+        shelters_animals = File.read("spec/fixtures/animals_index.json")
+        stub_request(:get, "https://hidden-sands-71693-380133048218.herokuapp.com/api/v1/shelters/1/animals").
+        with(
+          headers: {
+         'Accept'=>'*/*',
+         'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+         'User-Agent'=>'Faraday v2.9.0'
+          }).
+        to_return(status: 200, body: shelters_animals, headers: {})
         # When I visit a shelter’s show page 'users/shelters/:id'
         visit "/shelters/1"
         # Then I see a button to delete the shelter

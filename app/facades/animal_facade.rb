@@ -15,10 +15,16 @@ class AnimalFacade
   end
 
   def allowed_species
-  # this heavyweight method allows for a collection dropdown in the view
       [
         { id: 1, name: "Chicken" },
         { id: 2, name: "Bee" },
+        { id: 3, name: "Goat" },
+        { id: 4, name: "Sheep" },
+        { id: 5, name: "Rabbit" },
+        { id: 6, name: "Duck" },
+        { id: 7, name: "Pig" },
+        { id: 8, name: "Geese" },
+        { id: 9, name: "Horse" }
       ].map { |species| OpenStruct.new(species) }
   end
 
