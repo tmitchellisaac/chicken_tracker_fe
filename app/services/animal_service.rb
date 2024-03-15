@@ -9,10 +9,10 @@ class AnimalService
 
   def get_url(url)
     response = conn.get(url)
-    JSON.parse(response.body, symbolize_names: true)
+    JSON.parse(response.body, symbolize_names: true)[:data]
   end
 
-  def get_animal(animal_id, shelter_id)
+  def get_animal_service(animal_id, shelter_id)
     get_url("api/v1/shelters/#{shelter_id.to_i}/animals/#{animal_id.to_i}")
   end
 
@@ -35,7 +35,7 @@ class AnimalService
     end
   end
 
-  def create_animal(new_animal_data)
+  def create_animal_service(new_animal_data)
     response = conn_2.post("/api/v1/shelters/#{new_animal_data[:shelter_id]}/animals") do |req|
       req.headers = { 'Content-Type' => 'application/json',
                       'Accept'=>'*/*',

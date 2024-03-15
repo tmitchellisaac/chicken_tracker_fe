@@ -32,6 +32,7 @@ class AnimalsController < ApplicationController
 
   def edit
     @facade = AnimalFacade.new(params)
+    @animal = @facade.get_animal(params[:id], params[:shelter_id])
   end
 
   def update
@@ -65,6 +66,16 @@ class AnimalsController < ApplicationController
 
   private
 
+  def animal_params
+    {
+      "shelter_id": params[:shelter_id].to_i,
+      "name": params[:animal][:name],
+      "species": params[:animal][:species],
+      "color": params[:animal][:color],
+      "birthday": params[:animal][:birthday]
+  }
+  facade = AnimalFacade.new(params)
+  end
   # moved to AnimalFacade-- this heavyweight method allows for a collection dropdown in the view
   # def allowed_species
   #   [

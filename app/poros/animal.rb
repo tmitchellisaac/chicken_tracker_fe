@@ -17,7 +17,7 @@ class Animal
               :fav_food,
               :species
 
-  def initialize(attr = nil)
+  def initialize(attr)
     if attr.nil? || attr[:id].nil?
       return
     else
@@ -40,12 +40,19 @@ class Animal
     end
   end
 
-
   def attributes_match?(params_hash)
     self.shelter_id.to_i == params_hash[:shelter_id] &&
     self.name == params_hash[:name] &&
     self.species == params_hash[:species] &&
     self.color == params_hash[:color] &&
     self.birthday == params_hash[:birthday]
+  end
+
+  def allowed_species
+    # this heavyweight method allows for a collection dropdown in the view
+        [
+          { id: 1, name: "Chicken" },
+          { id: 2, name: "Bee" },
+        ].map { |species| OpenStruct.new(species) }
   end
 end

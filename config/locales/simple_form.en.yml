@@ -6,6 +6,8 @@ en:
       animal:
         name: "Name of your animal"
         color: "Animal color"
+      animal_edit:
+        name: "Hello"
     labels:
       animal:
         name: "Animal Name"
