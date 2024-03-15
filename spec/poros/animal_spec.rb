@@ -31,4 +31,167 @@ RSpec.describe Animal do
     expect(animal.birthday).to eq(attr[:attributes][:birthday])
     expect(animal.color).to eq(attr[:attributes][:color])
   end
+
+  describe "instance methods" do
+    let(:chicken) {Species.create!(species: "Chicken")}
+    let(:farm) {Shelter.create!(name:"Yain's Farm", user_id: 1)}
+    let(:fufu) {Animal.create!(name: "Fufu", birthday: "2023/12/11", color: "Red", shelter_id: farm.id, species_id: chicken.id)}
+
+    before do
+      @today = DateTime.parse("2024/03/11")
+    end
+
+    describe "#age" do
+      it "calculates the age of the animal based on birthday with years, months, and days" do
+        expect(fufu.age(@today)).to eq("0 year(s), 3 month(s), 0 day(s)")
+
+        lola = Animal.create!(name: "Lola", birthday: "2023/06/12", color: "Red", shelter_id: farm.id, species_id: chicken.id)
+
+        expect(lola.age(@today)).to eq("0 year(s), 8 month(s), 28 day(s)")
+
+        belle = Animal.create!(name: "Belle", birthday: "2020/07/10", color: "Red", shelter_id: farm.id, species_id: chicken.id)
+
+        expect(belle.age(@today)).to eq("3 year(s), 8 month(s), 1 day(s)")
+
+        belle = Animal.create!(name: "Belle", birthday: "2020/07/10", color: "Red", shelter_id: farm.id, species_id: chicken.id)
+
+        expect(belle.age(@today)).to eq("3 year(s), 8 month(s), 1 day(s)")
+      end
+
+      it "gives an error if the birth date is a future date" do
+        fufu = Animal.create!(name: "Fufu", birthday: "2024/06/12", color: "Red", shelter_id: farm.id, species_id: chicken.id)
+        lola = Animal.create!(name: "Lola", birthday: "2024/03/15", color: "Red", shelter_id: farm.id, species_id: chicken.id)
+
+
+        expect(fufu.age(@today)).to eq("Error, the animal hasn't been born yet")
+        expect(lola.age(@today)).to eq("Error, the animal hasn't been born yet")
+      end
+    end
+
+    describe "#days_in_month" do
+      it "calculates the number of days in a given month(1-12) for the current year" do
+        expect(fufu.days_in_month(10)).to eq(31)
+        expect(fufu.days_in_month(2)).to eq(29)
+      end
+
+      it "returns nil when a month's corresponding number doesn't exist" do
+        expect(fufu.days_in_month(14)).to eq(nil)
+        expect(fufu.days_in_month(0)).to eq(nil)
+      end
+    end
+
+    describe "#age_in_days" do
+      context "the birth day is less than the current day" do
+        it "subtracts the current day from the birth day" do
+          fufu = Animal.create!(name: "Fufu", birthday: "2023/03/03", color: "Red", shelter_id: farm.id, species_id: chicken.id)
+          lola = Animal.create!(name: "Lola", birthday: "2023/03/10", color: "Red", shelter_id: farm.id, species_id: chicken.id)
+
+          expect(fufu.age_in_days(@today, DateTime.parse(fufu.birthday))).to eq(8)
+          expect(lola.age_in_days(@today, DateTime.parse(lola.birthday))).to eq(1)
+        end
+      end
+
+      context "the birth day is greater than the current day" do
+        it "subtracts the total days in the previous month by the birth day, and adds the current day" do
+          fufu = Animal.create!(name: "Fufu", birthday: "2020/02/29", color: "Red", shelter_id: farm.id, species_id: chicken.id)
+          lola = Animal.create!(name: "Lola", birthday: "2023/02/12", color: "Red", shelter_id: farm.id, species_id: chicken.id)
+
+          expect(fufu.age_in_days(@today, DateTime.parse(fufu.birthday))).to eq(11)
+          expect(lola.age_in_days(@today, DateTime.parse(lola.birthday))).to eq(28)
+        end
+      end
+    end
+
+    describe "#age_in_months" do
+      context "the birthday month and the current month are the same" do
+        it "returns 0 if the current day >= the birth day" do
+          fufu = Animal.create!(name: "Fufu", birthday: "2023/03/11", color: "Red", shelter_id: farm.id, species_id: chicken.id)
+          lola = Animal.create!(name: "Lola", birthday: "2023/03/02", color: "Red", shelter_id: farm.id, species_id: chicken.id)
+
+
+          expect(fufu.age_in_months(@today, DateTime.parse(fufu.birthday))).to eq(0)
+          expect(lola.age_in_months(@today, DateTime.parse(lola.birthday))).to eq(0)
+        end
+
+        it "returns 11 if the birth day > current day" do
+          fufu = Animal.create!(name: "Fufu", birthday: "2023/03/26", color: "Red", shelter_id: farm.id, species_id: chicken.id)
+          lola = Animal.create!(name: "Lola", birthday: "2023/03/12", color: "Red", shelter_id: farm.id, species_id: chicken.id)
+
+          expect(fufu.age_in_months(@today, DateTime.parse(fufu.birthday))).to eq(11)
+          expect(lola.age_in_months(@today, DateTime.parse(lola.birthday))).to eq(11)
+        end
+      end
+
+      context "the current month is > the birthday month" do
+        it "subtracts the birthday month from the current month" do
+          fufu = Animal.create!(name: "Fufu", birthday: "2023/01/11", color: "Red", shelter_id: farm.id, species_id: chicken.id)
+          lola = Animal.create!(name: "Lola", birthday: "2023/02/12", color: "Red", shelter_id: farm.id, species_id: chicken.id)
+
+          expect(fufu.age_in_months(@today, DateTime.parse(fufu.birthday))).to eq(2)
+          expect(lola.age_in_months(@today, DateTime.parse(lola.birthday))).to eq(0)
+        end
+      end
+
+      context "the birthday month > the current month" do
+        it "subtracts the months between today and the birth month from the total months" do
+          fufu = Animal.create!(name: "Fufu", birthday: "2023/06/11", color: "Red", shelter_id: farm.id, species_id: chicken.id)
+          lola = Animal.create!(name: "Lola", birthday: "2020/12/12", color: "Red", shelter_id: farm.id, species_id: chicken.id)
+
+          expect(fufu.age_in_months(@today, DateTime.parse(fufu.birthday))).to eq(9)
+          expect(lola.age_in_months(@today, DateTime.parse(lola.birthday))).to eq(2)
+        end
+      end
+    end
+
+    describe "#age_in_years" do
+      context "birth year is current year" do
+        it "does not add a year" do
+          fufu = Animal.create!(name: "Fufu", birthday: "2024/01/11", color: "Red", shelter_id: farm.id, species_id: chicken.id)
+          lola = Animal.create!(name: "Lola", birthday: "2024/03/10", color: "Red", shelter_id: farm.id, species_id: chicken.id)
+
+          expect(fufu.age_in_years(@today, DateTime.parse(fufu.birthday))).to eq(0)
+          expect(lola.age_in_years(@today, DateTime.parse(lola.birthday))).to eq(0)
+        end
+      end
+
+      context "birth month is greater than current month" do
+        it "subtracts current year by birth year - 1" do
+          fufu = Animal.create!(name: "Fufu", birthday: "2023/07/11", color: "Red", shelter_id: farm.id, species_id: chicken.id)
+          lola = Animal.create!(name: "Lola", birthday: "2020/12/10", color: "Red", shelter_id: farm.id, species_id: chicken.id)
+
+          expect(fufu.age_in_years(@today, DateTime.parse(fufu.birthday))).to eq(0)
+          expect(lola.age_in_years(@today, DateTime.parse(lola.birthday))).to eq(3)
+        end
+      end
+
+      context "birth month is less than current month" do
+        it "subtracts current year by birth year" do
+          fufu = Animal.create!(name: "Fufu", birthday: "2023/01/11", color: "Red", shelter_id: farm.id, species_id: chicken.id)
+          lola = Animal.create!(name: "Lola", birthday: "2020/02/10", color: "Red", shelter_id: farm.id, species_id: chicken.id)
+
+          expect(fufu.age_in_years(@today, DateTime.parse(fufu.birthday))).to eq(1)
+          expect(lola.age_in_years(@today, DateTime.parse(lola.birthday))).to eq(4)
+
+        end
+      end
+
+      context "birth month is the same as current month" do
+        it "subtracts current year by birth year - 1 if the birthday day > current day" do
+          fufu = Animal.create!(name: "Fufu", birthday: "2022/03/15", color: "Red", shelter_id: farm.id, species_id: chicken.id)
+          lola = Animal.create!(name: "Lola", birthday: "2020/03/17", color: "Red", shelter_id: farm.id, species_id: chicken.id)
+
+          expect(fufu.age_in_years(@today, DateTime.parse(fufu.birthday))).to eq(1)
+          expect(lola.age_in_years(@today, DateTime.parse(lola.birthday))).to eq(3)
+        end
+
+        it "subtracts current year by birth year if the current day >= birthday day" do
+          fufu = Animal.create!(name: "Fufu", birthday: "2022/03/11", color: "Red", shelter_id: farm.id, species_id: chicken.id)
+          lola = Animal.create!(name: "Lola", birthday: "2020/03/02", color: "Red", shelter_id: farm.id, species_id: chicken.id)
+
+          expect(fufu.age_in_years(@today, DateTime.parse(fufu.birthday))).to eq(2)
+          expect(lola.age_in_years(@today, DateTime.parse(lola.birthday))).to eq(4)
+        end
+      end
+    end
+  end
 end
