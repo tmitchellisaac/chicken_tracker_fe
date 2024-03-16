@@ -3,6 +3,15 @@ require 'rails_helper'
 RSpec.describe "New User Registration" do
 
   before(:each) do
+    @user_shelters = File.read("spec/fixtures/user_shelters.json")
+    stub_request(:get, "https://hidden-sands-71693-380133048218.herokuapp.com/api/v1/shelters?user_id=197").
+    with(
+      headers: {
+     'Accept'=>'*/*',
+     'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+     'User-Agent'=>'Faraday v2.9.0'
+      }).
+    to_return(status: 200, body: @user_shelters, headers: {})
     visit(new_user_path)
   end
 
@@ -15,9 +24,20 @@ RSpec.describe "New User Registration" do
 
   describe "[happy path]" do
     it "can register a new user" do
+
+      user_1 = User.create!(email: "group@email.com", password: "testy")
       fill_in :email, with: "test@test.com"
       fill_in :password, with: "test"
       fill_in :password_confirmation, with: "test"
+      
+      stub_request(:get, "https://hidden-sands-71693-380133048218.herokuapp.com/api/v1/shelters?user_id=#{user_1.id+1}").
+      with(
+        headers: {
+       'Accept'=>'*/*',
+       'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+       'User-Agent'=>'Faraday v2.9.0'
+        }).
+      to_return(status: 200, body: @user_shelters, headers: {})
 
       click_on "Submit"
 
@@ -29,7 +49,7 @@ RSpec.describe "New User Registration" do
 
   describe "[sad path]" do
     it "cannot register a new user if email is taken" do
-      user = User.create(email: "test@test.com", password: "test")
+      user = User.create(email: "test@test.com", password: "test", id: 197)
 
       fill_in :email, with: "test@test.com"
       fill_in :password, with: "test"

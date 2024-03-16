@@ -13,7 +13,14 @@
  *= require_tree .
  *= require_self
  */
- @import "bootstrap";
+// f3bc2b
+// 9C3B43
+// b6
+@import "bootstrap";
+.container {
+  background-color: #f3bc2b;
+  text-align: center;
+}
 // This restricts the maximum size of an image (not as responsive, but doesn't get silly large)
 // Turned off to better demonstrate for instructors
 .custom-img-max {

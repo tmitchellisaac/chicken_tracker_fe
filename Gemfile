@@ -52,6 +52,7 @@ gem "dartsass-sprockets"
 gem 'bootstrap', '~> 5.3.2'
 gem 'jquery-rails'
 gem 'omniauth-google-oauth2'
+gem 'simple_form'
 
 
 group :development, :test do
