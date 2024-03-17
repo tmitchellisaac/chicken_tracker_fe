@@ -31,10 +31,39 @@ RSpec.describe "Animal Show Page", type: :feature do
            }).
          to_return(status: 200, body: json_response, headers: {})
       # visit "/shelters/1/animals/1"
-      
+
       visit "/shelters/#{animal.shelter_id}/animals/#{animal.id}"
       expect(current_path).to eq("/shelters/#{animal.shelter_id}/animals/#{animal.id}")
       expect(page).to have_content("Animal Show Page")
+    end
+  end
+
+  describe "Animal Age" do
+    it "displays the age of the animal on the show page" do
+      json_response = File.read('spec/fixtures/animals_show.json')
+      animal = Animal.new(JSON.parse(json_response, symbolize_names: true)[:data])
+
+      stub_request(:get, "http://localhost:5000/api/v1/shelters/#{animal.shelter_id}/animals/1").
+        with(
+          headers: {
+          'Accept'=>'*/*',
+          'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+          'User-Agent'=>'Faraday v2.9.0'
+          }).
+          to_return(status: 200, body: json_response, headers: {})
+
+      stub_request(:get, "https://hidden-sands-71693-380133048218.herokuapp.com/api/v1/shelters/1/animals/1").
+        with(
+          headers: {
+          'Accept'=>'*/*',
+          'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+          'User-Agent'=>'Faraday v2.9.0'
+          }).
+        to_return(status: 200, body: json_response, headers: {})
+
+      visit "/shelters/#{animal.shelter_id}/animals/#{animal.id}"
+      expect(current_path).to eq("/shelters/#{animal.shelter_id}/animals/#{animal.id}")
+      expect(page).to have_content("Age: 1 year(s), 0 month(s), 14 day(s)")
     end
   end
 end
