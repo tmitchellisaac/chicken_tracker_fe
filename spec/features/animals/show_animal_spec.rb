@@ -63,6 +63,8 @@ RSpec.describe "Animal Show Page", type: :feature do
 
       visit "/shelters/#{animal.shelter_id}/animals/#{animal.id}"
       expect(current_path).to eq("/shelters/#{animal.shelter_id}/animals/#{animal.id}")
+
+      # This test assumes DateTime.now = "2024/03/17", change it in show.html.erb for a passing test
       expect(page).to have_content("Age: 1 year(s), 0 month(s), 14 day(s)")
     end
   end
