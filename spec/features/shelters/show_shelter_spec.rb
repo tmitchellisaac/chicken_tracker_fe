@@ -42,9 +42,7 @@ RSpec.describe "Shelter Show Page", type: :feature do
     end
   end
 
-  describe "number of animals per shelter" do
-    it "displays the number of animals per a shelter" do
-      expect(page).to have_content("Number of animals: 3")
-    end
+  it "displays the number of animals per a shelter" do
+    expect(page).to have_content("5 animals currently living in red barn:")
   end
 end

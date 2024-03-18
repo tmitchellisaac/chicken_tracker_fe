@@ -43,4 +43,8 @@ class ShelterFacade
   def create_shelter(shelter_data)
     Shelter.new(@shelter_service.create_shelter(shelter_data)[:data])
   end
+
+  def num_of_animals
+    animals.size
+  end
 end
