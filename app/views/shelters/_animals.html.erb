@@ -1,0 +1,16 @@
+<div class="animals">
+  <p> <%= @facade.num_of_animals %> <%= locals[:singular] ? "animal" : "animals" %> currently living in "<%= @shelter.name %>": </p>
+  <% @facade.animal_species.each do |species| %>
+    <div id="<%= species %>">
+      <h2><%= species %>s:</h2>
+      <ul>
+        <% @facade.animals.each do |animal| %>
+          <% if animal.species == species %>
+            <li class="animal"><%= link_to animal.name, shelter_animal_path(@shelter.id, animal.id), class: "btn btn-success btn-sm shadow-lg" %></li>
+            <hr>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+</div>

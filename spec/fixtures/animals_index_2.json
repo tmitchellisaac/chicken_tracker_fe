@@ -35,7 +35,7 @@
       "attributes": {
         "shelter_id": 1,
         "name": "Bubba",
-        "species": "Chicken",
+        "species": "Rabbit",
         "birthday": "2022-02-02",
         "color": "black",
         "main_prey": "Seeds, Fruit, Insects, Berries",
@@ -64,7 +64,7 @@
       "attributes": {
         "shelter_id": 1,
         "name": "Helena",
-        "species": "Chicken",
+        "species": "Goat",
         "birthday": "2021-11-11",
         "color": "reddish-orange",
         "main_prey": "Seeds, Fruit, Insects, Berries",
@@ -85,64 +85,6 @@
                   "type": "shelter"
               }
           }
-      }
-    },
-    {
-      "id": "4",
-      "type": "animal",
-      "attributes": {
-        "shelter_id": 1,
-        "name": "Barbara",
-        "species": "Chicken",
-        "birthday": "2020-04-07",
-        "color": "black",
-        "main_prey": "Seeds, Fruit, Insects, Berries",
-        "habitat": "Open woodland and sheltered grassland",
-        "diet": "Omnivore",
-        "skin_type": "Feathers",
-        "top_speed": "6 mph",
-        "avg_litter": "2",
-        "lifespan": "2 - 4 years",
-        "weight": "1kg - 3kg (2.2lbs - 6.6lbs)",
-        "lifestyle": "Flock",
-        "fav_food": "Seeds"
-      },
-      "relationships": {
-        "shelter": {
-          "data": {
-            "id": "1",
-            "type": "shelter"
-          }
-        }
-      }
-    },
-    {
-      "id": "5",
-      "type": "animal",
-      "attributes": {
-        "shelter_id": 1,
-        "name": "Emma",
-        "species": "Chicken",
-        "birthday": "2023-05-05",
-        "color": "green",
-        "main_prey": "Seeds, Fruit, Insects, Berries",
-        "habitat": "Open woodland and sheltered grassland",
-        "diet": "Omnivore",
-        "skin_type": "Feathers",
-        "top_speed": "6 mph",
-        "avg_litter": "2",
-        "lifespan": "2 - 4 years",
-        "weight": "1kg - 3kg (2.2lbs - 6.6lbs)",
-        "lifestyle": "Flock",
-        "fav_food": "Seeds"
-      },
-      "relationships": {
-        "shelter": {
-          "data": {
-            "id": "1",
-            "type": "shelter"
-          }
-        }
       }
     }
   ]
