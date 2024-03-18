@@ -95,6 +95,7 @@ class Animal
   def age_in_months(today, birthday)
     case birthday.month
     when today.month
+      today.day >= birthday.day ? months = 0 : months = 11
     when 1..today.month
       today.day >= birthday.day ? months = 0 : months = -1
       months = months + today.month - birthday.month
@@ -102,6 +103,7 @@ class Animal
       today.day >= birthday.day ? months = 12 : months = 11
       months = months + (today.month - birthday.month)
     end
+    months
   end
 
   def age_in_years(today, birthday)
