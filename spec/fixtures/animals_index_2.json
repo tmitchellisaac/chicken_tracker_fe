@@ -6,7 +6,7 @@
       "attributes": {
         "shelter_id": 1,
         "name": "Tom",
-        "species": "chicken",
+        "species": "Chicken",
         "birthday": "2023-03-03",
         "color": "orange",
         "main_prey": "Seeds, Fruit, Insects, Berries",
@@ -35,7 +35,7 @@
       "attributes": {
         "shelter_id": 1,
         "name": "Bubba",
-        "species": "chicken",
+        "species": "Rabbit",
         "birthday": "2022-02-02",
         "color": "black",
         "main_prey": "Seeds, Fruit, Insects, Berries",
@@ -64,7 +64,7 @@
       "attributes": {
         "shelter_id": 1,
         "name": "Helena",
-        "species": "chicken",
+        "species": "Goat",
         "birthday": "2021-11-11",
         "color": "reddish-orange",
         "main_prey": "Seeds, Fruit, Insects, Berries",

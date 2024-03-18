@@ -58,4 +58,12 @@ RSpec.describe "Shelter Show Page", type: :feature do
     visit "/shelters/1"
     expect(page).to have_content("1 animal currently living in \"red barn\"")
   end
+
+  it "displays an animal's type" do
+    save_and_open_page
+    expect(page).to have_content("Tom - Chicken")
+    expect(page).to have_content("Bubba - Chicken")
+    expect(page).to have_content("Helena - Chicken")
+    expect(page).to have_content("Emma - Chicken")
+  end
 end

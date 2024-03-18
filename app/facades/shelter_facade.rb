@@ -47,4 +47,8 @@ class ShelterFacade
   def num_of_animals
     animals.size
   end
+
+  def animal_species
+    animals.map{|animal| animal.type}.unique.compact
+  end
 end
