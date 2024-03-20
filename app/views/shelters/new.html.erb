@@ -12,7 +12,7 @@ h1,h2 {
 <% if @facade.user_id%>
 
   <main class="container">
-    <%# link_to sanitize("&larr; Back to My Shelters"), shelter_path %>
+    <%= link_to sanitize("&larr; Back to My Shelters"), user_path(current_user) %>
 
     <div class="header">
       <h1>New Shelter</h1>
@@ -27,26 +27,4 @@ h1,h2 {
 <% else %>
     <h1> No, no no....Go to User Dashboard ;)</h1>
     <%= image_tag("logo.jpeg", class: "img-fluid custom-img-max")%>
-<% end %>
-
-<% if @facade.user_id%>
-
-  <h1>New Shelter</h1>
-  <hr>
-  <h2>Add A New Shelter</h2>
-  <div style="text-align: center;">
-    <div class="new_shelter_form">
-      <%# the form_with url may not be correct %>
-      <%= form_with url: "/shelters?user_id=#{@facade.user_id}", method: :post, data: {turbo: false} do |form| %>
-        <%= form.label :name, style: "color: white;" %>
-        <%= form.text_field :name %> 
-        <br>
-      
-        <%= form.submit "Save" %>
-      <% end %>
-    </div>
-  </div>
-
-<% else %>
-  <h1> No, no no....Go to User Dashboard ;)</h1>
 <% end %>

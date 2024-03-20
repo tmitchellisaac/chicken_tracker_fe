@@ -18,28 +18,6 @@ background-color: #232323;
 text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #49ff18, 0 0 30px #49FF18, 0 0 40px #49FF18, 0 0 55px #49FF18, 0 0 75px #49ff18
 }
 </style>
-<!-- 
-<h1>New Animal</h1>
-<hr>
-<h2>New Animal Form</h2>
-<div class="new_animal_form">
-  <%# the form_with url may not be correct %>
-  <%= form_with url: "/shelters/#{@facade.shelter_id}/animals", method: :post, data: {turbo: false} do |form| %>
-    <%= form.label :name %>
-    <%= form.text_field :name %> 
-    <br>
-    <%= form.label :species %>
-    <%= form.collection_select :species, @facade.allowed_species, :name, :name, include_blank: true %> 
-    <br>
-    <%= form.label :birthday %>
-    <%= form.date_field :birthday %> 
-    <br>
-    <%= form.label :color %>
-    <%= form.text_field :color %> 
-    <br>
-    <%= form.submit "Submit", class: "btn btn-success"  %>
-  <% end %>
-</div> -->
 
 <main class="container">
   <%= link_to sanitize("&larr; Back to animals"), shelter_animals_path %>
