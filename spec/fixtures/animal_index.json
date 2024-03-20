@@ -1,12 +1,12 @@
 {
-  "data":
+  "data": [
     {
       "id": "1",
       "type": "animal",
       "attributes": {
         "shelter_id": 1,
         "name": "Tom",
-        "species": "chicken",
+        "species": "Chicken",
         "birthday": "2023-03-03",
         "color": "orange",
         "main_prey": "Seeds, Fruit, Insects, Berries",
@@ -21,12 +21,13 @@
         "fav_food": "Seeds"
       },
       "relationships": {
-        "shelter": {
-          "data": {
-            "id": "1",
-            "type": "shelter"
+          "shelter": {
+            "data": {
+              "id": "1",
+              "type": "shelter"
+            }
           }
-        }
       }
     }
+  ]
 }

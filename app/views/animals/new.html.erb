@@ -20,7 +20,7 @@ text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #49ff18, 0 0 3
 </style>
 
 <main class="container">
-  <%= link_to sanitize("&larr; Back to animals"), shelter_animals_path %>
+  <%= link_to sanitize("&larr; Back to animals"), "/shelters/#{params[:shelter_id]}" %>
 
   <div class="header">
     <h1>New Animal</h1>

@@ -14,6 +14,7 @@ h1,h2,p {
 <h1><%= @facade.animal.name %></h1>
 <p>Animal Type: <%= @facade.animal.species %> </p>
 <p>Birthday: <%= @facade.animal.birthday %></p>
+<p>Age: <%= @facade.animal.age(DateTime.now) %></p>
 <p>Color: <%= @facade.animal.color %></p>
 <p>Main Food Source: <%= @facade.animal.main_prey %></p>
 <p>Favorite Food: <%= @facade.animal.fav_food%></p>
