@@ -9,6 +9,25 @@ h1,h2 {
 }
 </style>
 
+<% if @facade.user_id%>
+
+  <main class="container">
+    <%# link_to sanitize("&larr; Back to My Shelters"), shelter_path %>
+
+    <div class="header">
+      <h1>New Shelter</h1>
+    </div>
+      <div class="new_shelter_form">
+        <%= render "form", shelter: @facade,
+                        path: "/shelters?user_id=#{@facade.user_id}",
+                        method: :post %>
+      </div>
+  </main>
+
+<% else %>
+    <h1> No, no no....Go to User Dashboard ;)</h1>
+    <%= image_tag("logo.jpeg", class: "img-fluid custom-img-max")%>
+<% end %>
 
 <% if @facade.user_id%>
 
