@@ -16,7 +16,7 @@ class SheltersController < ApplicationController
 
   def update
     updated_shelter_data = ({
-      "name": params[:name],
+      "name": params[:shelter][:name],
       "user_id": params[:user_id]
     })
 
