@@ -1,3 +1,5 @@
+<%= render partial: "/shared/navbar" %>
+
 <style>
 h1,h2,p {
   color: white;
@@ -7,8 +9,6 @@ h1,h2,p {
 </style>
 
 
-<%= render partial: "/shared/navbar" %>
-
 <main class="container">
   <%= link_to sanitize("&larr; Back to animal"), shelter_animal_path %>
 
@@ -16,8 +16,8 @@ h1,h2,p {
     <h1>Edit Animal</h1>
   </div>
     <div class="edit_animal_form">
-    <%= render "form", animal: @facade.animal,
+      <%= render "form", animal: @facade.animal,
                       path: "/shelters/#{@facade.shelter_id}/animals/#{@facade.id}",
                       method: :patch %>
-  </div>
+    </div>
 </main>
