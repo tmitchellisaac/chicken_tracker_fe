@@ -23,9 +23,9 @@
 }
 // This restricts the maximum size of an image (not as responsive, but doesn't get silly large)
 // Turned off to better demonstrate for instructors
-// .custom-img-max {
-//   max-height: 400px;
-//   max-width: 400px;
-//   height: auto;
-//   width: auto;
-// }
+.custom-img-max {
+  max-height: 400px;
+  max-width: 400px;
+  height: auto;
+  width: auto;
+}

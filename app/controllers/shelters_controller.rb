@@ -16,7 +16,7 @@ class SheltersController < ApplicationController
 
   def update
     updated_shelter_data = ({
-      "name": params[:name],
+      "name": params[:shelter][:name],
       "user_id": params[:user_id]
     })
 
@@ -52,7 +52,7 @@ class SheltersController < ApplicationController
   def create
     new_shelter_data = ({
       "user_id": params[:user_id].to_i,
-      "name": params[:name]
+      "name": params[:shelter][:name]
     })
     facade = ShelterFacade.new(params)
     new_shelter = facade.create_shelter(new_shelter_data)
