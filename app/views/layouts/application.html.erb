@@ -11,15 +11,12 @@
     </head>
 
     <body>
-        <div class="container">
-          <% flash.each do |type, msg| %>
-            <div>
-              <%= msg %>
-            </div>
-          <% end %>
-          <%= yield %>
-        </div>
-      </div>
+      <%= render partial: "/shared/navbar" %>
+        <% flash.each do |type, msg| %>
+          <div>
+            <%= msg %>
+          </div>
+        <% end %>
+      <%= yield %>
     </body>
-
 </html>
