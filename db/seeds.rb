@@ -12,3 +12,9 @@
 
 @user = User.create!(email: "test@test.com", password: "test", password_confirmation: "test")
 @isaac = User.create!(email: "tmitchellisaac@gmail.com", password: "password", password_confirmation: "password")
+
+
+hooves_cut = SingleDayEvent.create!(start_time: Date.new(2024, 3, 22), name: "Hooves Cut", user_id: 2, notes: "Remember to bring cash", location: "Downtown Veterinary Office")
+birthday = SingleDayEvent.create!(start_time: Date.new(2024, 3, 24), name: "Birthday", user_id: 2)
+
+
