@@ -1,6 +1,19 @@
 require "rails_helper"
 
 RSpec.describe "Create a Shelter" do
+
+    # Simulate a user logging in to fix the navbar issue
+    before :each do
+      @user = User.create!(email: "fix@navbar.com", password: "password", password_confirmation: "password", id: 77)
+      user_shelters = File.read("spec/fixtures/user_shelters.json")
+      stub_request(:get, "https://hidden-sands-71693-380133048218.herokuapp.com/api/v1/shelters?user_id=77").
+        to_return(status: 200, body: user_shelters, headers: {})
+      visit log_in_path
+      fill_in :email, with: @user.email
+      fill_in :password, with: @user.password
+      click_on "Submit"
+    end
+
     before(:each) do 
         @user = User.create(email: "test@test.com", password: "test", password_confirmation: "test", id: 689)
     end
@@ -75,9 +88,9 @@ RSpec.describe "Create a Shelter" do
         click_link "Create A Shelter!"
         # Then I see a form
         # And I fill in the form with 'name' and 'user_id'
-        fill_in :name, with: "red barn"
+        fill_in :shelter_name, with: "red barn"
         # And I click the 'save' button
-        click_button "Save"
+        click_button "Save Shelter"
         # And I am taken to the home page where I see the new shelter’s name under “My Shelters”
         expect(page).to have_content("red barn")
     end
