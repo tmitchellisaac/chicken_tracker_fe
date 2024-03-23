@@ -112,19 +112,19 @@ RSpec.describe "New Animal Form", type: :feature do
       expect(current_path).to eq("/shelters/1/animals/new")
 
       within(".new_animal_form") do
-        expect(page).to have_field("name")
-        expect(page).to have_field("species")
-        expect(page).to have_field("birthday")
-        expect(page).to have_field("color")
-        expect(page).to have_button("Submit")
+        expect(page).to have_field("Animal Name")
+        expect(page).to have_field("Species")
+        expect(page).to have_field("Birthday")
+        expect(page).to have_field("Color")
+        expect(page).to have_button("Save Animal")
       end
 
-      fill_in "name", with: "Mickey McCluckkiddy"
-      select "Chicken", from: "species"
-      fill_in "birthday", with: Date.new(2024,3,3)
-      fill_in "color", with: "black with orange spots"
+      fill_in "Animal Name", with: "Mickey McCluckkiddy"
+      select "Chicken", from: "Species"
+      fill_in "Birthday", with: Date.new(2024,3,3)
+      fill_in "Color", with: "black with orange spots"
 
-      click_button("Submit")
+      click_button("Save Animal") # <--- Updated to correct name, now button not working correctly due to response issue
       # expect(current_path).to eq("/shelters/1/animals/3")
       expect(page).to have_content("Mickey McCluckkiddy")
       expect(page).to have_content("Chicken")

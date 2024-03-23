@@ -88,9 +88,9 @@ RSpec.describe "Create a Shelter" do
         click_link "Create A Shelter!"
         # Then I see a form
         # And I fill in the form with 'name' and 'user_id'
-        fill_in :name, with: "red barn"
+        fill_in :shelter_name, with: "red barn"
         # And I click the 'save' button
-        click_button "Save"
+        click_button "Save Shelter"
         # And I am taken to the home page where I see the new shelter’s name under “My Shelters”
         expect(page).to have_content("red barn")
     end

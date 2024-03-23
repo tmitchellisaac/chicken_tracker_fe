@@ -100,9 +100,9 @@ RSpec.describe "Edit an Animal", type: :feature do
     click_link "Edit this animal"
 
     expect(current_path).to eq("/shelters/1/animals/1/edit")
-    fill_in "name", with: "Henry"
-    fill_in "color", with: "black and grey"
-    click_button "Confirm Edit"
+    fill_in "Animal Name", with: "Henry"
+    fill_in "Color", with: "black and grey"
+    click_button "Save Animal"
     expect(current_path).to eq("/shelters/1/animals/1")
     expect(page).to have_content("Henry")
     expect(page).to have_content("black and grey")
