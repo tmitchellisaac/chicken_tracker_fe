@@ -2,6 +2,18 @@ require "rails_helper"
 
 RSpec.describe "Edit a Shelter" do
 
+  # Simulate a user logging in to fix the navbar issue
+  before :each do
+    @user = User.create!(email: "fix@navbar.com", password: "password", password_confirmation: "password", id: 77)
+    user_shelters = File.read("spec/fixtures/user_shelters.json")
+    stub_request(:get, "https://hidden-sands-71693-380133048218.herokuapp.com/api/v1/shelters?user_id=77").
+      to_return(status: 200, body: user_shelters, headers: {})
+    visit log_in_path
+    fill_in :email, with: @user.email
+    fill_in :password, with: @user.password
+    click_on "Submit"
+  end
+
   before(:each) do
     @user_1 = User.create(email: "test@test.com", password: "test", password_confirmation: "test")
     @user_2 = User.create(email: "test2@test.com", password: "test", password_confirmation: "test")
@@ -9,11 +21,13 @@ RSpec.describe "Edit a Shelter" do
     json_response = File.read('spec/fixtures/shelter_1.json')
     stub_request(:get, "http://localhost:5000/api/v1/shelters/1").
       to_return(status: 200, body: json_response, headers: {})
+    stub_request(:get, "https://hidden-sands-71693-380133048218.herokuapp.com/api/v1/shelters/1").
+      to_return(status: 200, body: json_response, headers: {})
     
     visit "/shelters/1/edit"
   end
 
-  xdescribe "[happy path]" do
+  describe "[happy path]" do
     it "has a form to edit shelter attributes" do
       expect(page).to have_content("Edit Shelter")
       expect(page).to have_field("Name:")
@@ -26,7 +40,7 @@ RSpec.describe "Edit a Shelter" do
       expect(page).to have_field("User ID:", with: "1")
     end
 
-    xit "can update a shelter when the form is saved" do
+    it "can update a shelter when the form is saved" do
       fill_in :name, with: "purple barn"
       fill_in :user_id, with: "2"
 
