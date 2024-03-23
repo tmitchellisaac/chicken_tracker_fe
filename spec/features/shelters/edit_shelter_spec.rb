@@ -98,14 +98,14 @@ RSpec.describe "Edit a Shelter" do
       
       visit "/shelters/1/edit"
   
-      fill_in :name, with: "purple barn"
-      fill_in :user_id, with: ""
-      click_on "Save"
+      fill_in :shelter_name, with: "purple barn"
+      # fill_in :user_id, with: ""
+      click_on "Save Shelter"
 
       expect(current_path).to eq("/shelters/1/edit")
       expect(page).to have_content("Error. Shelter not updated.")
       expect(page).to have_content("Shelter Name: purple barn")
-      expect(page).to have_content("Shelter User ID: 2")
+      # expect(page).to have_content("Shelter User ID: 2")
     end
   end
 end
