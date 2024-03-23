@@ -18,7 +18,7 @@
 // b6
 @import "bootstrap";
 .container {
-  background-color: #f3bc2b;
+  background-color: #8cdcec;
   text-align: center;
 }
 // This restricts the maximum size of an image (not as responsive, but doesn't get silly large)
@@ -29,3 +29,6 @@
   height: auto;
   width: auto;
 }
+
+@import "simple_calendar";
+// for simplecalendar default stylesheet
