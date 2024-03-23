@@ -1,20 +1,16 @@
 require "rails_helper"
 
 RSpec.describe "Animal Service", type: :service do
-  describe "Animal service" do
-    xit "calls a animal" do
+  describe "Animal Service" do
+    it "calls a animal" do
       json_response = File.read("spec/fixtures/animals_show.json")
       stub_request(:get, "http://localhost:5000/api/v1/shelters/1/animals/1").
-        with(
-          headers: {
-                'Accept'=>'*/*',
-                'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-                'User-Agent'=>'Faraday v2.9.0'
-          }).
+        to_return(status: 200, body: json_response, headers: {})
+      stub_request(:get, "https://hidden-sands-71693-380133048218.herokuapp.com/api/v1/shelters/1/animals/1").
         to_return(status: 200, body: json_response, headers: {})
 
       service = AnimalService.new
-      poro_data = service.get_animal(1,1)[:data]
+      poro_data = service.get_animal_service(1,1)#[:data]
       expect(poro_data[:id]).to eq("1") 
       expect(poro_data[:type]).to eq("animal") 
       expect(poro_data[:attributes][:name]).to eq("Tom") 

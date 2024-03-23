@@ -16,79 +16,49 @@ RSpec.describe "New Animal Form", type: :feature do
   # And I see the message "Animal successfully created."
   describe "happy path" do
 
+    # Simulate a user logging in to fix the navbar issue
+    before :each do
+      @user = User.create!(email: "fix@navbar.com", password: "password", password_confirmation: "password", id: 77)
+      user_shelters = File.read("spec/fixtures/user_shelters.json")
+      stub_request(:get, "https://hidden-sands-71693-380133048218.herokuapp.com/api/v1/shelters?user_id=77").
+        to_return(status: 200, body: user_shelters, headers: {})
+      visit log_in_path
+      fill_in :email, with: @user.email
+      fill_in :password, with: @user.password
+      click_on "Submit"
+    end
+    
     it "has a form to create a new animal" do
       # WebMock.allow_net_connect!
       json_response = File.read("spec/fixtures/shelter_1.json")
-
-      stub_request(:get, "http://localhost:5000/api/v1/shelters/1").
-      with(
-        headers: {
-        'Accept'=>'*/*',
-        'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-        'User-Agent'=>'Faraday v2.9.0'
-        }).
-      to_return(status: 200, body: json_response, headers: {})
-
-      stub_request(:get, "https://hidden-sands-71693-380133048218.herokuapp.com/api/v1/shelters/1").
-        with(
-          headers: {
-        'Accept'=>'*/*',
-        'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-        'User-Agent'=>'Faraday v2.9.0'
-          }).
-        to_return(status: 200, body: json_response, headers: {})
-
       animals_index = File.read("spec/fixtures/animals_index.json")
-      stub_request(:get, "https://hidden-sands-71693-380133048218.herokuapp.com/api/v1/shelters/1/animals").
-        with(
-          headers: {
-        'Accept'=>'*/*',
-        'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-        'User-Agent'=>'Faraday v2.9.0'
-          }).
-        to_return(status: 200, body: animals_index, headers: {})
-
-
-      stub_request(:get, "https://hidden-sands-71693-380133048218.herokuapp.com/api/v1/shelters/1").
-        with(
-          headers: {
-        'Accept'=>'*/*',
-        'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-        'User-Agent'=>'Faraday v2.9.0'
-          }).
-        to_return(status: 200, body: json_response, headers: {})
-
-      animals_index = File.read("spec/fixtures/animals_index.json")
-      stub_request(:get, "https://hidden-sands-71693-380133048218.herokuapp.com/api/v1/shelters/1/animals").
-        with(
-          headers: {
-        'Accept'=>'*/*',
-        'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-        'User-Agent'=>'Faraday v2.9.0'
-          }).
-        to_return(status: 200, body: animals_index, headers: {})
-
-
       post_animal_response = File.read("spec/fixtures/create_animal_response.json")
+      
+      # GET requests
+      stub_request(:get, "https://hidden-sands-71693-380133048218.herokuapp.com/api/v1/shelters/1").
+      to_return(status: 200, body: json_response, headers: {})
+      stub_request(:get, "http://localhost:5000/api/v1/shelters/1").
+      to_return(status: 200, body: json_response, headers: {})
+      
+      stub_request(:get, "https://hidden-sands-71693-380133048218.herokuapp.com/api/v1/shelters/1/animals").
+      to_return(status: 200, body: animals_index, headers: {})
+      stub_request(:get, "http://localhost:5000/api/v1/shelters/1/animals").
+      to_return(status: 200, body: animals_index, headers: {})
+      
+      stub_request(:get, "http://localhost:5000/api/v1/shelters/1/animals/3").
+      to_return(status: 200, body: post_animal_response, headers: {})
+  
+      stub_request(:get, "https://hidden-sands-71693-380133048218.herokuapp.com/api/v1/shelters/1/animals/3").
+      to_return(status: 200, body: post_animal_response, headers: {})
+
+      # POST requests
+      stub_request(:post, "https://hidden-sands-71693-380133048218.herokuapp.com/api/v1/shelters/1/animals").
+        with(body: "{\"animal\":{\"shelter_id\":1,\"name\":\"Mickey McCluckkiddy\",\"species\":\"Chicken\",\"color\":\"black with orange spots\",\"birthday\":\"2024-03-03\"}}").
+      to_return(status: 200, body: post_animal_response, headers: {})
+
       stub_request(:post, "http://localhost:5000/api/v1/shelters/1/animals/").
-         with(
-           body: "{\"animal\":{\"shelter_id\":1,\"name\":\"Mickey McCluckkiddy\",\"species\":\"Chicken\",\"color\":\"black with orange spots\",\"birthday\":\"2024-03-03\"}}",
-           headers: {
-          'Accept'=>'*/*',
-          'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-          'User-Agent'=>'Faraday v2.9.0'
-           }).
-
+         with(body: "{\"animal\":{\"shelter_id\":1,\"name\":\"Mickey McCluckkiddy\",\"species\":\"Chicken\",\"color\":\"black with orange spots\",\"birthday\":\"2024-03-03\"}}").
          to_return(status: 200, body: post_animal_response, headers: {})
-
-         stub_request(:get, "http://localhost:5000/api/v1/shelters/1/animals/3").
-          with(
-            headers: {
-                  'Accept'=>'*/*',
-                  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-                  'User-Agent'=>'Faraday v2.9.0'
-            }).
-          to_return(status: 200, body: post_animal_response, headers: {})
 
       visit "/shelters/1"
 
@@ -100,19 +70,19 @@ RSpec.describe "New Animal Form", type: :feature do
       expect(current_path).to eq("/shelters/1/animals/new")
 
       within(".new_animal_form") do
-        expect(page).to have_field("name")
-        expect(page).to have_field("species")
-        expect(page).to have_field("birthday")
-        expect(page).to have_field("color")
-        expect(page).to have_button("Submit")
+        expect(page).to have_field("Animal Name")
+        expect(page).to have_field("Species")
+        expect(page).to have_field("Birthday")
+        expect(page).to have_field("Color")
+        expect(page).to have_button("Save Animal")
       end
 
-      fill_in "name", with: "Mickey McCluckkiddy"
-      select "Chicken", from: "species"
-      fill_in "birthday", with: Date.new(2024,3,3)
-      fill_in "color", with: "black with orange spots"
+      fill_in "Animal Name", with: "Mickey McCluckkiddy"
+      select "Chicken", from: "Species"
+      fill_in "Birthday", with: Date.new(2024,3,3)
+      fill_in "Color", with: "black with orange spots"
 
-      click_button("Submit")
+      click_button("Save Animal") # <--- Updated to correct name, now button not working correctly due to response issue
       # expect(current_path).to eq("/shelters/1/animals/3")
       expect(page).to have_content("Mickey McCluckkiddy")
       expect(page).to have_content("Chicken")

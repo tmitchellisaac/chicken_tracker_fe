@@ -37,7 +37,7 @@
 <h4>Shelter's User ID: <%= @shelter.user_id %></h4>
 
 <div class="animals">
-  <p> Animals currently living in "<%= @shelter.name %>": </p>
+  <p> <%= @facade.animals.count %> Animals currently living in "<%= @shelter.name %>": </p>
   <% @facade.animals.each do |animal| %>
   <p class="animal">  <%= link_to animal.name, shelter_animal_path(@shelter.id, animal.id), class: "btn btn-success btn-sm shadow-lg" %>  </p>
     <hr>
