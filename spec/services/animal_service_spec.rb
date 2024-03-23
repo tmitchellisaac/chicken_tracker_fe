@@ -10,7 +10,7 @@ RSpec.describe "Animal Service", type: :service do
         to_return(status: 200, body: json_response, headers: {})
 
       service = AnimalService.new
-      poro_data = service.get_animal_service(1,1)[:data]
+      poro_data = service.get_animal_service(1,1)#[:data]
       expect(poro_data[:id]).to eq("1") 
       expect(poro_data[:type]).to eq("animal") 
       expect(poro_data[:attributes][:name]).to eq("Tom") 
