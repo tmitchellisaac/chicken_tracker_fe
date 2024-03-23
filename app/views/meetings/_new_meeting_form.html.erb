@@ -1,0 +1,50 @@
+<style>
+h1,h2 {
+  color: white;
+  text-align: center;
+  text-shadow: 2px 2px 2px black;
+  font-size: 40px;
+}
+
+.heading {
+   color: white;
+  text-align: center;
+  text-shadow: 2px 2px 2px black;
+  font-size: 30px;
+}
+
+.meeting {
+  text-align: center;
+  color: #FFFFFF;
+  text-shadow: 2px 2px 2px black;
+  font-size: 30px;
+  font-family: "Helvetica Neue"; 
+  
+}
+
+p {
+color: #FFF;
+background-color: #232323;
+text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #49ff18, 0 0 30px #49FF18, 0 0 40px #49FF18, 0 0 55px #49FF18, 0 0 75px #49ff18
+}
+
+.placeholder {
+  font-style: italic;
+  font-size: 1em;
+  color: #FFF;
+  background: thistle;
+  padding: 5px;
+}
+
+</style>
+
+
+  <%= simple_form_for :meeting, url: path, method: method, html: { class: "meeting"}, defaults: {required: false} do |f| %>
+    <%= f.input :name, label: :Title %>
+    <%= f.input :notes %>
+    <%= f.input :location %>
+    <%= f.input :start_time, as: :date, html5: true, label: :Date %>
+    <%= f.input :time, as: :time, html5: true, label: :Time %>
+    <%= f.submit "Save Event", class: "btn btn-success sm" %>
+
+  <% end %>
