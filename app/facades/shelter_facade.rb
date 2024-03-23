@@ -51,11 +51,4 @@ class ShelterFacade
   def animal_species
     animals.map{|animal| animal.species}.uniq.compact
   end
-
-
-  def meetings
-    single = SingleDayEvent.where(user_id: @user_id)
-    multi = MultiDayEvent.where(user_id: @user_id)
-    [single, multi].flatten
-  end
 end
