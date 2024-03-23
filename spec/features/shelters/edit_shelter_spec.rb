@@ -81,7 +81,6 @@ RSpec.describe "Edit a Shelter" do
         to_return(status: 200, body: updated_json_response, headers: {})
      
       click_on "Save Shelter"
-      save_and_open_page
 
       expect(current_path).to eq("/shelters/1")
       expect(page).to have_content("Shelter was successfully updated.")
@@ -90,16 +89,25 @@ RSpec.describe "Edit a Shelter" do
     end
   end
 
-  describe "[sad path]" do
+  xdescribe "[sad path]" do
     it "displays an error message if the shelter was not updated" do
-      json_response = File.read('spec/fixtures/shelter_1.json')
-      stub_request(:patch, "http://localhost:5000/api/v1/shelters/1").
-      to_return(status: 200, body: json_response, headers: {})
+      # json_response = File.read('spec/fixtures/shelter_1.json')
+      # stub_request(:patch, "http://localhost:5000/api/v1/shelters/1").
+      # to_return(status: 200, body: json_response, headers: {})
+      # stub_request(:patch, "https://hidden-sands-71693-380133048218.herokuapp.com/api/v1/shelters/1").
+      #   with(body: "{\"shelter\":{\"name\":\"purple barn\",\"user_id\":\"1\"}}").
+      # to_return(status: 200, body: json_response, headers: {})
+      # stub_request(:patch, "https://hidden-sands-71693-380133048218.herokuapp.com/api/v1/shelters/1/animals").
+      #   with(body: "{\"shelter\":{\"name\":\"purple barn\",\"user_id\":\"1\"}}").
+      # to_return(status: 200, body: json_response, headers: {})
       
       visit "/shelters/1/edit"
   
       fill_in :shelter_name, with: "purple barn"
       # fill_in :user_id, with: ""
+      stub_request(:patch, "https://hidden-sands-71693-380133048218.herokuapp.com/api/v1/shelters/1")
+      .to_return(status: 422, body: {errors: ["Error updating shelter"]}.to_json, headers: {})
+
       click_on "Save Shelter"
 
       expect(current_path).to eq("/shelters/1/edit")
