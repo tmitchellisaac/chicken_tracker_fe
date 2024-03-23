@@ -10,6 +10,8 @@
                             <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline roboto text-red"><h3>Dashboard</h2></span>
                     </li>
                     <li>
+                        <%= link_to "<i class='fs-4 bi-table'></i> <span class='ms-1 d-none d-sm-inline text-red'>Calendar</span>".html_safe, "", class: "nav-link px-0 align-middle text-decoration-none text-red" %>
+
                         <a href="#" class="nav-link px-0 align-middle">
                             <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline text-red">Calendar</span>
                         </a>
@@ -105,13 +107,18 @@
             </div>
             <div class="row">
                 <div class="col">
-                1 of 3
-                </div>
-                <div class="col">
-                2 of 3
-                </div>
-                <div class="col">
-                3 of 3
+                    <h4> What's Going On This Week? </h4>
+                    <br>
+                    <%= week_calendar(events: @facade.meetings) do |date, meetings| %>
+                      <%= date.day %>
+                    
+                    
+                      <% meetings.each do |meeting| %>
+                        <div>
+                          <%= link_to meeting.name, meeting_path(meeting), class: "link-info text-decoration-none", style: "font-family: 'Helvetica Neue';" %>
+                        </div>
+                      <% end %>
+                    <% end %>
                 </div>
             </div>
         </div>
