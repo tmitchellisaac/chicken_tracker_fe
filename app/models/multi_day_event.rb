@@ -1,5 +1,0 @@
-class MultiDayEvent < ApplicationRecord
-
-  
-
-end
