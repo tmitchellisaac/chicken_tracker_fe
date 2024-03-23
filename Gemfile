@@ -53,7 +53,7 @@ gem 'bootstrap', '~> 5.3.2'
 gem 'jquery-rails'
 gem 'omniauth-google-oauth2'
 gem 'simple_form'
-gem 'simple_calendar'
+
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
