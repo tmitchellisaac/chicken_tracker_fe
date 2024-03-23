@@ -8,7 +8,7 @@ class SheltersController < ApplicationController
     @facade = ShelterFacade.new(params)
     @shelter = @facade.shelter
     # @meetings = SingleDayEvent.where(user_id: @shelter.user_id)
-    # @meetingz = MultiDayEvent.where(user_id: @shelter.user_id)
+    # @meetingz =   MultiDayEvent.where(user_id: @shelter.user_id)
   end
 
   def edit
