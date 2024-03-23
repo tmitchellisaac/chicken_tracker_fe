@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :check_session_timeout
   helper_method :current_user
+  # before_action :validate_user
 
   def current_user
     @_current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
@@ -13,6 +14,13 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  def validate_user
+    unless current_user
+      flash[:alert] = "Please log in to view this page"
+      redirect_to log_in_path
+    end
+  end
 
   def check_session_timeout
     if session[:user_id] && session_timed_out?

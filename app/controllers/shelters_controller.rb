@@ -1,4 +1,6 @@
 class SheltersController < ApplicationController
+  before_action :validate_user
+
   # def index
   #   @facade = ShelterFacade.new(params)
   #   @shelters = @facade.user_shelters
