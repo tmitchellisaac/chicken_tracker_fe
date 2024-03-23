@@ -1,6 +1,19 @@
 require "rails_helper"
 
 RSpec.describe "Edit an Animal", type: :feature do
+
+  # Simulate a user logging in to fix the navbar issue
+  before :each do
+    @user = User.create!(email: "fix@navbar.com", password: "password", password_confirmation: "password", id: 77)
+    user_shelters = File.read("spec/fixtures/user_shelters.json")
+    stub_request(:get, "https://hidden-sands-71693-380133048218.herokuapp.com/api/v1/shelters?user_id=77").
+      to_return(status: 200, body: user_shelters, headers: {})
+    visit log_in_path
+    fill_in :email, with: @user.email
+    fill_in :password, with: @user.password
+    click_on "Submit"
+  end
+
   it "has a link to an edit an animal form" do
     json_response = File.read("spec/fixtures/animals_show.json")
 
