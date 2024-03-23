@@ -32,14 +32,7 @@ body
 
       text-align: center;
     }
-    /* #a94949
-    #2C2727 */
-    /* 5f4a37 */
-/* .navbar-custom .navbar-brand,
-.navbar-custom .navbar-text {
-    background-color: #82705F;
-}
-/* sidebar width */
+
 .side-bar
 {
     width: var(--offcanvas-width);
@@ -57,9 +50,7 @@ body
     display: inline-flex;
     transition: all ease 0.5s;
 }
-.center {
-  justify-content: center;
-}
+
 .quicksand {
   font-family: "Quicksand", sans-serif;
   font-optical-sizing: auto;
