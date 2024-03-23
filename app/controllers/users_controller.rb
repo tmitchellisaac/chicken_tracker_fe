@@ -1,14 +1,14 @@
 class UsersController < ApplicationController
   def show
-    @user = User.find(params[:id])
     @facade = UserFacade.new(params)
+    @shelter =
   end
-  
+
   def new
     @user = User.new
   end
 
-  def create 
+  def create
     if user_params[:password] != user_params[:password_confirmation]
       flash[:error] = "User not created. Please ensure password and password confirmation match."
       redirect_to new_user_path
@@ -18,10 +18,10 @@ class UsersController < ApplicationController
         session[:user_id] = user.id
         flash[:success] = "Welcome!"
         redirect_to "/users/#{user.id}"
-      else  
+      else
         flash[:error] = "Unable to create user. Please try again."
         render :new
-      end 
+      end
     end
   end
 
@@ -35,14 +35,14 @@ class UsersController < ApplicationController
       # Authentication successful
       session[:user_id] = user.id
       redirect_to "/users/#{user.id}"
-      
+
     else
       # Authentication failed
       flash[:alert] = "Unable to log in. Please try again."
       render :login_form
     end
   end
-  
+
   private
   def user_params
     # params.require(:user).permit(:email, :password_digest)

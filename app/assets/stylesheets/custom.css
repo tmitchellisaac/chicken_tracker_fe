@@ -21,6 +21,10 @@
     transition: all ease 0.5s;
 } */
 
+ul {
+  list-style-type: none;
+}
+
 body
     {
       /* background: linear-gradient(85deg, #872F2F 40%, #A94949); */
