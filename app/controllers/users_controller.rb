@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   def show
     @facade = UserFacade.new(params)
-    @shelter =
+    @meetings = SingleDayEvent.where(user_id: params[:id])
   end
 
   def new

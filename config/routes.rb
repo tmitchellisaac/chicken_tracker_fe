@@ -18,9 +18,10 @@ Rails.application.routes.draw do
   post "/users/new", to: "users#create"
 
   resources :users, only: [:show, :new, :create]
-
-  resources :shelters, only: [:show, :edit, :update, :destroy, :create, :new]
-  resources :animals
+  resources :meetings
+  resources :shelters, only: [:show, :edit, :update, :destroy, :create, :new] do
+    resources :animals
+  end
   get '/auth/google_oauth2/callback', to: 'sessions#create'
 
   # get "/auth/google_oauth2", to: "users/new"

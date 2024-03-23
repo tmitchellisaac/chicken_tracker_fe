@@ -1,0 +1,6 @@
+class SingleDayEvent < ApplicationRecord
+  
+
+
+
+end
