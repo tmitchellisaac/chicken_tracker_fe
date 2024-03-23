@@ -17,4 +17,4 @@
 hooves_cut = SingleDayEvent.create!(start_time: Date.new(2024, 3, 22), name: "Hooves Cut", user_id: 2, notes: "Remember to bring cash", location: "Downtown Veterinary Office")
 birthday = SingleDayEvent.create!(start_time: Date.new(2024, 3, 24), name: "Birthday", user_id: 2)
 
-molting = MultiDayEvent.create!(start_time: Date.new(2024, 3, 28), end_time: Date.new(2024, 3, 30), name: "Molting", user_id: 2 )
+

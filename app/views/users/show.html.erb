@@ -9,41 +9,20 @@ h1,h2,h4,p {
 </style>
 
 <br>
-<h1>Your Chicken Tracker Dashboard</h1>
+<h2>User Dashboard</h2>
 <hr>
-<p>User Email: <%= @user.email %></p>
-<br>
+<h4>User Email: <%= @user.email %></h4>
 <br>
 <h2>My Shelters</h2>
 <hr>
+<%= link_to "Create A Shelter!", new_shelter_path(user_id: @user.id), class: "btn btn-success shadow-lg m-2" %>
 <%# need to add new page %>
 <br>
 <% @facade.shelters.each do |shelter| %>
-  <%= link_to shelter.name, shelter_path(shelter.id, user_id: shelter.user_id), class: "btn btn-success shadow-lg m-2", style: "color: white;" %>
+  <%= link_to shelter.name, shelter_path(shelter.id), class: "btn btn-success shadow-lg m-2", style: "color: white;" %>
 <% end %>
 <br>
 <br>
 <hr>
-<%= link_to "~Create A New Shelter~", new_shelter_path(user_id: @user.id), class: "btn btn-success shadow-lg m-2" %>
-<hr>
-<h4> What's Going On This Week? </h4>
-<br>
-<%= week_calendar(events: @facade.meetings) do |date, meetings| %>
-  <%= date.day %>
-
-
-  <% meetings.each do |meeting| %>
-    <div>
-      <%= link_to meeting.name, meeting_path(meeting), class: "link-info text-decoration-none", style: "font-family: 'Helvetica Neue';" %>
-    </div>
-  <% end %>
-<% end %>
-
-
-<%= link_to "Monthly Calendar", meetings_path(user_id: @facade.user_id), class: "btn btn-dark text-decoration-none", style: "font-family: 'Helvetica Neue';" %>
-
-<%= link_to "Add An Event", new_meeting_path(user_id: @facade.user_id), class: "btn btn-dark text-decoration-none", style: "font-family: 'Helvetica Neue';" %> 
-<br>
-<br>
-<br>
-<%= link_to "Log Out", log_out_path, method: :get, class: "btn btn-success shadow-lg m-2"  %>
+<!-- removed due to the addition of the log out button in the navbar -->
+<%# link_to "Log Out", log_out_path, method: :get, class: "btn btn-success shadow-lg m-2" %>
