@@ -92,6 +92,11 @@ body
 .text-gold {
   color: #fab93a;
 }
+
+.text-red {
+  color: #a43939;
+}
+
 .main-text {
   color: #fab93a;
   font-family: "Roboto Condensed", sans-serif;
