@@ -85,7 +85,7 @@ RSpec.describe "Create a Shelter" do
         # When I visit 'shelter/new' (or click the New Shelter button on the home page)
        
         visit "/users/689"
-        click_link "Create A Shelter!"
+        click_link "Create A New Shelter"
         # Then I see a form
         # And I fill in the form with 'name' and 'user_id'
         fill_in :shelter_name, with: "red barn"
