@@ -20,7 +20,9 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :new, :create]
   resources :meetings
   resources :shelters, only: [:show, :edit, :update, :destroy, :create, :new] do
-    resources :animals
+    resources :animals, only: [:show, :edit, :update, :destroy, :create, :new] do
+      resources :animal_images, only: [:create, :new]
+    end
   end
   get '/auth/google_oauth2/callback', to: 'sessions#create'
 

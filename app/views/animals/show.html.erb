@@ -26,9 +26,16 @@ h1,h2,p {
 <p>Avg Lifespan: <%= @facade.animal.lifespan %></p>
 <p>Weight: <%= @facade.animal.weight %></p>
 <p>Lifestyle: <%= @facade.animal.lifestyle %></p>
+<% if @image != nil %>
+  <image src="<%=@image%>">
+<% end %>
 
 <div class="d-flex justify-content-center">
   <%= link_to "Edit this animal", "/shelters/#{@facade.shelter_id}/animals/#{@facade.id}/edit", method: :get, class: "btn btn-success m-2"  %>
+  
+  <% if @image == nil %>
+    <%= link_to "Add a Photo", "/shelters/#{@facade.shelter_id}/animals/#{@facade.id}/animal_images/new", method: :get, class: "btn btn-success m-2"  %>
+  <% end %>
  
   <%= button_to "Delete this Animal", "/shelters/#{@facade.shelter_id}/animals/#{@facade.id}", method: :delete, class: "btn btn-success m-2"  %>
 
