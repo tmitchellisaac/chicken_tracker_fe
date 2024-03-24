@@ -10,9 +10,9 @@ RSpec.describe "Animal Show Page", type: :feature do
       stub_request(:get, "https://hidden-sands-71693-380133048218.herokuapp.com/api/v1/shelters?user_id=77").
         to_return(status: 200, body: user_shelters, headers: {})
       visit log_in_path
-      fill_in :email, with: @user.email
-      fill_in :password, with: @user.password
-      click_on "Submit"
+      fill_in :user_email, with: @user.email
+      fill_in :user_password, with: @user.password
+      click_on "Sign In"
     end
 
   # As a user,
@@ -47,7 +47,7 @@ RSpec.describe "Animal Show Page", type: :feature do
 
       visit "/shelters/#{animal.shelter_id}/animals/#{animal.id}"
       expect(current_path).to eq("/shelters/#{animal.shelter_id}/animals/#{animal.id}")
-      expect(page).to have_content("Animal Show Page")
+      expect(page).to have_content("All About #{animal.name}")
     end
   end
 

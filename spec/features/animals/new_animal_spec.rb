@@ -23,9 +23,9 @@ RSpec.describe "New Animal Form", type: :feature do
       stub_request(:get, "https://hidden-sands-71693-380133048218.herokuapp.com/api/v1/shelters?user_id=77").
         to_return(status: 200, body: user_shelters, headers: {})
       visit log_in_path
-      fill_in :email, with: @user.email
-      fill_in :password, with: @user.password
-      click_on "Submit"
+      fill_in :user_email, with: @user.email
+      fill_in :user_password, with: @user.password
+      click_on "Sign In"
     end
     
     it "has a form to create a new animal" do
