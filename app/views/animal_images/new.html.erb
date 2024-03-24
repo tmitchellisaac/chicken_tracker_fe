@@ -1,0 +1,8 @@
+<%= form_with url: "/shelters/#{@shelter_id}/animals/#{@animal_id}/animal_images", method: :post, data: { turbo: false } do |form| %>
+    <%= form.hidden_field :shelter_id, value: @shelter_id %>
+    <%= form.hidden_field :animal_id, value: @animal_id %>
+    <%= form.label "Animal Image" %>
+    <%= form.file_field :image, accept: 'image/png,image/jpeg'%>
+    <br>
+    <%= form.submit "Submit" %>
+<% end %>
