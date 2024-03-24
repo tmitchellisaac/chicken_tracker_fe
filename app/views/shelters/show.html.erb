@@ -4,7 +4,7 @@
         <h1 class="roboto text-center text-white text-padding-top"><%= @shelter.name %></h1>
         <br>
         <div class="card-animal-show bg-light">
-          <h2 class="text-center text-padding-top quicksand"><%= @facade.animals.count %> Animals currently living in "<%= @shelter.name %>"</h2>
+          <h2 class="text-center text-padding-top quicksand"><%= @facade.animals.size %> Animals currently living in "<%= @shelter.name %>"</h2>
           <div class="cover-container d-flex h-100 p-3 flex-column align-items-center justify-content-center">
             <div class="row">
               <div class="col text-center">
@@ -12,7 +12,6 @@
                   <table>
                     <% @facade.animals.each do |animal| %>
                       <tr>
-                        <td><%= link_to animal.name, shelter_animal_path(@shelter.id, animal.id), class: "btn btn-success btn-sm shadow-lg" %></td>
                         <td><%= link_to animal.name, shelter_animal_path(@shelter.id, animal.id), class: "btn btn-success btn-sm shadow-lg" %></td>
                       </tr>
                     <% end %>
