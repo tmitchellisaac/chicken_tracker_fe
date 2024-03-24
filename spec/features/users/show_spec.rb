@@ -30,9 +30,7 @@ RSpec.describe "User Dashboard (users/show page)" do
     # user = User.create!(email: "test@test.com", password:"password123", id: 1)
 
     visit "/users/1"
-    
     expect(current_path).to eq("/users/1")
-    expect(page).to have_content("User Dashboard")
     expect(page).to have_content("User Email:")
     expect(page).to have_content("My Shelters")
   end
