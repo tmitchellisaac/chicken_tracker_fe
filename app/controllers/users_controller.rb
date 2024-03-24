@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :validate_user, only: [:show]
-  
+  before_action :restrict_access, only: [:show] # <-- This creates six errors in the tests
+
   def show
     @user = User.find(params[:id])
     @facade = UserFacade.new(params)

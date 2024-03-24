@@ -1,7 +1,7 @@
 class SheltersController < ApplicationController
-  before_action :validate_user
+  before_action :validate_user, only: [:show]
+  # before_action :restrict_access, only: [:show]
 
-  # def index
   #   @facade = ShelterFacade.new(params)
   #   @shelters = @facade.user_shelters
   # end
