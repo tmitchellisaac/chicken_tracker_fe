@@ -58,59 +58,9 @@ body
   padding-left: 10%;
 }
 
-/* .nav-text-padding {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 70%; */
-  /* justify-content: center; */
-/* } */
-
-/* @media only screen and (max-width: 1400px) {
-  .nav-text-padding {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 80%;
-  }
-
-  .padding {
-    padding-left: 8%;
-  }
-} */
-
-/* @media only screen and (max-width: 1200px) {
-  .nav-text-padding {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 90%;
-  }
-
-  .padding {
-    padding-left: 8%;
-  }
-} */
-
-/* @media only screen and (max-width: 950px) {
-  .nav-text-padding {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 130%;
-  }
-
-  .padding {
-    padding-left: 5%;
-  }
-
-} */
-
-/* @media only screen and (max-width: 750px) {
-  .padding {
-      padding-left: 0%;
-  }
-} */
+.text-padding-top {
+  padding-top: 2%;
+}
 
 .custom-img-max {
   max-height: auto;
