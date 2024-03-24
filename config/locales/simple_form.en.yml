@@ -6,8 +6,10 @@ en:
       animal:
         name: "Name of your animal"
         color: "Animal color"
-      animal_edit:
-        name: "Hello"
+      meeting:
+        name: "Toby's Hooves Trimmed"
+        notes: "Sharpen blades on the red trimmers"
+        start_time: "Input the date"
     labels:
       animal:
         name: "Animal Name"

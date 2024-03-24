@@ -62,6 +62,10 @@ body
   padding-top: 2%;
 }
 
+.header-padding-top {
+  padding-top: 5%;
+}
+
 .padding-bottom {
   padding-bottom: 5%;
 }
@@ -145,6 +149,12 @@ h1{
   height: 800px;
 }
 
+.new-event-container {
+  background-image: url("new-event.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 800px;
+}
 
 /* Meeting CSS Here */
 

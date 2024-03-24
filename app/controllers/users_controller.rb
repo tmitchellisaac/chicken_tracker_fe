@@ -34,14 +34,14 @@ class UsersController < ApplicationController
   end
 
   def log_in
-    @user = User.find_by(email: params[:user][:email])
-    if @user && @user.authenticate(params[:user][:password])
-      flash.now[:notice] = "You've logged in successfully!"
-      session[:user_id] = @user.id
-      redirect_to "/users/#{@user.id}"
+    user = User.find_by(email: params[:user][:email])
+    if user && user.authenticate(params[:user][:password])
+      flash[:notice] = "You've logged in successfully!"
+      session[:user_id] = user.id
+      redirect_to "/users/#{user.id}"
     else
       # Authentication failed
-      flash.now[:alert] = "Unable to log in. Please try again."
+      flash[:alert] = "Unable to log in. Please try again."
       render :login_form
     end
   end

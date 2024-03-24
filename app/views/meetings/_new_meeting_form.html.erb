@@ -1,12 +1,8 @@
-<div class="container-sm">
-  <%= simple_form_for :meeting, url: path, method: method, html: { class: "meeting"}, defaults: {required: false} do |f| %>
-    <%= f.input :name, label: :Title %>
-    <%= f.input :notes %>
-    <%= f.input :location %>
-    <%= f.input :start_time, as: :date, html5: true, label: :Date %>
-    <%= f.input :time, as: :time, html5: true, label: :Time %>
-    <%= f.submit "Save Event", class: "btn btn-success sm" %>
-  <% end %>
-</div>
-
-
+<%= simple_form_for :meeting, url: path, method: method, html: { class: "meeting"} do |f| %>
+  <%= f.input :name, :label_html => { :class => 'text-white quicksand weight-bold text-padding-top' } %>
+  <%= f.input :notes, :label_html => { :class => 'text-white quicksand weight-bold text-padding-top' } %>
+  <%= f.input :location, :label_html => { :class => 'text-white quicksand weight-bold text-padding-top' } %>
+  <%= f.input :date, :label_html => { :class => 'text-white quicksand weight-bold text-padding-top' } %>
+  <%= f.input :time, :label_html => { :class => 'text-white quicksand weight-bold text-padding-top' } %>
+    <%= f.submit class: "btn btn-success" %>
+<% end %>
