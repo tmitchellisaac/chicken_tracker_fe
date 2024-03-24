@@ -32,9 +32,9 @@ class MeetingsController < ApplicationController
   end
 
   def update
-  meeting = SingleDayEvent.find(params[:id])
+    meeting = SingleDayEvent.find(params[:id])
 
-    meeting.update!(meeting_params)
+    meeting.update!(meeting_params_edit)
 
     redirect_to meeting_path(meeting, user_id: meeting.user_id)
 
@@ -53,12 +53,16 @@ class MeetingsController < ApplicationController
 
   private
 
-  def meeting_params
+  def meeting_params_new
     meeting_params = params.require(:meeting).permit(:name, :notes, :location, :start_time, :time).merge(user_id: params[:user_id])
     date_params = format_date_params  # Extract date parameters
     date = Date.new(*date_params.values.map(&:to_i))  # Convert date parameters to a Date object
     meeting_params[:start_time] = date  # Assign the Date object back to the meeting_params hash
     meeting_params
+  end
+
+  def meeting_params_edit
+    params.require(:meeting).permit(:name, :notes, :location, :start_time, :time).merge(user_id: params[:user_id])
   end
 
   def format_date_params

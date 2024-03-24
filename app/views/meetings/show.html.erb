@@ -27,6 +27,7 @@
             <table>
               <tr>
                 <td><%= link_to "Edit Event", edit_meeting_path(@meeting, user_id: current_user.id), class: "btn btn-success" %></td>
+                <td><%= link_to "Calendar", meetings_path(@meeting, user_id: current_user.id), class: "btn btn-success" %></td>
                 <td><%= button_to "Delete Event", meeting_path(@meeting, user_id: current_user.id), method: :delete, class: "btn btn-success", data: { turbo: false } %></td>
               </tr>
             </table>
