@@ -27,6 +27,12 @@ class AnimalsController < ApplicationController
 
   def show
     @facade = AnimalFacade.new(params)
+
+    @image = nil
+    animal_image = AnimalImage.find_by_id(params[:id])
+    if animal_image != nil
+      @image = url_for(animal_image.image)
+    end
   end
 
   def edit
