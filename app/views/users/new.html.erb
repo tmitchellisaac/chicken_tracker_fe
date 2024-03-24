@@ -4,7 +4,7 @@
       <h1 class="roboto text-center text-white text-padding-top">Register New User</h1>
       <div class="user_log_in">
         <%= simple_form_for @user, url: new_user_path, method: :post, html: { class: "user"}, data: { turbo: false} do |f| %>
-          <%= f.input :email, :label_html => { :class => 'text-white quicksand weight-bold text-padding-top' } %>
+          <%= f.input :email, input_html: { autocomplete: 'email' }, :label_html => { :class => 'text-white quicksand weight-bold text-padding-top' } %>
           <%= f.input :password, :label_html => { :class => 'text-white quicksand weight-bold text-padding-top' } %>
           <%= f.input :password_confirmation, :label_html => { :class => 'text-white quicksand weight-bold text-padding-top' } %>
           <%= f.submit class: "btn btn-success" %>

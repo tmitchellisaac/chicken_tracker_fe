@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new
     if user_params[:password] != user_params[:password_confirmation]
-      flash[:error] = "User not created. Please ensure password and password confirmation match."
+      flash.now[:error] = "User not created. Please ensure password and password confirmation match."
 
       redirect_to new_user_path
     else
@@ -22,26 +22,26 @@ class UsersController < ApplicationController
         flash.now[:success] = "Welcome!"
         redirect_to "/users/#{user.id}"
       else
-        flash[:error] = "Unable to create user. Please try again."
+        flash.now[:error] = "Unable to create user. Please try again."
         render :new
       end
     end
   end
 
   def login_form
-    flash[:alert] = "Unable to log in. Please try again."
+    flash.now[:alert] = "Unable to log in. Please try again."
     render :login_form
   end
 
   def log_in
-    @user = User.find_by(email: params[:email])
-    if @user && @user.authenticate(params[:password])
-      flash[:notice] = "You've logged in successfully!"
+    @user = User.find_by(email: params[:user][:email])
+    if @user && @user.authenticate(params[:user][:password])
+      flash.now[:notice] = "You've logged in successfully!"
       session[:user_id] = @user.id
       redirect_to "/users/#{@user.id}"
     else
       # Authentication failed
-      flash[:alert] = "Unable to log in. Please try again."
+      flash.now[:alert] = "Unable to log in. Please try again."
       render :login_form
     end
   end

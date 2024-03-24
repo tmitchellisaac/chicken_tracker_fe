@@ -19,11 +19,13 @@
       <% if current_user %>
         <%= render partial: "/shared/navbar" %>
       <% end %>
-        <% flash.each do |type, msg| %>
-          <div class="text-red">
-            <%= msg %>
-          </div>
-        <% end %>
+
+      <% flash.each do |type, msg| %>
+        <div class="text-red">
+          <%= msg %>
+        </div>
+      <% end %>
+
       <%= yield %>
     </body>
 </html>

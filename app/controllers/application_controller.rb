@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
 
   def log_out
     reset_session # inbuilt RoR method
-    flash[:alert] = "Logged out successfully"
+    flash.now[:alert] = "Logged out successfully"
     # redirect_to log_in_path
   end
 
