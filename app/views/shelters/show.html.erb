@@ -46,7 +46,6 @@
     <p> <%= link_to "Edit Shelter", "/shelters/#{@facade.shelter.id}/edit", data: { turbo: false }, class: "btn btn-success shadow-lg" %></p>
     <!-- the delete confirmation is inbuilt, but I am not sure why it is not working-->
     <p> <%= button_to "Delete Shelter", "/shelters/#{@facade.shelter.id}", method: :delete, data: { confirm: "Are you sure you want to delete this shelter?", turbo: false }, class: "btn btn-success shadow-lg" %></p>
-    <p> <%= link_to "User Dashboard", "/users/#{@facade.shelter.user_id}", class: "btn btn-success" %></p>
   </div>
 </div>
 

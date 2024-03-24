@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  before_action :validate_user, only: [:show]
+  before_action :restrict_access, only: [:show] # <-- This creates six errors in the tests
+
   def show
     @facade = UserFacade.new(params)
     @meetings = SingleDayEvent.where(user_id: params[:id])

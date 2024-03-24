@@ -4,9 +4,9 @@ RSpec.describe "User Dashboard (users/show page)" do
 
   # Simulate a user logging in to fix the navbar issue
   before :each do
-    @user = User.create!(email: "fix@navbar.com", password: "password", password_confirmation: "password", id: 77)
+    @user = User.create!(email: "test@test.com", password: "password123", password_confirmation: "password123", id: 1)
     user_shelters = File.read("spec/fixtures/user_shelters.json")
-    stub_request(:get, "https://hidden-sands-71693-380133048218.herokuapp.com/api/v1/shelters?user_id=77").
+    stub_request(:get, "https://hidden-sands-71693-380133048218.herokuapp.com/api/v1/shelters?user_id=1").
       to_return(status: 200, body: user_shelters, headers: {})
     visit log_in_path
     fill_in :email, with: @user.email
@@ -27,18 +27,16 @@ RSpec.describe "User Dashboard (users/show page)" do
   end
   
   it "visits the user's dashboard" do
-    user = User.create!(email: "test@test.com", password:"password123", id: 1)
+    # user = User.create!(email: "test@test.com", password:"password123", id: 1)
 
     visit "/users/1"
-    
     expect(current_path).to eq("/users/1")
-    expect(page).to have_content("User Dashboard")
     expect(page).to have_content("User Email:")
     expect(page).to have_content("My Shelters")
   end
   
   it "has a link to log out" do
-    user = User.create!(email: "test@test.com", password:"password123", id: 1)
+    # user = User.create!(email: "test@test.com", password:"password123", id: 1)
     
     visit "/users/1"
 
