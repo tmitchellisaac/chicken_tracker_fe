@@ -1,20 +1,22 @@
 <%= render partial: "shared/inside_shelter" %>
-<% if current_user%>
+
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-md-6">
+      <% if current_user%>
         <h1 class="roboto text-center text-white text-padding-top">New Shelter</h1>
-        <%= link_to sanitize("&larr; Back to My Shelters"), user_path(current_user) %>
-        <div class="new_shelter_form">
-          <%= render "form", shelter: @facade,
-                          path: "/shelters?user_id=#{@facade.user_id}",
-                          method: :post %>
-        </div>
+        <div class="edit_shelter_form">
+          <%= link_to sanitize("&larr; Back to My Shelters"), user_path(current_user) %>
+          <div class="new_shelter_form">
+            <%= render "form", shelter: @facade,
+                            path: "/shelters?user_id=#{@facade.user_id}",
+                            method: :post %>
+          </div>
+      <% else %>
+        <h1> No, no no....Go to User Dashboard ;)</h1>
+        <%= image_tag("logo.jpeg", class: "img-fluid custom-img-max")%>
+      <% end %>
     </div>
   </div>
 </div>
 
-<% else %>
-    <h1> No, no no....Go to User Dashboard ;)</h1>
-    <%= image_tag("logo.jpeg", class: "img-fluid custom-img-max")%>
-<% end %>
