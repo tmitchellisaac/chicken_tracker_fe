@@ -2,6 +2,7 @@ class MeetingsController < ApplicationController
   def index
     if params[:user_id]
       @facade = MeetingsFacade.new(params)
+      @events = @facade.user_meetings
     else
       redirect_to users_path
     end

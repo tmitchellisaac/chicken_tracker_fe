@@ -130,7 +130,19 @@ h1{
   background-image: url("animal_show_page.jpg");
   background-size: cover;
   background-position: center;
-  
+}
+
+.calendar-index-container {
+  background-image: url("on_the_go.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.user-log-in-container {
+  background-image: url("chicken_coop.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 800px;
 }
 
 
@@ -174,3 +186,6 @@ h1{
 .container-small, .container-large {
   max-width: 100%;
 }
+
+
+/* Simple Calendar CSS */

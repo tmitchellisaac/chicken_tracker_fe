@@ -27,11 +27,30 @@
 }
 
 @import "simple_calendar";
+.simple-calendar {
+  .day {}
 
-$container-max-widths: (
-  sm: 400px,
-  md: 720px,
-  lg: 960px,
-  xl: 1140px,
-  xxl: 1320px
-);
+  .wday-0 {}
+  .wday-1 {}
+  .wday-2 {}
+  .wday-3 {}
+  .wday-4 {}
+  .wday-5 {}
+  .wday-6 {}
+
+  .today {}
+  .past {}
+  .future {}
+
+  .start-date {}
+
+  .prev-month {}
+  .next-month { }
+  .current-month {}
+
+  .has-events {}
+
+  .app-bg-image {
+    background-image: url("on_the_go.jpg");
+  }
+}

@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-    
+
   end
 
   def create
@@ -32,11 +32,11 @@ class UsersController < ApplicationController
   end
 
   def log_in
-    user = User.find_by(email: params[:email])
-    if user && user.authenticate(params[:password])
+    @user = User.find_by(email: params[:email])
+    if @user && @user.authenticate(params[:password])
       # Authentication successful
-      session[:user_id] = user.id
-      redirect_to "/users/#{user.id}"
+      session[:user_id] = @user.id
+      redirect_to "/users/#{@user.id}"
 
     else
       # Authentication failed
