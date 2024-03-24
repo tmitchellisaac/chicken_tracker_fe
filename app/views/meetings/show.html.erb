@@ -1,43 +1,40 @@
-<style>
-h1,h2 {
-  color: white;
-  text-align: center;
-  text-shadow: 2px 2px 2px black;
-  font-size: 40px;
-}
+<div class="container-sm new-event-container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+        <h1 class="roboto text-center text-padding-top">Event for: <%= @meeting.name %></h1>
+        <br>
+        <div class="card-md-show bg-light">
+          <div class="cover-container d-flex h-100 p-3 flex-column align-items-center justify-content-center">
+            <table class="quicksand">
+              <tr>
+                <td>Notes:</td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td class="text-right"><%= @meeting.notes %></td>
+              </tr>
+              <tr>
+                <td>Location:</td>
+                <td>&nbsp;</td>
+                <td><%= @meeting.location %></td>
+              </tr>
+              <tr>
+                <td>Date:</td>
+                <td>&nbsp;</td>
+                <td><%= @meeting.start_time.strftime('%A, %B %Y') %> at <%= @meeting.time.strftime("%I:%M %p") %></td>
+              </tr>
+            </table>
+            <br>
+            <br>
+            <table>
+              <tr>
+                <td><%= link_to "Edit Event", edit_meeting_path(@meeting, user_id: current_user.id), class: "btn btn-success" %></td>
+                <td><%= link_to "Calendar", meetings_path(@meeting, user_id: current_user.id), class: "btn btn-success" %></td>
+                <td><%= button_to "Delete Event", meeting_path(@meeting, user_id: current_user.id), method: :delete, class: "btn btn-success", data: { turbo: false } %></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-.heading {
-   color: white;
-  text-align: center;
-  text-shadow: 2px 2px 2px black;
-  font-size: 30px;
-}
-
-.meeting {
-  text-align: center;
-  color: #FFFFFF;
-  text-shadow: 2px 2px 2px black;
-  font-size: 30px;
-  font-family: "Helvetica Neue"; 
-  
-}
-
-p {
-text-align: center;
-  color: #FFFFFF;
-  text-shadow: 2px 2px 2px black;
-  font-size: 20px;
-  font-family: "Helvetica Neue"; 
-}
-
-</style>
-
-<h1><%= @meeting.name %> </h1>
-<p> Notes: <%= @meeting.notes %> </p>
-<p> Location: <%= @meeting.location %> </p>
-<p> Date: <%= @meeting.start_time.strftime('%A, %B %Y') %> at <%= @meeting.time.strftime("%I:%M %p") %> </p>
-
-<%= link_to "User Dashboard", "/users/#{current_user.id}", class: "btn btn-success" %>
-<%= link_to "Edit Event", edit_meeting_path(@meeting, user_id: current_user.id), class: "btn btn-success" %>
-
-<%= button_to "Delete Event", meeting_path(@meeting, user_id: current_user.id), method: :delete, class: "btn btn-success", data: { turbo: false } %>

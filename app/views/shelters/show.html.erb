@@ -1,51 +1,39 @@
-<%= render partial: "shared/inside_shelter" %>
+<div class="container animal-show-container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+        <h1 class="roboto text-center text-white text-padding-top"><%= @shelter.name %></h1>
+        <br>
+        <div class="card-animal-show bg-light">
+          <h2 class="text-center text-padding-top quicksand"><%= @facade.animals.size %> Animals currently living in "<%= @shelter.name %>"</h2>
+          <div class="cover-container d-flex h-100 p-3 flex-column align-items-center justify-content-center">
+            <div class="row">
+              <div class="col text-center">
+                <div class="animals">
+                  <table>
+                    <% @facade.animals.each do |animal| %>
+                      <tr>
+                        <td><%= link_to animal.name, shelter_animal_path(@shelter.id, animal.id), class: "btn btn-success btn-sm shadow-lg" %></td>
+                      </tr>
+                    <% end %>
+                  </table>
+                    <br>
+                    <br>
+                  <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="d-flex justify-content-center padding-bottom">
+          <%= link_to "Create New Animal", "/shelters/#{@facade.shelter.id}/animals/new", data: { turbo: false }, class: "btn btn-success shadow-lg" %>
+          <%= link_to "Edit Shelter", "/shelters/#{@facade.shelter.id}/edit", data: { turbo: false }, class: "btn btn-success shadow-lg" %>
+          <!-- the delete confirmation is inbuilt, but I am not sure why it is not working-->
+          <%= button_to "Delete Shelter", "/shelters/#{@facade.shelter.id}", method: :delete, data: { confirm: "Are you sure you want to delete this shelter?", turbo: false }, class: "btn btn-success shadow-lg" %>
+        </div>
+    </div>
+  </div>
+</div>
 
-<style>
-  
-  h1,h2,h4 {
-    color: white;
-  text-align: center;
-  text-shadow: 2px 2px 0px black;
-}
 
-  .animals { 
-    color: white;
-    text-align: center;
-    text-decoration: underline;
-  }
-  .title {
-    color: purple;
-    text-align: center;
-    font-size: 100px;
-  }
-  .sub_title {
-    color: black;
-    text-align: center;
-  }
-
-  .display-1 {
-    color: #228B22;
-    text-align: center;
-    font-weight: bold;
-    text-decoration: underline;
-    text-shadow: 0px 0px 12px #1C6EA4;
-}
-
-</style>
-<h1> <%= @shelter.name %></h1>
-<h4>Shelter's User ID: <%= @shelter.user_id %></h4>
-
-<div class="animals">
-  <p> <%= @facade.animals.count %> Animals currently living in "<%= @shelter.name %>": </p>
-  <% @facade.animals.each do |animal| %>
-  <p class="animal">  <%= link_to animal.name, shelter_animal_path(@shelter.id, animal.id), class: "btn btn-success btn-sm shadow-lg" %>  </p>
-    <hr>
-  <% end %>
-  <div>
-    <p> <%= link_to "Create New Animal", "/shelters/#{@facade.shelter.id}/animals/new", data: { turbo: false }, class: "btn btn-success shadow-lg" %></p>
-    <p> <%= link_to "Edit Shelter", "/shelters/#{@facade.shelter.id}/edit", data: { turbo: false }, class: "btn btn-success shadow-lg" %></p>
-    <!-- the delete confirmation is inbuilt, but I am not sure why it is not working-->
-    <p> <%= button_to "Delete Shelter", "/shelters/#{@facade.shelter.id}", method: :delete, data: { confirm: "Are you sure you want to delete this shelter?", turbo: false }, class: "btn btn-success shadow-lg" %></p>
   </div>
 </div>
 

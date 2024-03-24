@@ -6,11 +6,23 @@ en:
       animal:
         name: "Name of your animal"
         color: "Animal color"
-      animal_edit:
-        name: "Hello"
+      meeting:
+        name: "Toby's Vet Appointment"
+        notes: "Make sure to trim hooves beforehand"
+        location: "VEG Animal Care"
+        start_time: "Input the date"
     labels:
       animal:
         name: "Animal Name"
+      user:
+        defaults:
+          password: 'Password'
+        new:
+          email: 'E-mail to sign in'
+        edit:
+          email: 'E-mail'
+      meeting:
+        start_time: "Date"
     required:
       text: 'required'
       mark: ''
@@ -27,19 +39,19 @@ en:
 
     error_notification:
       default_message: "Please review the problems below:"
-    # Examples
-    # labels:
-    #   defaults:
-    #     password: 'Password'
-    #   user:
-    #     new:
-    #       email: 'E-mail to sign in.'
-    #     edit:
-    #       email: 'E-mail.'
-    # hints:
-    #   defaults:
-    #     username: 'User name to sign in.'
-    #     password: 'No special characters, please.'
+
+    labels:
+      defaults:
+        password: 'Password'
+      user:
+        new:
+          email: 'E-mail to sign in.'
+        edit:
+          email: 'E-mail.'
+    hints:
+      defaults:
+        username: 'User name to sign in.'
+        password: 'No special characters, please.'
     # include_blanks:
     #   defaults:
     #     age: 'Rather not say'

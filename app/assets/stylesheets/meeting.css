@@ -1,0 +1,33 @@
+.simple-calendar {
+  .day {}
+
+  .wday-0 {}
+  .wday-1 {}
+  .wday-2 {}
+  .wday-3 {}
+  .wday-4 {}
+  .wday-5 {}
+  .wday-6 {}
+
+  .today { color: red; }
+  .past { color:gray;}
+  .future {color: blue;}
+
+  .start-date {}
+
+  .prev-month {}
+  .next-month {}
+  .current-month {}
+
+  .has-events {}
+
+  .app-bg-image {
+    background-image: url("on_the_go.jpg");
+  }
+  .btn-grey-bg-color {}
+  
+}
+
+.simple-calendar .prev-month-btn {
+    color: red;
+}
