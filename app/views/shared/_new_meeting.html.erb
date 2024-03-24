@@ -1,0 +1,53 @@
+<%= form_with url: "/meetings?user_id=#{@facade.user_id}", local: true, method: :post do |form| %>
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :date %>
+    <%= form.date_field :start_time %>
+  </div>
+
+  <div class="field">
+    <%= form.label :notes %>
+    <%= form.text_area :notes %>
+  </div>
+
+  <div class="field">
+    <%= form.label :location %>
+    <%= form.text_field :location %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Create Meeting" %>
+  </div>
+<% end %>
+
+
+<%= f.imput :name, placeholder: "Toby's Hooves Trimmed" %>
+  <%= f.input :description %>
+  <%= f.input :notes, placeholder: "sharpen blades on the red trimmers" %>
+  <%= f.input :location %>
+  <%= f.input :start_time, label: "Input the date" %>
+  <%= f.submit 'Save Event' %>
+
+  <%= f.label :title %>
+  <%= f.input_field :title %>
+
+  <%= f.input :username %>
+  <%= f.input :password %>
+
+  <%= f.input :username, label: 'Your username please', error: 'Username is mandatory, please specify one' %>
+  <%= f.input :password, hint: 'No special characters.' %>
+  <%= f.input :email, placeholder: 'user@domain.com' %>
+  <%= f.input :remember_me, inline_label: 'Yes, remember me' %>
+  
+  <%= f.hint 'Any notes you would like to add?' %>
+  <%= f.error :title, id: 'user_name_error' %>
+  <%= f.submit 'Save' %>
