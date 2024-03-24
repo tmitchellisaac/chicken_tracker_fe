@@ -4,18 +4,14 @@ RSpec.describe "Delete a Shelter" do
 
     # Simulate a user logging in to fix the navbar issue
     before :each do
-      @user = User.create!(email: "fix@navbar.com", password: "password", password_confirmation: "password", id: 77)
+      @user = User.create!(email: "test@test.com", password: "test", password_confirmation: "test", id: 630)
       user_shelters = File.read("spec/fixtures/user_shelters.json")
-      stub_request(:get, "https://hidden-sands-71693-380133048218.herokuapp.com/api/v1/shelters?user_id=77").
+      stub_request(:get, "https://hidden-sands-71693-380133048218.herokuapp.com/api/v1/shelters?user_id=630").
         to_return(status: 200, body: user_shelters, headers: {})
       visit log_in_path
       fill_in :email, with: @user.email
       fill_in :password, with: @user.password
       click_on "Submit"
-    end
-
-    before(:each) do 
-        @user = User.create(email: "test@test.com", password: "test", password_confirmation: "test", id: 630)
     end
 
     it "Shelter Delete" do
@@ -58,7 +54,6 @@ RSpec.describe "Delete a Shelter" do
            }).
          to_return(status: 204, body: "", headers: {})
         
-
         shelters_delete2 = File.read("spec/fixtures/shelters_delete2.json")
         stub_request(:get, "http://localhost:5000/api/v1/shelters?user_id=1").
         with(
