@@ -7,6 +7,7 @@
     <a href="<%= current_user.id %>?filter=Shelters" class="nav-link px-0"> <span class="d-none d-sm-inline">All Shelters</span> <i class="bi bi-list-ul p-2"></i></a>
   </li>
   <li class="w-100">
-    <a href="/shelters/new" class="nav-link px-0"> <span class="d-none d-sm-inline">New Shelter</span> <i class='bi bi-plus p-2'></i></span></a>
+    <a href="/shelters/new?user_id=<%=current_user.id%>" class="nav-link px-0"> <span class="d-none d-sm-inline">New Shelter</span> <i class='bi bi-plus p-2'></i></span></a>
   </li>
 </ul>
+
