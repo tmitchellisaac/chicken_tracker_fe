@@ -1,8 +1,8 @@
 <%= simple_form_for :meeting, url: path, method: method, html: { class: "meeting"} do |f| %>
-  <%= f.input :name, :label_html => { :class => 'text-white quicksand weight-bold text-padding-top' } %>
+  <%= f.input :name, input_html: { autofocus: true }, :label_html => { :class => 'text-white quicksand weight-bold text-padding-top' } %>
   <%= f.input :notes, :label_html => { :class => 'text-white quicksand weight-bold text-padding-top' } %>
   <%= f.input :location, :label_html => { :class => 'text-white quicksand weight-bold text-padding-top' } %>
-  <%= f.input :date, :label_html => { :class => 'text-white quicksand weight-bold text-padding-top' } %>
-  <%= f.input :time, :label_html => { :class => 'text-white quicksand weight-bold text-padding-top' } %>
+  <%= f.input :date, as: :date, :label_html => { :class => 'text-white quicksand weight-bold text-padding-top' } %>
+  <%= f.input :time, as: :time, minute_step: 15, prompt: { hour: 'Choose hour', minute: 'Choose minute' }, default: Time.now, :label_html => { :class => 'text-white quicksand weight-bold text-padding-top' } %>
     <%= f.submit class: "btn btn-success" %>
 <% end %>

@@ -7,8 +7,9 @@ en:
         name: "Name of your animal"
         color: "Animal color"
       meeting:
-        name: "Toby's Hooves Trimmed"
-        notes: "Sharpen blades on the red trimmers"
+        name: "Toby's Vet Appointment"
+        notes: "Make sure to trim hooves beforehand"
+        location: "VEG Animal Care"
         start_time: "Input the date"
     labels:
       animal:
