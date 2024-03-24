@@ -1,31 +1,20 @@
 <%= render partial: "shared/inside_shelter" %>
-<%= render partial: "shared/navbar" %>
 
-<style>
-h1,h2,p {
-  color: white;
-  text-align: center;
-  text-shadow: 2px 2px 0px black;
-}
-</style>
-
-
-<% if @facade.shelter.user_id%>
-
-  <main class="container">
-    <%= link_to sanitize("&larr; Back to My Shelters"), shelter_path %>
-
-    <div class="header">
-      <h1>Edit Shelter</h1>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <% if @facade.shelter.user_id%>
+        <h1 class="roboto text-center text-white text-padding-top">Edit Shelter</h1>
+        <div class="edit_shelter_form">
+          <%= link_to sanitize("&larr; Back to My Shelters"), shelter_path %>
+          <%= render "form", shelter: @facade.shelter,
+                          path: "/shelters/#{@facade.shelter.id}?user_id=#{@facade.shelter.user_id}",
+                          method: :patch %>
+      <% else %>
+        <h1> No, no no....Go to User Dashboard ;)</h1>
+        <%= image_tag("logo.jpeg", class: "img-fluid custom-img-max")%>
+      <% end %>
     </div>
-      <div class="edit_shelter_form">
-        <%= render "form", shelter: @facade.shelter,
-                        path: "/shelters/#{@facade.shelter.id}?user_id=#{@facade.shelter.user_id}",
-                        method: :patch %>
-      </div>
-  </main>
+  </div>
+</div>
 
-<% else %>
-    <h1> No, no no....Go to User Dashboard ;)</h1>
-    <%= image_tag("logo.jpeg", class: "img-fluid custom-img-max")%>
-<% end %>

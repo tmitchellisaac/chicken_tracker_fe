@@ -17,17 +17,18 @@ RSpec.describe "Registering a new user" do
   end
 
   it "displays a form to create a new user" do
-    expect(page).to have_content("Email:")
-    expect(page).to have_content("Password:")
-    expect(page).to have_content("Password Confirmation:")
-    expect(page).to have_button("Submit")
+    
+    expect(page).to have_content("E-mail")
+    expect(page).to have_content("Password")
+    expect(page).to have_content("Password confirmation")
+    expect(page).to have_button("Create User")
   end
 
   it "can create a new user" do
-    fill_in :email, with: "test@test.com"
-    fill_in :password, with: "test"
-    fill_in :password_confirmation, with: "test"
-    click_on "Submit" # clicking Submit seems to make a request, but its not stubbed, so its erroring here. I can't tell which request its trying to call so not sure what to stub exactly.
+    fill_in :user_email, with: "test@test.com"
+    fill_in :user_password, with: "test"
+    fill_in :user_password_confirmation, with: "test"
+    click_on "Create User" # clicking Submit seems to make a request, but its not stubbed, so its erroring here. I can't tell which request its trying to call so not sure what to stub exactly.
 
     # binding.pry
     # why isn't the user being created? (run User.last in pry)
@@ -36,11 +37,11 @@ RSpec.describe "Registering a new user" do
   end
 
   it "cannot create a user if password_confirmation does not match password" do
-    fill_in :email, with: "test@test.com"
-    fill_in :password, with: "test"
-    fill_in :password_confirmation, with: "something else"
+    fill_in :user_email, with: "test@test.com"
+    fill_in :user_password, with: "test"
+    fill_in :user_password_confirmation, with: "something else"
   
-    click_on "Submit"
+    click_on "Create User"
 
     expect(current_path).to eq(new_user_path)
     expect(page).to have_content("User not created. Please ensure password and password confirmation match.")

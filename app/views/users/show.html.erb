@@ -1,48 +1,68 @@
-<%= render partial: "shared/navbar" %>
-
-<style>
-h1,h2,h4,p {
-  color: white;
-  text-align: center;
-  text-shadow: 2px 2px 0px black;
-}
-</style>
-
-<br>
-<h1>Your Chicken Tracker Dashboard</h1>
-<hr>
-<p>User Email: <%= @user.email %></p>
-<br>
-<br>
-<h2>My Shelters</h2>
-<hr>
-<%# need to add new page %>
-<br>
-<% @facade.shelters.each do |shelter| %>
-  <%= link_to shelter.name, shelter_path(shelter.id, user_id: shelter.user_id), class: "btn btn-success shadow-lg m-2", style: "color: white;" %>
-<% end %>
-<br>
-<br>
-<hr>
-<%= link_to "~Create A New Shelter~", new_shelter_path(user_id: @user.id), class: "btn btn-success shadow-lg m-2" %>
-<hr>
-<h4> What's Going On This Week? </h4>
-<br>
-<%= week_calendar(events: @facade.meetings) do |date, meetings| %>
-  <%= date.day %>
-
-
-  <% meetings.each do |meeting| %>
-    <div>
-      <%= link_to meeting.name, meeting_path(meeting), class: "link-info text-decoration-none", style: "font-family: 'Helvetica Neue';" %>
+<div class="container-fluid">
+  <div class="row flex-nowrap">
+    <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-light">
+      <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 min-vh-100">
+        <%= link_to "<span class='fs-5 d-none d-sm-inline text-red'>Dashboard</span>".html_safe, user_path(current_user.id), class: "d-flex align-items-center pb-3 mb-md-0 me-md-auto text-decoration-none text-red" %>
+        <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start roboto" id="menu">
+          <li>
+            <%= link_to "<i class='fs-4 bi-table' style='color: #564646;'></i> <span class='ms-1 d-none d-sm-inline text-red'>Calendar</span>".html_safe, user_path(current_user.id, filter: "Calendar"), class: "nav-link px-0 align-middle text-decoration-none text-red" %>
+          </li>
+          <li>
+            <%= render partial: "shared/nav_shelters" %>
+          </li>
+          <li>
+            <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
+              <i class="fs-4 bi-people-fill" style="color: #564646;"></i> <span class="ms-1 d-none d-sm-inline text-red">Users</span></a>
+            <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
+              <li class="w-100">
+                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">User</span>1</a>
+              </li>
+              <li>
+                <a href="#" class="nav-link px-0"><span class="d-none d-sm-inline">User</span>2</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+              <i class="fs-4 bi-egg-fill" style="color: #564646;"></i> <span class="ms-1 d-none d-sm-inline text-red">Animals</span>
+            </a>
+              <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
+                <!-- <%= @facade.shelters.each do |shelter| %> -->
+                <li class="w-100">
+                  <!-- This is where you would put the Animal -->
+                  <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 1</a>
+                </li>
+                <!-- <% end %> -->
+              </ul>
+          </li>
+      </ul>
+      <hr>
+      <div class="dropdown pb-4">
+          <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="https://github.com/mdo.png" alt="hugenerd" width="30" height="30" class="rounded-circle">
+              <span class="d-none d-sm-inline mx-1 text-red">loser</span>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+              <li><a class="dropdown-item" href="#">New project...</a></li>
+              <li><a class="dropdown-item" href="#">Settings</a></li>
+              <li><a class="dropdown-item" href="#">Profile</a></li>
+              <li>
+                  <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="#">Sign out</a></li>
+          </ul>
+      </div>
     </div>
-  <% end %>
-<% end %>
-
-
-<%= link_to "Monthly Calendar", meetings_path(user_id: @facade.user_id), class: "btn btn-dark text-decoration-none", style: "font-family: 'Helvetica Neue';" %>
-
-<%= link_to "Add An Event", new_meeting_path(user_id: @facade.user_id), class: "btn btn-dark text-decoration-none", style: "font-family: 'Helvetica Neue';" %> 
-<br>
-<br>
+  </div>
+  <div class="col py-3 text-white text-center chicken-container">
+      <% if @filters == "Calendar"%>
+          <%= render partial: "shared/monthly_calendar"%>
+      <% elsif @filters == "Shelters" %>
+          <%= render partial: "shared/shelters_index" %>
+      <% else %>
+          <%= render partial: "shared/dashboard_info"%>
+      <% end %>
+    </div>
+  </div>
+</div>
 <br>

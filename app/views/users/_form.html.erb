@@ -1,0 +1,5 @@
+<%= simple_form_for :user, url: path, method: method, html: { class: "shelter"} do |f| %>
+  <%= f.input :email, input_html: { autocomplete: 'email' }, :label_html => { :class => 'text-white quicksand weight-bold text-padding-top' } %>
+  <%= f.input :password, :label_html => { :class => 'text-white quicksand weight-bold text-padding-top' } %>
+  <%= f.submit "Sign In", class: "btn btn-success" %>
+<% end %>

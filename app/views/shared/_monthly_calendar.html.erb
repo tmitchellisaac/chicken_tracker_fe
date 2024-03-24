@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col">
+      <h4> What's Going On This Week? </h4>
+      <br>
+      <%= week_calendar(events: @facade.meetings) do |date, meetings| %>
+        <%= date.day %>
+        <% meetings.each do |meeting| %>
+          <div>
+            <%= link_to meeting.name, meeting_path(meeting), class: "link-info text-decoration-none", style: "font-family: 'Helvetica Neue';" %>
+          </div>
+        <% end %>
+      <% end %>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+      <%= link_to "Monthly Calendar", meetings_path(user_id: @facade.user_id), class: "btn btn-dark text-decoration-none", style: "font-family: 'Helvetica Neue';" %>
+
+      <%= link_to "Add An Event", new_meeting_path(user_id: @facade.user_id), class: "btn btn-dark text-decoration-none", style: "font-family: 'Helvetica Neue';" %>
+      <br>
+  </div>
+</div>

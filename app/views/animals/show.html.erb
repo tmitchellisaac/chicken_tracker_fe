@@ -1,43 +1,61 @@
-<%= render partial: "/shared/navbar" %>
-
-<style>
-h1,h2,p {
-  color: white;
-  text-align: center;
-  text-shadow: 2px 2px 0px black;
-}
-</style>
-
-
-<h2>Animal Show Page</h2>
-<hr>
-<h1><%= @facade.animal.name %></h1>
-<p>Animal Type: <%= @facade.animal.species %> </p>
-<p>Birthday: <%= @facade.animal.birthday %></p>
-<p>Age: <%= @facade.animal.age(DateTime.now) %></p>
-<p>Color: <%= @facade.animal.color %></p>
-<p>Main Food Source: <%= @facade.animal.main_prey %></p>
-<p>Favorite Food: <%= @facade.animal.fav_food%></p>
-<p>Diet Type: <%= @facade.animal.diet%></p>
-<p>Habitat: <%= @facade.animal.habitat %></p>
-<p>Skin Type: <%= @facade.animal.skin_type %></p>
-<p>Top Speed: <%= @facade.animal.top_speed %></p>
-<p>Avg Litter Size: <%= @facade.animal.avg_litter %></p>
-<p>Avg Lifespan: <%= @facade.animal.lifespan %></p>
-<p>Weight: <%= @facade.animal.weight %></p>
-<p>Lifestyle: <%= @facade.animal.lifestyle %></p>
-<% if @image != nil %>
-  <image src="<%=@image%>">
-<% end %>
-
-<div class="d-flex justify-content-center">
-  <%= link_to "Edit this animal", "/shelters/#{@facade.shelter_id}/animals/#{@facade.id}/edit", method: :get, class: "btn btn-success m-2"  %>
-  
-  <% if @image == nil %>
-    <%= link_to "Add a Photo", "/shelters/#{@facade.shelter_id}/animals/#{@facade.id}/animal_images/new", method: :get, class: "btn btn-success m-2"  %>
-  <% end %>
- 
-  <%= button_to "Delete this Animal", "/shelters/#{@facade.shelter_id}/animals/#{@facade.id}", method: :delete, class: "btn btn-success m-2"  %>
-
-  <%= link_to "Back to Shelter Page", "/shelters/#{@facade.shelter_id}", class: "btn btn-success m-2" %>
+<div class="container animal-show-container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+        <h1 class="roboto text-center text-white text-padding-top">All About <%= @facade.animal.name %></h1>
+        <br>
+        <div class="card-animal-show bg-light">
+          <div class="cover-container d-flex h-100 p-3 flex-column align-items-center justify-content-center">
+            <div class="row">
+              <div class="col-md-4 text-center">
+                Animal Type:<br>
+                Birthday:<br>
+                Age:<br>
+                Color:<br>
+                Food Source:<br>
+                Favorite Food:<br>
+                Diet Type: <br>
+                Habitat:<br>
+                Skin Type:<br>
+                Top Speed:<br>
+                Avg Litter Size:<br>
+                Avg Lifespan:<br>
+                Weight:<br>
+                Lifestyle:<br>
+              </div>
+              <div class="col-md-8 align-self-start">
+                <%= @facade.animal.species %><br>
+                <%= @facade.animal.birthday %><br>
+                <%= @facade.animal.age(DateTime.now) %><br>
+                <%= @facade.animal.color %><br>
+                <%= @facade.animal.main_prey %><br>
+                <%= @facade.animal.fav_food%><br>
+                <%= @facade.animal.diet%><br>
+                <%= @facade.animal.habitat %><br>
+                <%= @facade.animal.skin_type %><br>
+                <%= @facade.animal.top_speed %><br>
+                <%= @facade.animal.avg_litter %><br>
+                <%= @facade.animal.lifespan %><br>
+                <%= @facade.animal.weight %><br>
+                <%= @facade.animal.lifestyle %><br>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% if @image != nil %>
+           <image src="<%=@image%>">
+        <% end %>
+        <% if @image == nil %>
+           <%= link_to "Add a Photo", "/shelters/#{@facade.shelter_id}/animals/#{@facade.id}/animal_images/new", method: :get, class: "btn btn-success m-2"  %>
+        <% end %>
+        <div class="d-flex justify-content-center padding-bottom">
+          <%= link_to "Edit this animal", "/shelters/#{@facade.shelter_id}/animals/#{@facade.id}/edit", method: :get, class: "btn btn-success m-2"  %>
+          <%= button_to "Delete this Animal", "/shelters/#{@facade.shelter_id}/animals/#{@facade.id}", method: :delete, class: "btn btn-success m-2"  %>
+          <%= link_to "Back to Shelter Page", "/shelters/#{@facade.shelter_id}", class: "btn btn-success m-2" %>
+        </div>
+    </div>
+  </div>
 </div>
+
+
+
+

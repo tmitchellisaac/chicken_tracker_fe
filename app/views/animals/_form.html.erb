@@ -1,15 +1,7 @@
 <%= simple_form_for :animal, url: path, method: method, html: { class: "animal"} do |f| %>
-  <% if flash[:alert] %>
-    <div class="error-message">
-      <%= flash[:alert] %>
-    </div>
-  <% end %>
-
-  <%= f.input :name, input_html: { autofocus: true } %>
-  <%= f.input :species, collection: @facade.allowed_species, label_method: :name, value_method: :name, selected: @facade.allowed_species.first, prompt: "Select species" %>
-  <%= f.input :birthday, as: :date, html5: true %>
-  <%= f.input :color %>
+  <%= f.input :name, input_html: { autofocus: true }, :label_html => { :class => 'text-white quicksand weight-bold text-padding-top' }%>
+  <%= f.input :species, collection: @facade.allowed_species, label_method: :name, value_method: :name, selected: @facade.allowed_species.first, prompt: "Select species", :label_html => { :class => 'text-white quicksand weight-bold' }%>
+  <%= f.input :birthday, as: :date, html5: true, :label_html => { :class => 'text-white quicksand weight-bold' } %>
+  <%= f.input :color, :label_html => { :class => 'text-white quicksand weight-bold' } %>
   <%= f.submit class: "btn btn-success" %>
 <% end %>
-
-

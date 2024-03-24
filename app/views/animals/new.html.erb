@@ -1,33 +1,15 @@
-<%= render partial: "/shared/navbar" %>
+<%= render partial: "shared/inside_shelter" %>
 
-<style>
-h1,h2 {
-  color: white;
-  text-align: center;
-  text-shadow: 2px 2px 0px black;
-}
-
-.new_animal_form {
-  text-align: center;
-}
-
-p {
-
-color: #FFF;
-background-color: #232323;
-text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #49ff18, 0 0 30px #49FF18, 0 0 40px #49FF18, 0 0 55px #49FF18, 0 0 75px #49ff18
-}
-</style>
-
-<main class="container">
-  <%= link_to sanitize("&larr; Back to animals"), "/shelters/#{params[:shelter_id]}" %>
-
-  <div class="header">
-    <h1>New Animal</h1>
-  </div>
-    <div class="new_animal_form">
-      <%= render "form", animal: @facade,
-                        path: "/shelters/#{params[:shelter_id]}/animals",
-                        method: :post %>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+        <h1 class="roboto text-center text-white text-padding-top">New Animal</h1>
+        <div class="new_animal_form">
+          <%= link_to sanitize("&larr; Back to Shelter"), "/shelters/#{params[:shelter_id]}" %>
+          <%= render "form", animal: @facade,
+          path: "/shelters/#{params[:shelter_id]}/animals",
+          method: :post %>
+        </div>
     </div>
-</main>
+  </div>
+</div>

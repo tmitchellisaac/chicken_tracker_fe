@@ -47,9 +47,9 @@ RSpec.describe "Welcome Page" do
     
     visit "/log_in"
     
-    fill_in :email, with: user.email
-    fill_in :password, with: user.password
-    click_on "Submit"
+    fill_in :user_email, with: user.email
+    fill_in :user_password, with: user.password
+    click_on "Sign In"
 
     visit "/"
 
@@ -77,9 +77,9 @@ RSpec.describe "Welcome Page" do
     
     visit "/log_in"
     
-    fill_in :email, with: user.email
-    fill_in :password, with: user.password
-    click_on "Submit"
+    fill_in :user_email, with: user.email
+    fill_in :user_password, with: user.password
+    click_on "Sign In"
 
     visit "/"
 
