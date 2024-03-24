@@ -9,7 +9,16 @@ class ApplicationController < ActionController::Base
   def log_out
     reset_session # inbuilt RoR method
     flash[:alert] = "Logged out successfully"
-    # redirect_to log_in_path 
+    # redirect_to log_in_path
+  end
+
+  def flash_class(level)
+    case level
+        when :notice then "alert alert-info"
+        when :success then "alert alert-success"
+        when :error then "alert alert-error"
+        when :alert then "alert alert-error"
+    end
   end
 
   private
@@ -24,11 +33,11 @@ class ApplicationController < ActionController::Base
 
   def session_timed_out?
     return false unless session[:last_seen]
-  
+
     last_seen_time = Time.parse(session[:last_seen])
     Time.current - last_seen_time > timeout_duration
   end
-  
+
   def timeout_duration
     # 10.seconds
     15.minutes

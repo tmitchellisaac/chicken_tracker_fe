@@ -1,5 +1,10 @@
 <%= simple_form_for :user, url: path, method: method, html: { class: "shelter"} do |f| %>
+  <% if flash[:alert] %>
+  <div class="error-message text-red">
+    <%= flash[:alert] %>
+  </div>
+  <% end %>
   <%= f.input :email, :label_html => { :class => 'text-white quicksand weight-bold text-padding-top' } %>
   <%= f.input :password, :label_html => { :class => 'text-white quicksand weight-bold text-padding-top' } %>
-  <%= f.submit class: "btn btn-success" %>
+  <%= f.submit "Sign In", class: "btn btn-success" %>
 <% end %>

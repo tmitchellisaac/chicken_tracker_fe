@@ -7,18 +7,19 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-
   end
 
   def create
+    @user = User.new
     if user_params[:password] != user_params[:password_confirmation]
       flash[:error] = "User not created. Please ensure password and password confirmation match."
+
       redirect_to new_user_path
     else
       user = User.create(user_params)
       if user.save
         session[:user_id] = user.id
-        flash[:success] = "Welcome!"
+        flash.now[:success] = "Welcome!"
         redirect_to "/users/#{user.id}"
       else
         flash[:error] = "Unable to create user. Please try again."
@@ -28,16 +29,16 @@ class UsersController < ApplicationController
   end
 
   def login_form
+    flash[:alert] = "Unable to log in. Please try again."
     render :login_form
   end
 
   def log_in
     @user = User.find_by(email: params[:email])
     if @user && @user.authenticate(params[:password])
-      # Authentication successful
+      flash[:notice] = "You've logged in successfully!"
       session[:user_id] = @user.id
       redirect_to "/users/#{@user.id}"
-
     else
       # Authentication failed
       flash[:alert] = "Unable to log in. Please try again."
@@ -47,7 +48,7 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    # params.require(:user).permit(:email, :password_digest)
-    params.permit(:email, :password, :password_confirmation)
+    params.require(:user).permit(:email, :password, :password_confirmation)
+    # params.permit(:email, :password, :password_confirmation)
   end
 end

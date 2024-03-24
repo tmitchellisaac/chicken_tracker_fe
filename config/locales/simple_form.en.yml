@@ -12,10 +12,12 @@ en:
       animal:
         name: "Animal Name"
       user:
+        defaults:
+          password: 'Password'
         new:
-          email: 'E-mail to sign in.'
+          email: 'E-mail to sign in'
         edit:
-          email: 'E-mail.'
+          email: 'E-mail'
     required:
       text: 'required'
       mark: ''
@@ -32,19 +34,19 @@ en:
 
     error_notification:
       default_message: "Please review the problems below:"
-    # Examples
-    # labels:
-    #   defaults:
-    #     password: 'Password'
-    #   user:
-    #     new:
-    #       email: 'E-mail to sign in.'
-    #     edit:
-    #       email: 'E-mail.'
-    # hints:
-    #   defaults:
-    #     username: 'User name to sign in.'
-    #     password: 'No special characters, please.'
+
+    labels:
+      defaults:
+        password: 'Password'
+      user:
+        new:
+          email: 'E-mail to sign in.'
+        edit:
+          email: 'E-mail.'
+    hints:
+      defaults:
+        username: 'User name to sign in.'
+        password: 'No special characters, please.'
     # include_blanks:
     #   defaults:
     #     age: 'Rather not say'
