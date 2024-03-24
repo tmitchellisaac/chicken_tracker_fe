@@ -22,14 +22,9 @@ class MeetingsController < ApplicationController
   end
 
   def create
-    meeting = SingleDayEvent.create!(
-      name: params[:meeting][:name].capitalize,
-      notes: params[:meeting][:notes].capitalize,
-      location: params[:meeting][:location].capitalize,
-      user_id: params[:user_id],
-      start_time: params[:meeting][:start_time],
-      time: params[:meeting][:time]
-    )
+    require 'pry'; binding.pry
+    meeting = SingleDayEvent.create!(meeting_params.merge(user_id: params[:user_id]))
+
     redirect_to meeting_path(meeting, user_id: meeting.user_id)
   end
 
@@ -40,14 +35,8 @@ class MeetingsController < ApplicationController
   def update
   meeting = SingleDayEvent.find(params[:id])
 
-    meeting.update!(
-      name: params[:meeting][:name].capitalize,
-      notes: params[:meeting][:notes].capitalize,
-      location: params[:meeting][:location].capitalize,
-      user_id: params[:user_id],
-      start_time: params[:meeting][:start_time],
-      time: params[:meeting][:time]
-    )
+    meeting.update!(meeting_params.merge(user_id: params[:user_id]))
+
     redirect_to meeting_path(meeting, user_id: meeting.user_id)
 
   end
@@ -63,4 +52,9 @@ class MeetingsController < ApplicationController
     end
   end
 
+  private
+
+  def meeting_params
+    params.require(:meeting).permit(:name, :notes, :location, :time)
+  end
 end

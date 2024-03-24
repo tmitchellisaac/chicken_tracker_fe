@@ -35,6 +35,7 @@ text-align: center;
 <h1><%= @meeting.name %> </h1>
 <p> Notes: <%= @meeting.notes %> </p>
 <p> Location: <%= @meeting.location %> </p>
+<% require 'pry'; binding.pry %>
 <p> Date: <%= @meeting.start_time.strftime('%A, %B %Y') %> at <%= @meeting.time.strftime("%I:%M %p") %> </p>
 
 <%= link_to "User Dashboard", "/users/#{current_user.id}", class: "btn btn-success" %>
