@@ -18,7 +18,7 @@ en:
         defaults:
           password: 'Password'
         new:
-          email: 'E-mail to sign in'
+          email: 'E-mail'
         edit:
           email: 'E-mail'
       meeting:
