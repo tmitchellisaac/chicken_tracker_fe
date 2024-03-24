@@ -7,35 +7,20 @@
                 </a> -->
                 <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start roboto" id="menu">
                     <li class="nav-item">
-                            <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline roboto text-red"><h3>Dashboard</h2></span>
+                        <%= link_to "<i class='fs-4 bi-house'></i> <span class='ms-1 d-none d-sm-inline roboto text-red'><h3>Dashboard</h2></span>".html_safe, user_path(current_user.id), class: "nav-link px-0 align-middle text-decoration-none text-red" %>
                     </li>
                     <li>
-                        <%= link_to "<i class='fs-4 bi-table'></i> <span class='ms-1 d-none d-sm-inline text-red'>Calendar</span>".html_safe, "", class: "nav-link px-0 align-middle text-decoration-none text-red" %>
-
-                        <a href="#" class="nav-link px-0 align-middle">
-                            <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline text-red">Calendar</span>
-                        </a>
+                        <%= link_to "<i class='fs-4 bi-table'></i> <span class='ms-1 d-none d-sm-inline text-red'>Calendar</span>".html_safe, user_path(current_user.id, filter: "Calendar"), class: "nav-link px-0 align-middle text-decoration-none text-red" %>
                     </li>
                     <li>
-                        <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                            <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline text-red">Shelters</span> </a>
-                        <ul class="collapse nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
-                            <% @facade.shelters.each do |shelter| %>
-                                <li class="w-100">
-                                    <span class="d-none d-sm-inline text-red">
-                                        <%= link_to "</span class='d-none d-sm-inline'>#{shelter.name}</span><span>1</span>".html_safe, shelter_path(shelter.id), class: "text-decoration-none text-red"%>
-                                    </span>
-                                    <!-- <a href="#" class="nav-link px-0" > <%= shelter.name %></span"> <span class="text-red">1</span></a> -->
-                                </li>
-                            <% end %>
-                        </ul>
+                        <%= render partial: "shared/nav_shelters" %>
                     </li>
                     <li>
                         <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
                             <i class="fs-4 bi-bootstrap"></i> <span class="ms-1 d-none d-sm-inline text-red">Users</span></a>
                         <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
                             <li class="w-100">
-                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Animals</span> 1</a>
+                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline"><%= current_user %></span> 1</a>
                             </li>
                             <li>
                                 <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 2</a>
@@ -83,48 +68,23 @@
                 </div>
             </div>
         </div>
-        <div class="col py-3">
-            <div class="row text-secondary text-center">
-                <h1>Your Chicken Tracker Dashboard</h1>
-                <div class="col">
-                    <h2>Shelter Stats</h2>
-                </div>
-                <div class="col">
-                    <h2>Animal Stats</h2>
-                </div>
-            </div>
-            <div class="row text-secondary">
-                <div class="col">
-                    <ul>
-                        <li>Number of Shelters: <%= @facade.shelters.size %></li>
-                    </ul>
-                </div>
-                <div class="col">
-                    <ul>
-                        <li>Animal Types: </li>
-                    </ul>
-                </div>
-            </div>
+        <div class="col py-3 text-secondary text-center">
+            <h1>Your Chicken Tracker Dashboard</h1>
+            <hr>
+            <br>
+            <% if @filters == "Calendar"%>
             <div class="row">
-                <div class="col">
-                    <h4> What's Going On This Week? </h4>
-                    <br>
-                    <%= week_calendar(events: @facade.meetings) do |date, meetings| %>
-                      <%= date.day %>
-                    
-                    
-                      <% meetings.each do |meeting| %>
-                        <div>
-                          <%= link_to meeting.name, meeting_path(meeting), class: "link-info text-decoration-none", style: "font-family: 'Helvetica Neue';" %>
-                        </div>
-                      <% end %>
-                    <% end %>
-                </div>
-            </div>
+                <%= render partial: "shared/monthly_calendar"%>
+            <% elsif @filters == "Shelter" %>
+                <%= render partial: "shared/shelters_index" %>
+            <% else %>
+                <%= render partial: "shared/dashboard_info"%>
+            <% end %>
         </div>
     </div>
 </div>
 <br>
+
 
 <hr>
 <p>User Email: <%= current_user.email %></p>
@@ -156,9 +116,6 @@
 <% end %>
 
 
-<%= link_to "Monthly Calendar", meetings_path(user_id: @facade.user_id), class: "btn btn-dark text-decoration-none", style: "font-family: 'Helvetica Neue';" %>
 
-<%= link_to "Add An Event", new_meeting_path(user_id: @facade.user_id), class: "btn btn-dark text-decoration-none", style: "font-family: 'Helvetica Neue';" %> 
-<br>
 <br>
 <br>

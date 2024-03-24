@@ -1,0 +1,5 @@
+<% @facade.shelters.each do |shelter| %>
+      <span class="d-none d-sm-inline text-red">
+          <%= link_to "</span class='d-none d-sm-inline'>#{shelter.name}</span><span>1</span>".html_safe, shelter_path(shelter.id), class: "text-decoration-none text-red"%>
+      </span>
+<% end %>

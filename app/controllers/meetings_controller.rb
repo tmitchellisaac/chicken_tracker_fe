@@ -20,7 +20,7 @@ class MeetingsController < ApplicationController
     end
   end
 
-  def create  
+  def create
     meeting = SingleDayEvent.create!(
       name: params[:meeting][:name].capitalize,
       notes: params[:meeting][:notes].capitalize,

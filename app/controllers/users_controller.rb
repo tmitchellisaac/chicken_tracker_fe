@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   def show
     @facade = UserFacade.new(params)
     @meetings = SingleDayEvent.where(user_id: params[:id])
+    @filters = params[:filter]
   end
 
   def new

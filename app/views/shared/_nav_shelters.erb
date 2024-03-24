@@ -1,0 +1,11 @@
+<a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+  <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline text-red">Shelters</span><%= link_to '', user_path(current_user.id, filter: "Shelter"), data: { turbo_method: :get } %> </a>
+<ul class="collapse nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
+  <% @facade.shelters.each do |shelter| %>
+      <li class="w-100">
+          <span class="d-none d-sm-inline text-red">
+              <%= link_to "</span class='d-none d-sm-inline'>#{shelter.name}</span><span>1</span>".html_safe, shelter_path(shelter.id), class: "text-decoration-none text-red"%>
+          </span>
+      </li>
+  <% end %>
+</ul>
