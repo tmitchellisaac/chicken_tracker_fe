@@ -37,4 +37,5 @@
 # Ignore SimpleCov
 /coverage
 
-/config/application.yml
+/config/application.yml/public/fonts/*
+!/public/fonts/.keep
