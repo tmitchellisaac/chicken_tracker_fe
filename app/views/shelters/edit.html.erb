@@ -1,20 +1,10 @@
 <%= render partial: "shared/inside_shelter" %>
 
-<style>
-h1,h2,p {
-  color: white;
-  text-align: center;
-  text-shadow: 2px 2px 0px black;
-}
-</style>
-
-
-
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-md-6">
       <% if @facade.shelter.user_id%>
-        <h1 class="roboto text-center">Edit Shelter</h1>
+        <h1 class="roboto text-center text-white">Edit Shelter</h1>
         <div class="edit_shelter_form">
           <%= link_to sanitize("&larr; Back to My Shelters"), shelter_path %>
           <%= render "form", shelter: @facade.shelter,
