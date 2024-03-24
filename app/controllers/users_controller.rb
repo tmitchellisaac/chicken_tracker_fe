@@ -3,53 +3,55 @@ class UsersController < ApplicationController
   before_action :restrict_access, only: [:show] # <-- This creates six errors in the tests
 
   def show
-    @user = User.find(params[:id])
     @facade = UserFacade.new(params)
     @meetings = SingleDayEvent.where(user_id: params[:id])
+    @filters = params[:filter]
   end
-  
+
   def new
     @user = User.new
   end
 
-  def create 
+  def create
+    @user = User.new
     if user_params[:password] != user_params[:password_confirmation]
-      flash[:error] = "User not created. Please ensure password and password confirmation match."
+      flash.now[:error] = "User not created. Please ensure password and password confirmation match."
+
       redirect_to new_user_path
     else
       user = User.create(user_params)
       if user.save
         session[:user_id] = user.id
-        flash[:success] = "Welcome!"
+        flash.now[:success] = "Welcome!"
         redirect_to "/users/#{user.id}"
-      else  
-        flash[:error] = "Unable to create user. Please try again."
+      else
+        flash.now[:error] = "Unable to create user. Please try again."
         render :new
-      end 
+      end
     end
   end
 
   def login_form
+    flash.now[:alert] = "Unable to log in. Please try again."
     render :login_form
   end
 
   def log_in
-    user = User.find_by(email: params[:email])
-    if user && user.authenticate(params[:password])
-      # Authentication successful
+    user = User.find_by(email: params[:user][:email])
+    if user && user.authenticate(params[:user][:password])
+      flash[:notice] = "You've logged in successfully!"
       session[:user_id] = user.id
       redirect_to "/users/#{user.id}"
-      
     else
       # Authentication failed
       flash[:alert] = "Unable to log in. Please try again."
       render :login_form
     end
   end
-  
+
   private
   def user_params
-    # params.require(:user).permit(:email, :password_digest)
-    params.permit(:email, :password, :password_confirmation)
+    params.require(:user).permit(:email, :password, :password_confirmation)
+    # params.permit(:email, :password, :password_confirmation)
   end
 end

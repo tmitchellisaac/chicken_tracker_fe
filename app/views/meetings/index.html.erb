@@ -1,17 +1,17 @@
-
-
-<div>
-<h1> Calendar </h1>
-<%= month_calendar(events: @facade.user_meetings) do |date, meetings| %>
-  <%= date.day %>
-
-
-  <% meetings.each do |meeting| %>
-    <div>
-      <%= link_to meeting.name, meeting_path(meeting)%>
+<div class="container calendar-index-container card-text-padding">
+  <div class="row justify-content-center">
+    <div class="col-md-12">
+      <h1 class="roboto text-center"> Calendar </h1>
+      <%= month_calendar events: @events, class: ".btn-light" do |date, meetings| %>
+        <%= date.day %>
+        <% meetings.each do |meeting| %>
+          <div>
+            <%= link_to meeting.name, meeting_path(meeting)%>
+          </div>
+        <% end %>
+      <% end %>
     </div>
-  <% end %>
-<% end %>
+  </div>
 </div>
 
 <div>

@@ -1,0 +1,14 @@
+<h1 class="roboto">Your Animal Shelters</h1>
+<hr>
+<div class="scrolling-wrapper horizontal-box row flex-nowrap roboto" >
+  <% @facade.shelters.each do |shelter| %>
+    <div class="col-5">
+      <%= link_to "<div class='card-block card-1 card-text-padding'>
+        <h3>#{shelter.name}</h3>
+        <p>Number of animals: </p>
+        </div>".html_safe, shelter_path(shelter.id), class: "text-decoration-none" %>
+    </div>
+  <% end %>
+</div>
+
+

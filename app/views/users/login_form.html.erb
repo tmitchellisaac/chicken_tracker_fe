@@ -1,33 +1,19 @@
-<style>
-h1,h2,p {
-  color: white;
-  text-align: center;
-  text-shadow: 2px 2px 0px black;
-}
-</style>
-
-<div class="text-center">
-  <h2>Log In with Email</h2>
-
-  <%= form_with url: log_in_path, method: :post, data: { turbo: false }, class: "d-inline-block" do |form| %>
-
-    <div class="mb-2">
-      <%= form.label :email, "Email: ", class: "form-label", style: "color: white;" %>
-      <%= form.text_field :email, class: "form-control" %>
+<div class="container user-log-in-container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <h1 class="roboto text-center text-white text-padding-top">User Login</h1>
+      <div class="user_log_in">
+        <%= render "form", user: :user,
+                        path: log_in_path,
+                        method: :post %>
+                          <br>
+        <br>
+        <p class="text-white font-weight-bold">New User?</p>
+        <%= button_to "Register", new_user_path, method: :get, class: "btn btn-success btn-sm shadow-lg" %><br>
+        <br>
+        <hr>
+      </div>
     </div>
-
-    <div class="mb-2">
-      <%= form.label :password, "Password: ", class: "form-label", style: "color: white;" %>
-      <%= form.password_field :password, class: "form-control" %>
-    </div>
-    
-    <%= form.submit "Submit", class: "btn btn-success btn-sm shadow-lg", style: "color: white;" %>
-  <% end %>
-  <br>
-  <br>
-  <p>New User?</p>
-  <%= button_to "Register", new_user_path, method: :get, class: "btn btn-success btn-sm shadow-lg" %><br>
-  <br> 
-  <hr>
-  <%= image_tag("logo.jpeg", class: "img-fluid custom-img-max") %>
+  </div>
 </div>
+

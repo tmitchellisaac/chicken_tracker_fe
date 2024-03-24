@@ -1,10 +1,4 @@
 <%= simple_form_for :shelter, url: path, method: method, html: { class: "shelter"} do |f| %>
-  <% if flash[:alert] %>
-    <div class="error-message">
-      <%= flash[:alert] %>
-    </div>
-  <% end %>
-
-  <%= f.input :name %>
+  <%= f.input :name, :label_html => { :class => 'text-white quicksand weight-bold text-padding-top' } %>
   <%= f.submit class: "btn btn-success" %>
 <% end %>
