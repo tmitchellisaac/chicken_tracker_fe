@@ -60,9 +60,7 @@
       </div>
     </div>
   </div>
-  <div class="col py-3 text-secondary text-center chicken-container">
-      <h1 class="roboto">Your Chicken Tracker Dashboard</h1>
-      <hr>
+  <div class="col py-3 text-white text-center chicken-container">
       <% if @filters == "Calendar"%>
           <%= render partial: "shared/monthly_calendar"%>
       <% elsif @filters == "Shelters" %>

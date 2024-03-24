@@ -13,9 +13,7 @@
  *= require_tree .
  *= require_self
  */
-// f3bc2b
-// 9C3B43
-// b6
+
 @import "bootstrap";
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css");
 
@@ -29,4 +27,11 @@
 }
 
 @import "simple_calendar";
-// for simplecalendar default stylesheet
+
+$container-max-widths: (
+  sm: 400px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1320px
+);
