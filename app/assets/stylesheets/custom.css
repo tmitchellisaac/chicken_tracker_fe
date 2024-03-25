@@ -98,14 +98,19 @@ h1{
 	&:hover{
 		transform: translateY(-5px);
 		box-shadow: none;
-		opacity: 0.9;
+		opacity: 0.5;
 	}
 }
 
+.nav-opacity {
+  opacity: 0.5
+}
 .card-1{
 	background-color: #FBFBFB;
   /* background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%); */
   height: 300px;
+  width: 250px;
+  opacity: 0.7;
 }
 
 .card-animal-show{
@@ -141,6 +146,7 @@ h1{
   background-image: url("animal_show_page.jpg");
   background-size: cover;
   background-position: center;
+  width: 75%;
 }
 
 .calendar-index-container {
@@ -179,7 +185,7 @@ h1{
   }
 } */
 
-@media (min-width: 768px) {
+@media (min-width: 300px) {
   .container-small {
       width: 300px;
   }
