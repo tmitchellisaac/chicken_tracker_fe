@@ -5,6 +5,12 @@
         <br>
         <div class="card-animal-show bg-light">
           <div class="cover-container d-flex h-100 p-3 flex-column align-items-center justify-content-center">
+        <% if @image != nil %>
+           <image src="<%=@image%>" width="400">
+        <% end %>
+        <br>
+        <hr>
+        <br>
             <div class="row">
               <div class="col-md-4 text-center">
                 Animal Type:<br>
@@ -41,9 +47,6 @@
             </div>
           </div>
         </div>
-        <% if @image != nil %>
-           <image src="<%=@image%>">
-        <% end %>
         <% if @image == nil %>
            <%= link_to "Add a Photo", "/shelters/#{@facade.shelter_id}/animals/#{@facade.id}/animal_images/new", method: :get, class: "btn btn-success m-2"  %>
         <% end %>

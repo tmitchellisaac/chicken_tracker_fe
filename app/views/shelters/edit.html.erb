@@ -6,7 +6,7 @@
       <% if @facade.shelter.user_id%>
         <h1 class="roboto text-center text-white text-padding-top">Edit Shelter</h1>
         <div class="edit_shelter_form">
-          <%= link_to sanitize("&larr; Back to My Shelters"), shelter_path %>
+          <%= link_to sanitize("&larr; Back to My Shelters"), shelter_path, class: "btn btn-success" %>
           <%= render "form", shelter: @facade.shelter,
                           path: "/shelters/#{@facade.shelter.id}?user_id=#{@facade.shelter.user_id}",
                           method: :patch %>

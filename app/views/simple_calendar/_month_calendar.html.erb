@@ -3,7 +3,7 @@
 
     <nav>
       <%= link_to t('simple_calendar.previous', default: 'Prev Month'), calendar.url_for_previous_view, class: "btn btn-dark shadow-lg m-1" %>
-    <time datetime="<%= start_date.strftime('%Y-%m') %>" class="calendar-title" style="color: white;font-size: 1.8em;font-family: 'Helvetica Neue';"><%= t('date.month_names')[start_date.month]%> <%= start_date.year%></time>
+    <time datetime="<%= start_date.strftime('%Y-%m') %>" class="calendar-title " style="color: white;font-size: 1.8em;font-family: 'Helvetica Neue';"><%= t('date.month_names')[start_date.month]%> <%= start_date.year%></time>
       
       <%# <%= link_to t('simple_calendar.today', default: 'Today'), calendar.url_for_today_view, class: "btn btn-success shadow-lg m-1" %>
       <%= link_to t('simple_calendar.next', default: 'Next Month'), calendar.url_for_next_view , class: "btn btn-dark shadow-lg m-1"%>
