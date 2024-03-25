@@ -3,8 +3,6 @@
   background-color: #a5eaea;
 }
 </style>
-
-
 <div class="container-fluid">
   <div class="row flex-nowrap">
     <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-custom">
@@ -32,26 +30,27 @@
           <li>
             <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
               <i class="fs-4 bi-egg-fill" style="color: #564646;"></i> <span class="ms-1 d-none d-sm-inline text-red">Animals</span>
+              <% @facade.shelters.map do |shelter| %>
             </a>
-                    <% @facade.shelters.map do |shelter| %>
-                      <% shelter.animals.each do |animal| %>
-                        <%= link_to animal.name, shelter_animal_path(shelter.id, animal.id) %>
-                        <br>
-                      <% end %>
-                    <% end %>
-              <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
-                <!-- <%= @facade.shelters.each do |shelter| %> -->
+
+            <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
+                <% shelter.animals.each do |animal| %>
                 <li class="w-100">
-                  <!-- This is where you would put the Animal -->
-                  <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline"> 
-                   </span></a>
+                  <a href="#" class="nav-link px-0">
+                    <span class="d-none d-sm-inline">
+                      <%= link_to animal.name, shelter_animal_path(shelter.id, animal.id) %>
+                    </span>
+                  </a>
+
+
                 </li>
-                <!-- <% end %> -->
+                <% end %>
               </ul>
-          </li>
-      </ul>
-      <hr>
-      <div class="dropdown pb-4">
+              <% end %>
+            </li>
+        </ul>
+        <hr>
+        <div class="dropdown pb-4">
           <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
           </a>
           <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
@@ -63,10 +62,10 @@
               </li>
               <li><a class="dropdown-item" href="#">Sign out</a></li>
           </ul>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="col py-3 text-white text-center chicken-container">
+    <div class="col py-3 text-white text-center chicken-container">
       <% if @filters == "Calendar"%>
           <%= render partial: "shared/monthly_calendar"%>
       <% elsif @filters == "Shelters" %>
