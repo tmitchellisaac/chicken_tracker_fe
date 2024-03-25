@@ -16,7 +16,14 @@
   </div>
   <div class="col">
       <ul>
-          <li>Animal Types: </li>
+          <li>Number of Animals: </li>
+        <%= @facade.animal_total %>
+      </ul>
+      <ul>Animal Types: 
+        <% @facade.animals_by_species.each do |species|%>
+          <li> <%= species %>
+          <br>
+        <% end %>
       </ul>
   </div>
 </div>
