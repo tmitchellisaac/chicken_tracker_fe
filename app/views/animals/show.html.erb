@@ -42,10 +42,10 @@
           </div>
         </div>
         <% if @image != nil %>
-           <image src="<%=@image%>">
+          <image src="<%=@image%>">
         <% end %>
         <% if @image == nil %>
-           <%= link_to "Add a Photo", "/shelters/#{@facade.shelter_id}/animals/#{@facade.id}/animal_images/new", method: :get, class: "btn btn-success m-2"  %>
+          <%= link_to "Add a Photo", "/shelters/#{@facade.shelter_id}/animals/#{@facade.id}/animal_images/new", method: :get, class: "btn btn-success m-2"  %>
         <% end %>
         <div class="d-flex justify-content-center padding-bottom">
           <%= link_to "Edit this animal", "/shelters/#{@facade.shelter_id}/animals/#{@facade.id}/edit", method: :get, class: "btn btn-success m-2"  %>
