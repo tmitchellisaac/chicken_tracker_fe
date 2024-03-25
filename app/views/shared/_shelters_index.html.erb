@@ -8,7 +8,8 @@
         <p>Number of animals:</p>
         <br>
          <h1>#{shelter.animals.count}</h1>
-        </div>".html_safe, shelter_path(shelter.id), class: "text-decoration-none" %>
+         
+        </div>".html_safe, shelter_path(shelter.id, user_id: current_user.id), class: "text-decoration-none" %>
     </div>
   <% end %>
 </div>
