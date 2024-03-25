@@ -5,7 +5,7 @@
     <div class="col-5">
       <%= link_to "<div class='card-block card-1 card-text-padding'>
         <h3>#{shelter.name}</h3>
-        <p>Number of animals: </p>
+        <p>Number of animals: #{shelter.animals.count}</p>
         </div>".html_safe, shelter_path(shelter.id), class: "text-decoration-none" %>
     </div>
   <% end %>
