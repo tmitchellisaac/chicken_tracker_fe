@@ -1,17 +1,34 @@
-<h1 class="roboto">Your Animal Shelters</h1>
-<hr>
-<div class="scrolling-wrapper horizontal-box row flex-nowrap roboto" >
-  <% @facade.shelters.each do |shelter| %>
-    <div class="col-5">
-      <%= link_to "<div class='card-block card-1 card-text-padding'>
-        <h3>#{shelter.name}</h3>
-        <p>Number of animals:</p>
-        <br>
-         <h1>#{shelter.animals.count}</h1>
-         
-        </div>".html_safe, shelter_path(shelter.id, user_id: current_user.id), class: "text-decoration-none" %>
+
+<div class="container-sm">
+  <h1 class="roboto">Your Animal Shelters</h1>
+  <hr>
+    <div class="scrolling-wrapper horizontal-box row flex-nowrap roboto" >
+      <% @facade.shelters.each do |shelter| %>
+        <div class="col-auto left-col">
+          <%= link_to "<div class='card-block card-1 card-text-padding'>
+            <table class='mx-auto'>
+              <tr>
+                <td><h3>#{shelter.name}</h3></td>
+              </tr>
+            </table>
+            <table class='mx-auto'>
+              <tr>
+                <td>Shelter ID:</td>
+                <td>#{shelter.id}</td>
+              </tr>
+              <tr>
+                <td>Number of animals:</td>
+                <td>#{shelter.animals.count}</td>
+              </tr>
+              <tr>
+                <td>Extra info here:</td>
+                <td>Some other info</td>
+              </tr>
+            </table>
+            <p> </p>
+          </div>".html_safe, shelter_path(shelter.id, user_id: current_user.id), class: "text-decoration-none" %>
+        </div>
+      <% end %>
     </div>
-  <% end %>
+
 </div>
-
-
