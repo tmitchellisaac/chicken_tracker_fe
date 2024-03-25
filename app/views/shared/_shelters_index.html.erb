@@ -1,7 +1,7 @@
+
 <div class="container-sm">
   <h1 class="roboto">Your Animal Shelters</h1>
   <hr>
-
     <div class="scrolling-wrapper horizontal-box row flex-nowrap roboto" >
       <% @facade.shelters.each do |shelter| %>
         <div class="col-auto left-col">
@@ -20,15 +20,13 @@
                 <td>Number of animals:</td>
                 <td>#{shelter.animals.count}</td>
               </tr>
-              <tr>
-                <td>Extra info here:</td>
-                <td>Some other info</td>
-              </tr>
             </table>
             <p> </p>
-          </div>".html_safe, shelter_path(shelter.id), class: "text-decoration-none" %>
+          </div>".html_safe, shelter_path(shelter.id,user_id: current_user.id), class: "text-decoration-none" %>
         </div>
       <% end %>
     </div>
+
+</div>
 
 </div>
