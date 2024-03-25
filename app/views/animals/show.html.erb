@@ -5,6 +5,9 @@
         <br>
         <div class="card-animal-show bg-light">
           <div class="cover-container d-flex h-100 p-3 flex-column align-items-center justify-content-center">
+            <% if @image != nil %>
+            <image src="<%=@image%>" class="img-fluid profile-pic-container">
+          <% end %>
             <div class="row">
               <div class="col-md-4 text-center">
                 Animal Type:<br>
@@ -41,13 +44,11 @@
             </div>
           </div>
         </div>
-        <% if @image != nil %>
-          <image src="<%=@image%>">
-        <% end %>
+
+        <div class="d-flex justify-content-center padding-bottom">
         <% if @image == nil %>
           <%= link_to "Add a Photo", "/shelters/#{@facade.shelter_id}/animals/#{@facade.id}/animal_images/new", method: :get, class: "btn btn-success m-2"  %>
         <% end %>
-        <div class="d-flex justify-content-center padding-bottom">
           <%= link_to "Edit this animal", "/shelters/#{@facade.shelter_id}/animals/#{@facade.id}/edit", method: :get, class: "btn btn-success m-2"  %>
           <%= button_to "Delete this Animal", "/shelters/#{@facade.shelter_id}/animals/#{@facade.id}", method: :delete, class: "btn btn-success m-2"  %>
           <%= link_to "Back to Shelter Page", "/shelters/#{@facade.shelter_id}", class: "btn btn-success m-2" %>

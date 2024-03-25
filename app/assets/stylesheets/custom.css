@@ -173,6 +173,12 @@ h1{
 
 }
 
+.profile-pic-container {
+  width: 200px;
+  height: auto;
+  opacity: none;
+  padding-bottom: 5%;
+}
 /* Meeting CSS Here */
 
 /* @media (min-width: 400px) {
