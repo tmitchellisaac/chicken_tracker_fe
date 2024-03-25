@@ -71,5 +71,6 @@ Have a great idea for this app? We'd love to add new features to Chicken Tracker
 - Isaac Mitchell [Github](https://github.com/tmitchellisaac) // [LinkedIn](https://www.linkedin.com/in/tmitchellisaac/)
 - Stephen Nash [Github](https://github.com/s2an) // [LinkedIn](https://www.linkedin.com/in/stephen-aa-nash/)
 - Quin Nordmark [Github](https://github.com/n0rdie) // [LinkedIn](https://www.linkedin.com/in/quinnordmark/)
+- Yain Porter [Github](https://github.com/yainporter) // [LinkedIn](https://www.linkedin.com/in/yainporter/)
 - Charles Ren [Github](https://github.com/codeWithRen) // [LinkedIn](https://www.linkedin.com/in/charles-ren-code/)
 - Meg Roth [Github](https://github.com/megroth2) // [LinkedIn](https://www.linkedin.com/in/meg-roth/)
