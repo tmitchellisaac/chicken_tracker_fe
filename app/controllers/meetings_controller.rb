@@ -22,7 +22,7 @@ class MeetingsController < ApplicationController
   end
 
   def create
-    meeting = SingleDayEvent.create!(meeting_params)
+    meeting = SingleDayEvent.create!(meeting_params_new)
 
     redirect_to meeting_path(meeting, user_id: meeting.user_id)
   end
