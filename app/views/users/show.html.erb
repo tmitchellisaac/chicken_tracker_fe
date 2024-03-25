@@ -32,6 +32,7 @@
               <i class="fs-4 bi-egg-fill" style="color: #564646;"></i> <span class="ms-1 d-none d-sm-inline text-red">Animals</span>
               <% @facade.shelters.map do |shelter| %>
             </a>
+
             <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
                 <% shelter.animals.each do |animal| %>
                 <li class="w-100">
@@ -40,6 +41,8 @@
                       <%= link_to animal.name, shelter_animal_path(shelter.id, animal.id) %>
                     </span>
                   </a>
+
+
                 </li>
                 <% end %>
               </ul>
