@@ -24,10 +24,10 @@
           </div>
         </div>
         <div class="d-flex justify-content-center padding-bottom">
-          <%= link_to "Create New Animal", "/shelters/#{@facade.shelter.id}/animals/new", data: { turbo: false }, class: "btn btn-success shadow-lg" %>
-          <%= link_to "Edit Shelter", "/shelters/#{@facade.shelter.id}/edit", data: { turbo: false }, class: "btn btn-success shadow-lg" %>
+          <%= link_to "Create New Animal", "/shelters/#{@facade.shelter.id}/animals/new", data: { turbo: false }, class: "btn btn-success shadow-lg m-1" %>
+          <%= link_to "Edit Shelter", "/shelters/#{@facade.shelter.id}/edit", data: { turbo: false }, class: "btn btn-success shadow-lg m-1" %>
           <!-- the delete confirmation is inbuilt, but I am not sure why it is not working-->
-          <%= button_to "Delete Shelter", "/shelters/#{@facade.shelter.id}", method: :delete, data: { confirm: "Are you sure you want to delete this shelter?", turbo: false }, class: "btn btn-success shadow-lg" %>
+          <%= button_to "Delete Shelter", "/shelters/#{@facade.shelter.id}", method: :delete, data: { confirm: "Are you sure you want to delete this shelter?", turbo: false }, class: "btn btn-success shadow-lg m-1" %>
         </div>
     </div>
   </div>
@@ -38,8 +38,9 @@
 </div>
 
 
-<div>
-<h1> Calendar </h1>
+<div >
+  <div class="d-flex align-items-center">
+<h1> Calendar </h1> </div>
 <%= month_calendar(events: @facade.meetings) do |date, meetings| %>
   <%= date.day %>
 

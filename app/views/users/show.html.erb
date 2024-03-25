@@ -1,6 +1,13 @@
+<style>
+.bg-custom {
+  background-color: #a5eaea;
+}
+</style>
+
+
 <div class="container-fluid">
   <div class="row flex-nowrap">
-    <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-light">
+    <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-custom">
       <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 min-vh-100">
         <%= link_to "<span class='fs-5 d-none d-sm-inline text-red'>Dashboard</span>".html_safe, user_path(current_user.id), class: "d-flex align-items-center pb-3 mb-md-0 me-md-auto text-decoration-none text-red" %>
         <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start roboto" id="menu">
@@ -30,7 +37,14 @@
                 <!-- <%= @facade.shelters.each do |shelter| %> -->
                 <li class="w-100">
                   <!-- This is where you would put the Animal -->
-                  <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 1</a>
+                  <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline"> 
+                    <% @facade.shelters.map do |shelter| %>
+                      <% shelter.animals.each do |animal| %>
+                        <%= link_to animal.name, shelter_animal_path(shelter.id, animal.id) %>
+                        <br>
+                      <% end %>
+                    <% end %>
+                   </span></a>
                 </li>
                 <!-- <% end %> -->
               </ul>
@@ -39,8 +53,6 @@
       <hr>
       <div class="dropdown pb-4">
           <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-              <img src="https://github.com/mdo.png" alt="hugenerd" width="30" height="30" class="rounded-circle">
-              <span class="d-none d-sm-inline mx-1 text-red">loser</span>
           </a>
           <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
               <li><a class="dropdown-item" href="#">New project...</a></li>

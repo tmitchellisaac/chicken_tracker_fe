@@ -10,6 +10,9 @@
         <br>
         <p class="text-white font-weight-bold">New User?</p>
         <%= button_to "Register", new_user_path, method: :get, class: "btn btn-success btn-sm shadow-lg" %><br>
+          <div class="col-12 col-md-auto">
+            <%= link_to "Login with Google (OAuth)", "/auth/google_oauth2", class: "btn btn-success btn-sm shadow-lg m-1" %>
+          </div>
         <br>
         <hr>
       </div>

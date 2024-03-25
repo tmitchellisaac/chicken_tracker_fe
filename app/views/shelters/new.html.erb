@@ -6,7 +6,7 @@
       <% if current_user%>
         <h1 class="roboto text-center text-white text-padding-top">New Shelter</h1>
         <div class="edit_shelter_form">
-          <%= link_to sanitize("&larr; Back to My Shelters"), user_path(current_user) %>
+          <%= link_to sanitize("&larr; Back to My Shelters"), user_path(current_user), class: "btn btn-success" %>
           <div class="new_shelter_form">
             <%= render "form", shelter: @facade,
                             path: "/shelters?user_id=#{@facade.user_id}",
