@@ -30,7 +30,14 @@
                 <!-- <%= @facade.shelters.each do |shelter| %> -->
                 <li class="w-100">
                   <!-- This is where you would put the Animal -->
-                  <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 1</a>
+                  <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline"> 
+                    <% @facade.shelters.map do |shelter| %>
+                      <% shelter.animals.each do |animal| %>
+                        <%= link_to animal.name, shelter_animal_path(shelter.id, animal.id) %>
+                        <br>
+                      <% end %>
+                    <% end %>
+                   </span></a>
                 </li>
                 <!-- <% end %> -->
               </ul>
