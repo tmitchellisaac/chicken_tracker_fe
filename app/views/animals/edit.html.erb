@@ -6,7 +6,7 @@
         <h1 class="roboto text-center text-white text-padding-top">Edit Animal Information</h1>
         <br>
         <div class="edit_animal_form">
-          <%= link_to sanitize("&larr; Back to animal"), shelter_animal_path %>
+          <%= link_to sanitize("&larr; Back to animal"), shelter_animal_path, class: "btn btn-success" %>
           <%= render "form", animal: @facade.animal,
                               path: "/shelters/#{@facade.shelter_id}/animals/#{@facade.id}",
                               method: :patch %>
